@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B5195450-CDF5-4701-B485-51AAA75A0962}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XPress</RootNamespace>
+    <AssemblyName>XPress</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.JScript" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Yahoo.Yui.Compressor">
+      <HintPath>..\Externals\Minifier\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Coding\CodeTimer.cs" />
+    <Compile Include="Coding\Collections\CacheCollection.cs" />
+    <Compile Include="Coding\Collections\ICacheCollectable.cs" />
+    <Compile Include="Coding\Collections\OrderedDictionary.cs" />
+    <Compile Include="Coding\GenericComparer.cs" />
+    <Compile Include="Coding\HashCodeCombiner.cs" />
+    <Compile Include="Coding\ProcessTimer.cs" />
+    <Compile Include="Coding\Reflection\MethodExtentions.cs" />
+    <Compile Include="Coding\WEvent.cs" />
+    <Compile Include="NetExtentions\CompressionServices.cs" />
+    <Compile Include="NetExtentions\GenericComparer.cs" />
+    <Compile Include="NetExtentions\GenericExtentions.cs" />
+    <Compile Include="NetExtentions\GlobalExtentionMethods.cs" />
+    <Compile Include="NetExtentions\TypeExtentions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\Attributes\XPressIgnoreAttribute.cs" />
+    <Compile Include="Serialization\Attributes\XPressMemberAttribute.cs" />
+    <Compile Include="Serialization\Attributes\XPressMemberSelectionAttribute.cs" />
+    <Compile Include="Serialization\Converters\ArrayConverter.cs" />
+    <Compile Include="Serialization\Converters\DelegateConvertor.cs" />
+    <Compile Include="Serialization\Converters\DictionaryConverter.cs" />
+    <Compile Include="Serialization\Converters\HashSetConverter.cs" />
+    <Compile Include="Serialization\Converters\JsonSerializeableConverter.cs" />
+    <Compile Include="Serialization\Converters\ListConveter.cs" />
+    <Compile Include="Serialization\Converters\NetSerializationConverter.cs" />
+    <Compile Include="Serialization\Converters\ObjectMembersConvertor.cs" />
+    <Compile Include="Serialization\Converters\PostDeserializeConverter.cs" />
+    <Compile Include="Serialization\Core\ElementData.cs" />
+    <Compile Include="Serialization\Core\JavascriptJson\JsonStringGlobals.cs" />
+    <Compile Include="Serialization\Core\JavascriptJson\JsonStringLanguageDefinitions.cs" />
+    <Compile Include="Serialization\Core\JavascriptJson\JsonStringReader.cs" />
+    <Compile Include="Serialization\Core\JavascriptJson\JsonStringWriter.cs" />
+    <Compile Include="Serialization\Core\JsonDefinitions.cs" />
+    <Compile Include="Serialization\Core\JsonReader.cs" />
+    <Compile Include="Serialization\Core\JsonValueConverter.cs" />
+    <Compile Include="Serialization\Core\JsonWriter.cs" />
+    <Compile Include="Serialization\Core\LanguageDefinitions.cs" />
+    <Compile Include="Serialization\Core\RawValueConverter.cs" />
+    <Compile Include="Serialization\Core\TypedObjectValueConverter.cs" />
+    <Compile Include="Serialization\Documents\IJsonValue.cs" />
+    <Compile Include="Serialization\Documents\JsonArray.cs" />
+    <Compile Include="Serialization\Documents\JsonData.cs" />
+    <Compile Include="Serialization\Documents\JsonDirective.cs" />
+    <Compile Include="Serialization\Documents\JsonEnumrableObject.cs" />
+    <Compile Include="Serialization\Documents\JsonNumber.cs" />
+    <Compile Include="Serialization\Documents\JsonObject.cs" />
+    <Compile Include="Serialization\Documents\JsonObjectParse.cs" />
+    <Compile Include="Serialization\Documents\JsonPair.cs" />
+    <Compile Include="Serialization\Documents\PostDeserialize.cs" />
+    <Compile Include="Serialization\Map\AssemblyQualifiedNameConvertor.cs" />
+    <Compile Include="Serialization\Map\ITypeConverter.cs" />
+    <Compile Include="Serialization\Map\MemberMapInfo.cs" />
+    <Compile Include="Serialization\Map\TypeMapInfo.cs" />
+    <Compile Include="Serialization\IJsonSerializable.cs" />
+    <Compile Include="Serialization\Javascript\JsonStringArrayDataProvider.cs" />
+    <Compile Include="Serialization\Javascript\JsonStringArrayRefrenceBankStorageProvider.cs" />
+    <Compile Include="Serialization\Javascript\JsonStringSerializer.cs" />
+    <Compile Include="Serialization\Javascript\JsonStringSerialzierGlobals.cs" />
+    <Compile Include="Serialization\JsonObjectConverter.cs" />
+    <Compile Include="Serialization\JsonObjectParser.cs" />
+    <Compile Include="Serialization\JsonSerializer.cs" />
+    <Compile Include="Serialization\Parsers\DateTimeParser.cs" />
+    <Compile Include="Serialization\Parsers\MemberInfoParser.cs" />
+    <Compile Include="Serialization\Parsers\RefrenceIdParser.cs" />
+    <Compile Include="Serialization\Parsers\TypeParser.cs" />
+    <Compile Include="Serialization\Reference\IJsonRefrenceDataProvider.cs" />
+    <Compile Include="Serialization\Reference\JsonMemoryArrayDataProvider.cs" />
+    <Compile Include="Serialization\Reference\JsonReferenceCollection.cs" />
+    <Compile Include="Serialization\Reference\JsonRefrenceBank.cs" />
+    <Compile Include="Serialization\Reference\ReferenceSerializationContext.cs" />
+    <Compile Include="Serialization\Reference\RefrenceId.cs" />
+    <Compile Include="Serialization\SerializationContext.cs" />
+    <Compile Include="Serialization\SerializationDefinitions.cs" />
+    <Compile Include="Serialization\SerializationTypeBinder.cs" />
+    <Compile Include="Serialization\Map\SerializationTypeMap.cs" />
+    <Compile Include="Serialization\StorageProviders\JsonFileStorageProvider.cs" />
+    <Compile Include="Serialization\StorageProviders\JsonRefrenceBankStorageProvider.cs" />
+    <Compile Include="Serialization\StorageProviders\JsonRefrenceBankStorageUnit.cs" />
+    <Compile Include="Serialization\StorageProviders\JsonSerializerFileStorageProvider.cs" />
+    <Compile Include="StorageBank\BankStorageUnit.cs" />
+    <Compile Include="StorageBank\IStorageProvider.cs" />
+    <Compile Include="StorageBank\StorageBank.cs" />
+    <Compile Include="Strings\CompressionExtentions.cs" />
+    <Compile Include="Strings\HashExtentions.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

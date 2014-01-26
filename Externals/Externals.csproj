@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5B4E536C-5C62-4E8D-839C-B29A341FEF4B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExternalsStorage</RootNamespace>
+    <AssemblyName>ExternalsStorage</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Ajax DLL\AjaxControlToolkit.dll" />
+    <Content Include="Ajax DLL\AjaxControlToolkit.pdb" />
+    <Content Include="Art\cant.cur" />
+    <Content Include="Art\clear.cur" />
+    <Content Include="Art\cornertemplate.png" />
+    <Content Include="Art\LargeLedCan.png" />
+    <Content Include="Art\LargeLedCant.png" />
+    <Content Include="Art\LargeLedPrefer.png" />
+    <Content Include="Art\LargeLedWant.png" />
+    <Content Include="Art\ledCan.png" />
+    <Content Include="Art\ledCant.png" />
+    <Content Include="Art\ledPrefer.png" />
+    <Content Include="Art\ledWant.png" />
+    <Content Include="Art\Old icons\cant.cur" />
+    <Content Include="Art\Old icons\Clear.cur" />
+    <Content Include="Art\Old icons\PreferNot.cur" />
+    <Content Include="Art\Old icons\want.cur" />
+    <Content Include="Art\PreferNot.cur" />
+    <Content Include="Art\requestIndicatorTemplate.png" />
+    <Content Include="Art\spray-paint.png" />
+    <Content Include="Art\want.cur" />
+    <Content Include="Art\whitecornerleftbottom.png" />
+    <Content Include="Art\whitecornerlefttop.png" />
+    <Content Include="Art\whitecornerrightbottom.png" />
+    <Content Include="Art\whitecornerrighttop.png" />
+    <Content Include="Databases\MySqlDLL\MySql.Data.dll" />
+    <Content Include="Databases\PostgreSQL Drivers\Npgsql.dll" />
+    <Content Include="Databases\PostgreSQL Drivers\Npgsql.pdb" />
+    <Content Include="Google\Google.GData.AccessControl.dll" />
+    <Content Include="Google\Google.GData.Calendar.dll" />
+    <Content Include="Google\Google.GData.Client.DLL" />
+    <Content Include="Google\Google.GData.Extensions.dll" />
+    <Content Include="Minifier\EcmaScript.NET.modified.dll" />
+    <Content Include="Minifier\SquishIt.Framework.dll" />
+    <Content Include="Minifier\Yahoo.Yui.Compressor.dll" />
+    <Content Include="PdfBuilders\itextsharp.dll" />
+    <Content Include="RestSharp\RestSharp.dll" />
+    <Content Include="RestSharp\RestSharp.xml" />
+    <Content Include="Serializers\Json.Net\Newtonsoft.Json.dll" />
+    <Content Include="Serializers\Json.Net\Newtonsoft.Json.pdb" />
+    <Content Include="Serializers\Json.Net\Newtonsoft.Json.xml" />
+    <Content Include="Serializers\MsgPack\MsgPack.dll" />
+    <Content Include="Serializers\MsgPack\MsgPack.pdb" />
+    <Content Include="Serializers\MsgPack\MsgPack.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ajax DLL\AjaxControlToolkit.dll.refresh" />
+    <None Include="Art\ledPrefer.xcf" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.8.3\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.8.3\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
