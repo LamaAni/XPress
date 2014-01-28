@@ -31,8 +31,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,8 +43,156 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Client\Response\ResponseUpdateCommand.cs" />
+    <Compile Include="Controls\Client\ControlsClient.cs" />
+    <Compile Include="Controls\Client\ControlsClientCall.cs" />
+    <Compile Include="Controls\Client\ControlsClientType.cs" />
+    <Compile Include="Controls\IRemoteControl.cs" />
+    <Compile Include="Controls\Linq\RemoteControlExtentions.cs" />
+    <Compile Include="Controls\RemoteControl.cs" />
+    <Compile Include="Controls\XPressPage.cs" />
+    <Compile Include="Controls\XPressTemplate.cs" />
+    <Compile Include="Extentions\JavascriptJsonExtentions.cs" />
+    <Compile Include="Razor\Code\XPressAttribCodeGenerator.cs" />
+    <Compile Include="Razor\Code\XPressCodeGenerator.cs" />
+    <Compile Include="Razor\Code\XPressCodeParser.cs" />
+    <Compile Include="Razor\Code\XPressHtmlMarkupParser.cs" />
+    <Compile Include="Razor\Configuration\XPressRazorHostSection.cs" />
+    <Compile Include="Razor\Configuration\XPressRazorPagesSection.cs" />
+    <Compile Include="Razor\Configuration\XPressRazorWebSectionGroup.cs" />
+    <Compile Include="Razor\Enums.cs" />
+    <Compile Include="Razor\Extentions\Extentions.cs" />
+    <Compile Include="Razor\Extentions\RazorTemplateExtentions.cs" />
+    <Compile Include="Razor\IRazorTemplate.cs" />
+    <Compile Include="Razor\XPressRazorApplicationDefnitions.cs" />
+    <Compile Include="Razor\XPressRazorBuildProvider.cs" />
+    <Compile Include="Razor\XPressRazorHostFactory.cs" />
+    <Compile Include="Razor\XPressRazorHttpHandler.cs" />
+    <Compile Include="Razor\XPressRazorHttpModule.cs" />
+    <Compile Include="Razor\XPressRazorRequestType.cs" />
+    <Compile Include="Razor\XPressRazorTemplateFactory.cs" />
+    <Compile Include="Razor\XPressWebPageRazorHost.cs" />
+    <Compile Include="Razor\Storage\XPressRazorCacheBanks.cs" />
+    <None Include="Controls\Services\Call\ControlsServiceCall.cs" />
+    <None Include="Controls\Services\IServiceAccesable.cs" />
+    <None Include="Controls\Services\IStorageProvider.cs" />
+    <None Include="Controls\Services\ControlsService.cs" />
+    <None Include="Controls\Services\ControlsServiceState.cs" />
+    <Compile Include="Core\JSScriptResponce.cs" />
+    <Compile Include="Core\XPressRequestCommand.cs" />
+    <Compile Include="Core\XPressResponseCommand.cs" />
+    <Compile Include="Html\Collections\AttributeCollection.cs" />
+    <Compile Include="Html\Collections\ChildCollection.cs" />
+    <Compile Include="Html\Collections\EventCollection.cs" />
+    <Compile Include="Html\Collections\StyleCollection.cs" />
+    <Compile Include="Html\Collections\TypeDependentCacheCollection.cs" />
+    <Compile Include="Html\Events\EventInfo.cs" />
+    <Compile Include="Html\HtmlElement.cs" />
+    <Compile Include="Html\HtmlLiteral.cs" />
+    <Compile Include="Html\HtmlNoSerialziationContainer.cs" />
+    <Compile Include="Html\HtmlPage.cs" />
+    <Compile Include="Html\HtmlSnippet.cs" />
+    <Compile Include="Html\HtmlTemplate.cs" />
+    <Compile Include="Html\Linq\AttributeExtentions.cs" />
+    <Compile Include="Html\Linq\ConstructionExtentions.cs" />
+    <Compile Include="Html\Linq\CssExtentions.cs" />
+    <Compile Include="Html\Linq\DesignTimeTemplateExtentions.cs" />
+    <Compile Include="Html\Linq\EventExtentions.cs" />
+    <Compile Include="Html\Linq\HelperClasses.cs" />
+    <Compile Include="Html\Linq\HtmlExtentions.cs" />
+    <Compile Include="Html\Linq\IQuery.cs" />
+    <Compile Include="Html\Linq\Query.cs" />
+    <Compile Include="Html\Linq\QueryExtender.cs" />
+    <Compile Include="Html\Linq\TreeMethods.cs" />
+    <Compile Include="Html\Rendering\ActivationBuilder.cs" />
+    <Compile Include="Html\Rendering\HtmlWriter.cs" />
+    <Compile Include="Html\Rendering\IgnoreResultWriteContext.cs" />
+    <Compile Include="Html\Rendering\TemplateWriteContext.cs" />
+    <Compile Include="Html\Response\LinkCommand.cs" />
+    <Compile Include="JavascriptClient\Enums.cs" />
+    <Compile Include="JavascriptClient\Extentions\Extentions.cs" />
+    <Compile Include="JavascriptClient\Extentions\LinqExtentions.cs" />
+    <Compile Include="JavascriptClient\JClient.cs" />
+    <Compile Include="JavascriptClient\JClientCall.cs" />
+    <Compile Include="JavascriptClient\JClientCallContext.cs" />
+    <Compile Include="JavascriptClient\JClientContext.cs" />
+    <Compile Include="JavascriptClient\JClientOptions.cs" />
+    <Compile Include="JavascriptClient\JClientPage.cs" />
+    <Compile Include="JavascriptClient\JClientState.cs" />
+    <Compile Include="JavascriptClient\JClientTemplate.cs" />
+    <Compile Include="JavascriptClient\Request\JClientRequest.cs" />
+    <Compile Include="JavascriptClient\Request\JClientRequestCommand.cs" />
+    <Compile Include="JavascriptClient\Request\JClientSystemRequestCommand.cs" />
+    <Compile Include="JavascriptClient\Response\BeatCommandEnum.cs" />
+    <Compile Include="JavascriptClient\Response\JClientResponse.cs" />
+    <Compile Include="JavascriptClient\Response\JClientSystemResponseCommand.cs" />
+    <Compile Include="JCom\Attributes\ClientSideAttribute.cs" />
+    <Compile Include="JCom\Attributes\ClientSideMethodAttribute.cs" />
+    <Compile Include="JCom\Attributes\ClientSidePropertyAttribute.cs" />
+    <Compile Include="JCom\Attributes\ValueGenerator.cs" />
+    <Compile Include="JCom\Compilers\Compiler.cs" />
+    <Compile Include="JCom\Compilers\Specialized\JavaScriptCompiler.cs" />
+    <Compile Include="JCom\Com\Enums.cs" />
+    <Compile Include="JCom\Com\IJComObjectSource.cs" />
+    <Compile Include="JCom\Com\JComClient.cs" />
+    <Compile Include="JCom\Com\Request\JComRequestCommand.cs" />
+    <Compile Include="JCom\Com\Response\JComBuildObjectResponse.cs" />
+    <Compile Include="JCom\Com\Response\JComResponseCommand.cs" />
+    <Compile Include="JCom\Com\Response\JComTypeDefResponce.cs" />
+    <Compile Include="JCom\Map\JComMemberInfo.cs" />
+    <Compile Include="JCom\Map\JComTypeInfo.cs" />
+    <Compile Include="JSON\IJsonCommand.cs" />
+    <Compile Include="JSON\JsonCommandExtentions.cs" />
+    <Compile Include="Links\Attributes\LinkActivationEventAttribute.cs" />
+    <Compile Include="Links\Attributes\LinkAttribute.cs" />
+    <Compile Include="Links\Attributes\LinkConstructorAttribute.cs" />
+    <Compile Include="Links\Attributes\LinkCssAttribute.cs" />
+    <Compile Include="Links\Attributes\LinkIgnoreSourcesFromType.cs" />
+    <Compile Include="Links\Attributes\LinkInitScriptAttribute.cs" />
+    <Compile Include="Links\Attributes\LinkPostCollectAttribute.cs" />
+    <Compile Include="Links\Attributes\LinkScriptAttribute.cs" />
+    <Compile Include="Links\Attributes\Mapper.cs" />
+    <Compile Include="Links\Bank\LinkBank.cs" />
+    <Compile Include="Links\Bank\LinkInfo.cs" />
+    <Compile Include="Links\Compilers\Compiler.cs" />
+    <Compile Include="Links\Compilers\JSCompiler.cs" />
+    <Compile Include="Links\Enums.cs" />
+    <Compile Include="Links\LinkHandler.cs" />
+    <Compile Include="Links\Parsers\Css\CssClass.cs" />
+    <Compile Include="Links\Parsers\Css\CssParser.cs" />
+    <Compile Include="Links\Parsers\Css\CssPrefixCompleater.cs" />
+    <Compile Include="Links\Parsers\Css\CssPrefixReplaceOptions.cs" />
+    <Compile Include="Links\Parsers\Css\CssStyleSheet.cs" />
+    <Compile Include="Links\Themes\Theme.cs" />
     <Compile Include="NetExtentions\HttpContextExtentions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\XPress.csproj">
+      <Project>{b5195450-cdf5-4701-b485-51aaa75a0962}</Project>
+      <Name>XPress</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\RemoteControl.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Core\GloablExtentions.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Core\jquery.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Core\RmcCore.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="JavascriptClient\Client.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="JCom\JCom.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="JavascriptClient\Commands\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

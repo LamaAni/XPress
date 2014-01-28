@@ -11,7 +11,8 @@ namespace XPress.StorageBank
     /// <summary>
     /// Holds information and allows for caching of specific objects.
     /// </summary>
-    public class Bank<SUType> where SUType:BankStorageUnit
+    public class Bank<SUType>
+        where SUType : BankStorageUnit
     {
         public Bank(IStorageProvider<SUType> provider, TimeSpan? keepInMemoryInterval = null, TimeSpan? cleanCacheInterval = null)
         {

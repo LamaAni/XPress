@@ -46,9 +46,9 @@ namespace XPress.Serialization
         /// </summary>
         public JsonWriter<C, T> Writer { get; private set; }
 
-        public OType Deserialize<OType>(T source)
+        public OType Deserialize<OType>(T source, bool ignoreTypes = false)
         {
-            return (OType)Deserialize(source, typeof(OType));
+            return (OType)Deserialize(source, typeof(OType), ignoreTypes);
         }
 
         /// <summary>
@@ -138,9 +138,31 @@ namespace XPress.Serialization
         /// <returns></returns>
         public virtual object Deserialize(T source, Type otype, bool ignoreTypes = false)
         {
+            IJsonValue<T> val = FromJsonRepresentation(source);
+
+            return Deserialize(val, otype, ignoreTypes);
+        }
+
+                /// <summary>
+        /// Converts an object from serialization stream.
+        /// </summary>
+        /// <param name="val">The json value</param>
+        /// <returns></returns>
+        public OType Deserialize<OType>(IJsonValue<T> val, bool ignoreTypes = false)
+        {
+            return (OType)Deserialize(val, typeof(OType), ignoreTypes);
+        }
+
+        /// <summary>
+        /// Converts an object from serialization stream.
+        /// </summary>
+        /// <param name="val">The json value</param>
+        /// <returns></returns>
+        public object Deserialize(IJsonValue<T> val, Type otype, bool ignoreTypes = false)
+        {
             SerializationContext<T> context = CreateContext();
             context.IgnoreTypes = ignoreTypes;
-            IJsonValue<T> val = FromJsonRepresentation(source);
+
             if (val == null)
                 return null;
 

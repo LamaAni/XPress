@@ -118,7 +118,7 @@ namespace XPress.Serialization.Map
             if (Attribute.IsDefined(MemberInfo, typeof(DefaultValueAttribute)))
                 DefaultValue = Attribute.GetCustomAttribute(MemberInfo, typeof(DefaultValueAttribute)) as DefaultValueAttribute;
 
-            // checking for RmcMember
+            // checking for XPressMember
             if (Attribute.IsDefined(MemberInfo, typeof(Attributes.XPressMemberAttribute)))
             {
                 XPressMemberAttribute atr = Attribute.GetCustomAttribute(MemberInfo, typeof(Attributes.XPressMemberAttribute)) as XPressMemberAttribute;

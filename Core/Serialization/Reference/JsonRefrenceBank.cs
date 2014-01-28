@@ -53,10 +53,10 @@ namespace XPress.Serialization.Reference
         #region storage and loading
 
         /// <summary>
-        /// Storage of the object into the object stream.
+        /// Storage of the object into the object stream if needed.
         /// </summary>
         /// <param name="o"></param>
-        /// <returns></returns>
+        /// <returns>The object id</returns>
         public uint Store(object o)
         {
             // stores the object to the collection.
@@ -118,6 +118,15 @@ namespace XPress.Serialization.Reference
         public void ReleaseAnchor(uint id)
         {
             Collection.ReleaseAnchor(id);
+        }
+
+        /// <summary>
+        /// Returns all cached objects that are currently in memory.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<object> GetCachedObjects()
+        {
+            return Collection.ByObject.Keys;
         }
 
         #endregion

@@ -29,13 +29,13 @@ namespace XPress.Serialization.StorageProviders
 
         protected override byte[] ToByteArray(JsonRefrenceBankStorageUnit<T> unit)
         {
-            if (unit.Bank == null)
+            if (unit.ReferenceBank == null)
                 throw new Exception("Cannot find refrence bank in the unit.");
 
             // updating the bank and writing the bank data.
-            unit.Bank.WriteToSource();
+            unit.ReferenceBank.WriteToSource();
 
-            return Serializer.ToByteArray(unit.Bank.DataProvider.GetSource());
+            return Serializer.ToByteArray(unit.ReferenceBank.DataProvider.GetSource());
         }
 
         protected override JsonRefrenceBankStorageUnit<T> FromByteArray(byte[] bytes)

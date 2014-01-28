@@ -37,7 +37,7 @@ namespace XPress.Serialization.Attributes
     /// <summary>
     /// Set the member selection type of the current, if the OptIn is selected then only specifically defined
     /// members are added. Affectes only the declared class (is not inherited by derived classes). Trumps any decleration
-    /// of XPressMemberSelectionAttribute. Use RmcInheritedMemberSelectionAttribute for inherited member selection.
+    /// of XPressMemberSelectionAttribute. Use XPressInheritedMemberSelectionAttribute for inherited member selection.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
     public sealed class XPressMemberSelectionAttribute : Attribute, IMembersSelectionAttribute

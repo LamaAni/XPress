@@ -93,6 +93,9 @@
     <Compile Include="Serialization\Documents\JsonObjectParse.cs" />
     <Compile Include="Serialization\Documents\JsonPair.cs" />
     <Compile Include="Serialization\Documents\PostDeserialize.cs" />
+    <Compile Include="Serialization\Extentions\JsonDocumentExtentions.cs" />
+    <Compile Include="Serialization\Javascript\JsonStringRefrenceBank.cs" />
+    <Compile Include="Serialization\Javascript\JsonStringRefrenceBankStorageUnit.cs" />
     <Compile Include="Serialization\Map\AssemblyQualifiedNameConvertor.cs" />
     <Compile Include="Serialization\Map\ITypeConverter.cs" />
     <Compile Include="Serialization\Map\MemberMapInfo.cs" />

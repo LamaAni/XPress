@@ -14,12 +14,13 @@ namespace XPress.Serialization.StorageProviders
     {
         public JsonRefrenceBankStorageUnit(Reference.JsonRefrenceBank<T> bank)
         {
-            Bank = bank;
+            ReferenceBank = bank;
         }
 
         /// <summary>
         /// Allows the bank associated with the unit to be accessable.
         /// </summary>
-        public Reference.JsonRefrenceBank<T> Bank { get; protected set; }
+        public Reference.JsonRefrenceBank<T> ReferenceBank { get; protected set; }
     }
+
 }

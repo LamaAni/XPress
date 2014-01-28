@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,5 +33,58 @@ namespace XPress.Serialization.Documents
         {
             return "Object {" + this.Count + "}";
         }
+
+        #region IJsonObject Members
+
+        /// <summary>
+        /// Converts the json object to key value pairs.
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <returns></returns>
+        public KeyValuePair<TKey,TValue>[] ToKeyValuePairs<TKey,TValue>()
+            where TKey : IJsonValue<T>
+            where TValue : IJsonValue<T>
+        {
+            return this.Select(jp => new KeyValuePair<TKey, TValue>((TKey)jp.Key, (TValue)jp.Value)).ToArray();
+        }
+
+        /// <summary>
+        /// Converts the json object to key value pairs.
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <returns></returns>
+        public KeyValuePair<string, TValue>[] ToKeyValuePairs<TValue>()
+            where TValue : IJsonValue<T>
+        {
+            return this.Select(jp => new KeyValuePair<string, TValue>((jp.Key as JsonData<T>).Value as string, (TValue)jp.Value)).ToArray();
+        }
+
+
+        /// <summary>
+        /// Converts the json object to key value pairs.
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <returns></returns>
+        public KeyValuePair<TKey, TValue>[] ToKeyValuePairs<TKey, TValue>(Func<IJsonValue<T>, TKey> convertKey, Func<IJsonValue<T>, TValue> convertVal)
+        {
+            return this.Select(jp => new KeyValuePair<TKey, TValue>(convertKey(jp.Key), convertVal(jp.Value))).ToArray();
+        }
+
+        /// <summary>
+        /// Converts the json object to key value pairs.
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <returns></returns>
+        public KeyValuePair<string, TValue>[] ToKeyValuePairs<TValue>(Func<IJsonValue<T>, TValue> convertVal)
+        {
+            return this.Select(jp => new KeyValuePair<string, TValue>((jp.Key as JsonData<T>).Value as string, convertVal(jp.Value))).ToArray();
+        }
+
+        #endregion
     }
+
 }

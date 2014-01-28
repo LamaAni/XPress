@@ -8,8 +8,8 @@ namespace XPress.Serialization.Javascript
 {
     public class JsonStringArrayRefrenceBankStorageProvider : StorageProviders.JsonRefrenceBankStorageProvider<string>
     {
-        public JsonStringArrayRefrenceBankStorageProvider(IJsonSerializer<string> serializer, string extention = "cache.dat", string path = null)
-            : base(serializer, extention, path)
+        public JsonStringArrayRefrenceBankStorageProvider(IJsonSerializer<string> serializer = null, string extention = "cache.dat", string path = null)
+            : base(serializer == null ? new Javascript.JsonStringSerializer() : serializer, extention, path)
         {
         }
 
@@ -23,4 +23,5 @@ namespace XPress.Serialization.Javascript
             return new StorageProviders.JsonRefrenceBankStorageUnit<string>(new Reference.JsonRefrenceBank<string>(new JsonStringArrayDataProvider(source, Serializer)));
         }
     }
+
 }
