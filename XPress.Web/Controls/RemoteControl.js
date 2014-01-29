@@ -1,5 +1,5 @@
 ﻿// global implementation file for remote control core.
-$.extend($.Rmc, {
+$.extend($.XPress, {
     Controls: {
         Init: function () {
             this.Init = null;

@@ -8,16 +8,16 @@ using XPress.Web.JavascriptClient;
 
 namespace XPress.Web.Razor
 {
-    public class RmcRazorPageFactory : Serialization.Map.ITypeConverter
+    public class XPressRazorPageFactory : Serialization.Map.ITypeConverter
     {
         #region static
 
-        static RmcRazorPageFactory()
+        static XPressRazorPageFactory()
         {
-            DefaultFactory = new RmcRazorPageFactory();
+            DefaultFactory = new XPressRazorPageFactory();
         }
 
-        public static RmcRazorPageFactory DefaultFactory { get; private set; }
+        public static XPressRazorPageFactory DefaultFactory { get; private set; }
 
         static System.Collections.Concurrent.ConcurrentDictionary<Type, string> m_typeToUrl =
             new System.Collections.Concurrent.ConcurrentDictionary<Type, string>();
@@ -66,7 +66,7 @@ namespace XPress.Web.Razor
         public static T FromUrl<T>(string url, System.Web.HttpContext context = null)
             where T : IRazorTemplate
         {
-            return XPress.Web.Razor.RmcRazorPageFactory.CreateInstanceFromUrl<T>(url, context);
+            return XPress.Web.Razor.XPressRazorPageFactory.CreateInstanceFromUrl<T>(url, context);
         }
 
         #endregion

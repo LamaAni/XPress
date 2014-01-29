@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace XPress.Web.Core
 {
     /// <summary>
-    /// The general response command object to be handed by the RmcCore commands collection.
+    /// The general response command object to be handed by the XPressCore commands collection.
     /// </summary>
     [XPressMemberSelection(XPressMemberSelectionType.OptIn)]
     public abstract class XPressResponseCommand

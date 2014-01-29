@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace XPress.Web.JavascriptClient
 {
     /// <summary>
-    /// Represents the request type as read by the RmcRazorHttpHandler.
+    /// Represents the request type as read by the XPressRazorHttpHandler.
     /// </summary>
     public enum JClientRequestType
     {

@@ -2,7 +2,7 @@
 // NOTE: Only implemented as a client.
 
 // Creating the jcom client object.
-$.extend($.Rmc, {
+$.extend($.XPress, {
     JCOM: {
         // constructor.
         Init: function () {

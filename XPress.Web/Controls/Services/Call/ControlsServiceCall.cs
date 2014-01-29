@@ -21,12 +21,12 @@ namespace XPress.Web.Controls.Services.Call
         ///// Creates a service call.
         ///// </summary>
         ///// <param name="service">The service associated with the call.</param>
-        //public ControlsServiceCall(Services.ControlsService service, RmcClientResponse response, RmcClientRequest request, HttpContext context,  bool isPageInit)
+        //public ControlsServiceCall(Services.ControlsService service, XPressClientResponse response, XPressClientRequest request, HttpContext context,  bool isPageInit)
         //{
         //    Service = service;
         //    Response = response;
         //    Request = request;
-        //    PendingRequests = new Dictionary<int, RmcClientRequest>();
+        //    PendingRequests = new Dictionary<int, XPressClientRequest>();
         //    PendingRequests[request.Id] = request;
         //    LinkCollector = new Web.Links.LinkCollector();
         //    IsPageInit = isPageInit;
@@ -47,12 +47,12 @@ namespace XPress.Web.Controls.Services.Call
         ///// <summary>
         ///// The request sent to the service.
         ///// </summary>
-        //public RmcClientRequest Request { get; private set; }
+        //public XPressClientRequest Request { get; private set; }
 
         ///// <summary>
         ///// The response the service has.
         ///// </summary>
-        //public RmcClientResponse Response { get; private set; }
+        //public XPressClientResponse Response { get; private set; }
 
         ///// <summary>
         ///// The link collector associated with the current call.
@@ -67,7 +67,7 @@ namespace XPress.Web.Controls.Services.Call
         ///// <summary>
         ///// A collection of the currently pending requests. (execpt the executing requests).
         ///// </summary>
-        //public Dictionary<int, RmcClientRequest> PendingRequests { get; private set; }
+        //public Dictionary<int, XPressClientRequest> PendingRequests { get; private set; }
 
         ///// <summary>
         ///// if true then currently executing request.
@@ -256,14 +256,14 @@ namespace XPress.Web.Controls.Services.Call
         //private void CollectTypeDefinitions(IQuery parents)
         //{
         //    // creating the type identification.
-        //    List<Client.RmcClientType> needLoadingToClient = new List<Client.RmcClientType>();
+        //    List<Client.XPressClientType> needLoadingToClient = new List<Client.XPressClientType>();
         //    parents.Invoke(c =>
         //    {
         //        Type t = c.GetType();
         //        if (!Service.IsClientTypeLoaded(t))
         //        {
         //            Service.MarkClientTypeAsLoaded(t);
-        //            Client.RmcClientType ct = Client.RmcClientType.Get(t);
+        //            Client.XPressClientType ct = Client.XPressClientType.Get(t);
         //            if (ct.RequiresClientTypeDefenition)
         //            {
         //                needLoadingToClient.Add(ct);

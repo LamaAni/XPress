@@ -9,7 +9,7 @@ namespace XPress.Serialization.Javascript
     public class JsonStringArrayRefrenceBankStorageProvider : StorageProviders.JsonRefrenceBankStorageProvider<string>
     {
         public JsonStringArrayRefrenceBankStorageProvider(IJsonSerializer<string> serializer = null, string extention = "cache.dat", string path = null)
-            : base(serializer == null ? new Javascript.JsonStringSerializer() : serializer, extention, path)
+            : base(serializer == null ? new Javascript.JsonStringSerializer() : serializer, extention, path == null ? "Cache\\ReferenceSerialized\\" : path)
         {
         }
 

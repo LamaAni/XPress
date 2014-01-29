@@ -183,7 +183,7 @@
     <EmbeddedResource Include="Core\jquery.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Core\RmcCore.js" />
+    <EmbeddedResource Include="Core\XPressCore.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="JavascriptClient\Client.js" />

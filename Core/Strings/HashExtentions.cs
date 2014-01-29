@@ -49,9 +49,9 @@ namespace XPress.Strings
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
-        public static string EscapeForJS(this string val)
+        public static string EscapeForJS(this string val, bool addApostrophe = false)
         {
-            return Regex.Replace(val, "(\"|\\n|\\r|'|\\\\)", __escapeForJsMatch);
+            return Regex.Replace(val, "(\"|\\n|\\r" + (addApostrophe ? "|'" : "") + "|\\\\)", __escapeForJsMatch);
             //return val;
         }
 
@@ -96,7 +96,7 @@ namespace XPress.Strings
         /// <returns></returns>
         public static string EscapeForHtmlAttribute(this string val)
         {
-            val = val.Replace("\n", "\\n");
+            val = val.Replace("\n", "&#10;");
             val = val.Replace("\"", "&quot;");
             return val;
         }

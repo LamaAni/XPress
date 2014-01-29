@@ -15,20 +15,20 @@ namespace XPress.Web.Razor
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public static RmcRazorRequestFlags GetRmcRequestFlags(this HttpRequest request)
+        public static XPressRazorRequestFlags GetXPressRequestFlags(this HttpRequest request)
         {
             if (request.Headers["_rmcrazor"] == null)
-                return RmcRazorRequestFlags.None;
+                return XPressRazorRequestFlags.None;
             string[] flags = request.Headers["_rmcrazor"].Split(';');
-            RmcRazorRequestFlags rslt = RmcRazorRequestFlags.None;
+            XPressRazorRequestFlags rslt = XPressRazorRequestFlags.None;
             flags.ForEach(f =>
             {
                 if (f == "")
                     return;
-                object flag = Enum.Parse(typeof(RmcRazorRequestFlags), f);
+                object flag = Enum.Parse(typeof(XPressRazorRequestFlags), f);
                 if (flag == null)
                     return;
-                RmcRazorRequestFlags rrf = (RmcRazorRequestFlags)flag;
+                XPressRazorRequestFlags rrf = (XPressRazorRequestFlags)flag;
                 if ((rrf & rslt) != rrf)
                     rslt = rslt | rrf;
             });

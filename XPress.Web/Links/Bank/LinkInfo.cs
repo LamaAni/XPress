@@ -150,7 +150,7 @@ namespace XPress.Web.Links.Bank
                     }
                 else
                 {
-                    string filePath = context.Server.MapPath((Link.Url.Length > 1 && Link.Url[0] == '~' && Link.Url[1] == '/' ? "" : "~/") + Link.Url);
+                    string filePath = context.Server.MapPath(Link.Url);
                     source.Append(TrimExtras(File.ReadAllText(filePath), this.Link.Type));
                 }
                     break;
