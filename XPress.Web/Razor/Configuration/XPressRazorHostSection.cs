@@ -12,7 +12,7 @@ namespace XPress.Web.Razor.Configuration
         public XPressRazorHostSection()
             : base()
         {
-            this.FactoryType = "XPress.Web.Razor.RmcRazorHostFactory";
+            this.FactoryType = "XPress.Web.Razor.XPressRazorHostFactory";
         }
     }
 }

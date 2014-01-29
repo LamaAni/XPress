@@ -50,6 +50,7 @@
     <Compile Include="Coding\Collections\OrderedDictionary.cs" />
     <Compile Include="Coding\GenericComparer.cs" />
     <Compile Include="Coding\HashCodeCombiner.cs" />
+    <Compile Include="Coding\Storage\Extentions.cs" />
     <Compile Include="Coding\ProcessTimer.cs" />
     <Compile Include="Coding\Reflection\MethodExtentions.cs" />
     <Compile Include="Coding\WEvent.cs" />

@@ -3,12 +3,12 @@
 ////////////////////////////////////////
 // Generating constants.
 $.extend($, {
-    Rmc: {
+    XPress: {
     },
 });
 
 $.extend($.fn, {
-    Rmc: {
+    XPress: {
         element: this, // represents the object that returns the element.
         GetClient: function () { return null;}, // dummy function to be popluated later.
     }
@@ -16,7 +16,7 @@ $.extend($.fn, {
 
 //////////////////////////////////////////////////
 // Command execution
-$.extend($.Rmc, {
+$.extend($.XPress, {
     ////////////////////////////////////////////////////
     // Collection of system events to bind to.
     EventIds: {

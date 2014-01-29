@@ -46,7 +46,7 @@ namespace XPress.Web.Razor
         void context_Error(object sender, EventArgs e)
         {
             // called on application error.
-            if (HttpContext.Current.Request.GetRmcRequestFlags().HasFlag(RmcRazorRequestFlags.RespondAsJson))
+            if (HttpContext.Current.Request.GetXPressRequestFlags().HasFlag(XPressRazorRequestFlags.RespondAsJson))
             {
                 Exception[] errs = HttpContext.Current.AllErrors.ToArray();
 
@@ -63,7 +63,7 @@ namespace XPress.Web.Razor
 
         void context_BeginRequest(object sender, EventArgs e)
         {
-            if (HttpContext.Current.Request.GetRmcRequestFlags().HasFlag(RmcRazorRequestFlags.NoSession))
+            if (HttpContext.Current.Request.GetXPressRequestFlags().HasFlag(XPressRazorRequestFlags.NoSession))
             {
                 HttpContext.Current.SetSessionStateBehavior(System.Web.SessionState.SessionStateBehavior.Disabled);
             }

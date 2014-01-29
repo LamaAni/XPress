@@ -6,6 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO.IsolatedStorage;
+using XPress.Coding.Storage;
 
 namespace XPress.Serialization.StorageProviders
 {
@@ -26,23 +28,18 @@ namespace XPress.Serialization.StorageProviders
         public JsonFileStorageProvider(string extention = "cache.dat", string path = null)
         {
             Extention = extention;
-            if (path == null)
+            if(path==null)
+                path="Cache\\Serialized";
+
+            if(path[1]!=':') // is partial path.
             {
-                try
-                {
-                    if (!Directory.Exists("Cache"))
-                        Directory.CreateDirectory("Cache");
-                    if (!Directory.Exists("Cache\\Serialized"))
-                        Directory.CreateDirectory("Cache\\Serialized");
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Cannot create default directory Cache\\Serialzied", ex);
-                }
+                path = path.ToPartialStoragePath();
             }
 
-            if (!HasWriteAccessToFolder(path))
-                throw new Exception("Cannot write to path \"" + path + "\", or path dose not exist.");
+            Path = path;
+
+            if (!path.HasWriteAccessToFolder())
+                throw new Exception("Cannot write to path \"" + Path + "\", or path dose not exist.");
         }
 
         #region members
@@ -56,26 +53,6 @@ namespace XPress.Serialization.StorageProviders
         /// The file extention the storage provider uses.
         /// </summary>
         public string Extention { get; private set; }
-
-        /// <summary>
-        /// Validates we have acces to the folder to read and write.
-        /// </summary>
-        /// <param name="folderPath"></param>
-        /// <returns></returns>
-        private bool HasWriteAccessToFolder(string folderPath)
-        {
-            try
-            {
-                // Attempt to get a list of security permissions from the folder. 
-                // This will raise an exception if the path is read only or do not have access to view the permissions. 
-                System.Security.AccessControl.DirectorySecurity ds = Directory.GetAccessControl(folderPath);
-                return true;
-            }
-            catch (UnauthorizedAccessException)
-            {
-                return false;
-            }
-        }
 
         System.Collections.Concurrent.ConcurrentDictionary<string, SUType> m_PendingUnits = new System.Collections.Concurrent.ConcurrentDictionary<string, SUType>();
 

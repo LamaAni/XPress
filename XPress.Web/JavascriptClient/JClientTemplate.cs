@@ -41,7 +41,7 @@ namespace XPress.Web.JavascriptClient
             // adding command to handle errored json requests.
             Razor.XPressRazorHttpModule.ExecuteOnError.Add((errs) =>
             {
-                if (HttpContext.Current.Request.GetRmcRazorRequestType() == JClientRequestType.Json && JClientCallContext.Current != null)
+                if (HttpContext.Current.Request.GetXPressRazorRequestType() == JClientRequestType.Json && JClientCallContext.Current != null)
                 {
                     // clearing the executing request id (if any).
                     JClientCallContext.Current.State.ExecutingRequestId = -1;
@@ -127,7 +127,7 @@ namespace XPress.Web.JavascriptClient
         public override void ProcessRequest(System.Web.HttpContext context)
         {
             // working by request
-            switch (context.Request.GetRmcRazorRequestType())
+            switch (context.Request.GetXPressRazorRequestType())
             {
                 case JClientRequestType.Beat:
                     ProcessRequestAsBeat(context);

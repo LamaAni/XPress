@@ -23,7 +23,7 @@ namespace XPress.Web.Html
     /// </summary>
     [LinkScript("XPress.Web.Core.jquery.js", LinkOrigin.Embedded, LoadType = LinkLoadType.HeadIfPossible, LoadIndex = 1)]
     [LinkScript("XPress.Web.Core.GloablExtentions.js", LinkOrigin.Embedded, LoadType = LinkLoadType.HeadIfPossible, LoadIndex = 2)]
-    [LinkScript("XPress.Web.Core.RmcCore.js", LinkOrigin.Embedded, LoadType = LinkLoadType.HeadIfPossible, LoadIndex = 3)]
+    [LinkScript("XPress.Web.Core.XPressCore.js", LinkOrigin.Embedded, LoadType = LinkLoadType.HeadIfPossible, LoadIndex = 3)]
     [LinkScript("XPress.Web.JCom.JCom.js", LinkOrigin.Embedded, LoadType = LinkLoadType.HeadIfPossible, LoadIndex = 4)]
     [XPressMemberSelection(XPressMemberSelectionType.OptIn)]
     public class HtmlTemplate : HtmlElement, IRazorTemplate
@@ -407,7 +407,8 @@ namespace XPress.Web.Html
 #if DEBUG
                 initBuilder.Append("document.Debug=true;$.Vebrose=true;\n");
 #endif
-                initBuilder.Append("$.XPress.Commands.Execute($.JSON.From(\"" + (new { commands = writer.InitCommands }).ToJSJson().EscapeForJS() + "\").commands);");
+                string jsonCommand = (new { commands = writer.InitCommands }).ToJSJson();
+                initBuilder.Append("$.XPress.Commands.Execute($.JSON.From(\"" + jsonCommand.EscapeForJS() + "\").commands);");
 #if DEBUG
                 initBuilder.Append("\n");
 #endif

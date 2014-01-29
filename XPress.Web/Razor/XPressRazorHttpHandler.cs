@@ -23,7 +23,7 @@ namespace XPress.Web.Razor
 
         static XPressRazorHttpHandler()
         {
-            //Serialization.Map.TypeConversionsMap.DefaultMap.Converters.Insert(0, RmcRazorPageFactory.DefaultFactory);
+            //Serialization.Map.TypeConversionsMap.DefaultMap.Converters.Insert(0, XPressRazorPageFactory.DefaultFactory);
         }
 
         #endregion
@@ -56,7 +56,7 @@ namespace XPress.Web.Razor
             XPress.Coding.CodeTimer timer = new XPress.Coding.CodeTimer();
 #endif
             // loading the page as the IRazorTemplate.
-            IRazorTemplate page = RmcRazorPageFactory.FromUrl<IRazorTemplate>("~" + context.Request.Url.LocalPath, context);
+            IRazorTemplate page = XPressRazorPageFactory.FromUrl<IRazorTemplate>("~" + context.Request.Url.LocalPath, context);
 #if DEBUG
             timer.Mark("Created page template");
 #endif

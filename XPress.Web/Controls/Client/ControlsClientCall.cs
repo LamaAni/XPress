@@ -19,7 +19,7 @@ namespace XPress.Web.Controls.Client
         }
 
         /// <summary>
-        /// The Rmc Client.
+        /// The XPress Client.
         /// </summary>
         public new ControlsClient Client
         {

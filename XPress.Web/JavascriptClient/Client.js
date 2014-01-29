@@ -1,7 +1,7 @@
 ﻿// client extentions for jquery.
 // Implements an rmc client for the remote controls system.
 // adding the extnetion object for the remote control clients. Applies to all controls.
-$.extend($.fn.Rmc, {
+$.extend($.fn.XPress, {
     // commands to the rmc. (All controls).
     // the element associated with the object.
     element: this,
@@ -37,7 +37,7 @@ $.extend($.XPress.EventIds, {
 });
 
 // Global rmc object.
-$.extend($.Rmc, {
+$.extend($.XPress, {
     // Client creation (for page purpuse only)
     InitJClient: function (id, options) {
         this.GlobalJClient = $.XPress.JClient(id, options);
@@ -48,8 +48,8 @@ $.extend($.Rmc, {
     GlobalJClient: null,
 });
 
-//#region Rmc client defenition.
-$.extend($.Rmc, {
+//#region XPress client defenition.
+$.extend($.XPress, {
     // A command client for sending and reciving commands from the server.
     JClient: function (id, options, events) {
         // validating parameters.

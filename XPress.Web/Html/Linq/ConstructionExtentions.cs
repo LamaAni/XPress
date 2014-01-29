@@ -19,7 +19,7 @@ namespace XPress.Web.Html.Linq
         public static HtmlTemplate Load<T>(this T parent, string url)
             where T : HtmlElement
         {
-            HtmlTemplate template = XPress.Web.Razor.RmcRazorPageFactory.FromUrl<HtmlTemplate>(url, parent.Context);
+            HtmlTemplate template = XPress.Web.Razor.XPressRazorPageFactory.FromUrl<HtmlTemplate>(url, parent.Context);
             template.Execute();
             return template;
         }

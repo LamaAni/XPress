@@ -15,7 +15,7 @@ namespace XPress.Web.JavascriptClient
         /// </summary>
         /// <param name="rq"></param>
         /// <returns></returns>
-        public static JClientRequestType GetRmcRazorRequestType(this HttpRequest rq)
+        public static JClientRequestType GetXPressRazorRequestType(this HttpRequest rq)
         {
             if (rq.Headers["jClientCmd"] == null)
                 return JClientRequestType.Page;

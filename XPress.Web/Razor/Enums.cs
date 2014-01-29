@@ -10,7 +10,7 @@ namespace XPress.Web.Razor
     /// Flags that can be sent using the request, to determine behaviur on the serverside.
     /// </summary>
     [Flags]
-    public enum RmcRazorRequestFlags
+    public enum XPressRazorRequestFlags
     {
         /// <summary>
         /// No flags

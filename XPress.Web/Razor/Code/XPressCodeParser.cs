@@ -39,7 +39,7 @@ namespace XPress.Web.Razor.Code
             //// Set the block type
             //FunctionsDirective();
             //// replace the code generator.
-            //Span.CodeGenerator = new RmcAttribCodeGenerator();
+            //Span.CodeGenerator = new XPressAttribCodeGenerator();
             if(Context.DesignTimeMode)
             {
                 FunctionsDirective();
