@@ -1,11 +1,12 @@
 ﻿@inherits HtmlPage
-@using WebTester.TestHtml
+@using WebTester.Controls
 @attrib{
 // Add attributes for the template class here (Same as adding attributes before a class name).
 // Example: [LinkConstructor("example.js")]
 [LinkScript("TestMe.js")]
 [LinkCss("TestCss.css")]
 }
+@{this.VebroseClientJavascript = true;}
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -32,7 +33,7 @@
     <br />
     Loading internal:<br />
     @this.Load("testbaseinternal.cshtml").TagName("div").Css("color", "red", "font-size", "10.5pt", "padding", "5px","font-family","Arial").Class("testc")
-    @(new WebTester.TestHtml.TestControl())
+    @(new TestControl())
     @InsertAutoPageInit()
 </body>
 </html>

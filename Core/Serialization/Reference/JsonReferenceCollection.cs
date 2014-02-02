@@ -96,6 +96,8 @@ namespace XPress.Serialization.Reference
         /// <returns></returns>
         public virtual bool HasObject(object o)
         {
+            if (o == null)
+                return false;
             return m_byObject.ContainsKey(o);
         }
 

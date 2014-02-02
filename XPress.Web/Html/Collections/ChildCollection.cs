@@ -25,6 +25,16 @@ namespace XPress.Web.Html.Collections
 
         public int Count { get { return Kids.Count; } }
 
+        /// <summary>
+        /// Returns the html control at the specified index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public HtmlElement this[int index]
+        {
+            get { return Kids[index]; }
+        }
+
         #endregion
 
         #region Adding methods

@@ -47,6 +47,8 @@ $.extend($.XPress, {
                     headObject.href = link.Url;
                     headObject.id = link.UniqueId;
                     headObject.rel = "stylesheet";
+                    if ($.Vebrose)
+                        console.log("Loading css file: " + link.Url, link);
                     break;
                 case "Script":
                     headObject = document.createElement("script");
@@ -54,6 +56,8 @@ $.extend($.XPress, {
                     headObject.src = link.Url;
                     headObject.id = link.UniqueId;
                     requiresPend = true;
+                    if ($.Vebrose)
+                        console.log("Loading script file: " + link.Url, link);
                     break;
                 default:
                     console.warn("Cannot translate loaded link.", link);

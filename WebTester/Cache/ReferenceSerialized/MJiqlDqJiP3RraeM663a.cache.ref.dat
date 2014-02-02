@@ -1,0 +1,660 @@
+62
+☺
+0,3,4
+☺
+0:1|5,1:2,5:6|9,6:7|8|47,9:10|48,3:11|13|20,11:12|49|59,13:14|50|60,14:15,15:16|17,17:18,18:19,20:21|52,21:22|23|24|25|31|32|33|39|4|44|45|46,25:26|29|54,26:27|28|53,29:30,33:34|37|56,34:35|36|55,37:38,4:40|42|58,40:41|57,42:43,50:51,51:16|17,52:22|23|24|25|31|32|33|39|4|44|45|46,54:30,56:38,58:43,60:61,61:16|17
+☺
+{
+	"cid":27,
+	"typeinfo":[
+		0,
+		"System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		1,
+		"System.Collections.Generic.ObjectEqualityComparer`1[[System.Type, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		2,
+		"System.Collections.Generic.HashSet`1[[System.Type, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		3,
+		"XPress.Web.Controls.Client.ControlsClient, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		4,
+		"System.Collections.Generic.GenericEqualityComparer`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		5,
+		"System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		6,
+		"System.Collections.Generic.HashSet`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		7,
+		"System.Type[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		8,
+		"ASP._Page_testcontrols_testbase_cshtml",
+		9,
+		"XPress.Web.Html.HtmlLiteral, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		10,
+		"XPress.Web.Html.HtmlSnippet, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		11,
+		"XPress.Web.Html.HtmlElement, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		12,
+		"XPress.Web.Controls.Generic.Button, XPress.Web.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		13,
+		"ASP._Page_testcontrols_testbaseinternal_cshtml",
+		14,
+		"WebTester.Controls.TestControl, WebTester, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		15,
+		"XPress.Web.Html.Collections.TypeDependentCacheCollection, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		16,
+		"XPress.Web.Html.Collections.AttributeCollection, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		17,
+		"System.Object[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		18,
+		"XPress.Web.Html.Events.EventInfo, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		19,
+		"XPress.Web.Controls.Generic.Button+<>c__DisplayClass2, XPress.Web.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		20,
+		"System.Action`2[[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.EventArgs, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		21,
+		"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		22,
+		"XPress.Web.Html.Collections.EventCollection, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		23,
+		"XPress.Web.Html.Collections.StyleCollection, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		24,
+		"System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		25,
+		"XPress.Web.Html.HtmlElement[], XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		26,
+		"System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+	]
+}
+☺
+0
+☺
+{
+	^tp#3:null,
+	"ClientStateId":"jclient.whK6yqjOLb9xWNw1ZsJ0.state",
+	"LoadedTypeDefs":#"_rid"#1,
+	"TypeDependentDefitions":#"_rid"#5
+}
+☺
+1
+☺
+[
+	^tp#2,
+	"Version",
+	#"t"#0,
+	0,
+	"Comparer",
+	#"t"#26,
+	null,
+	"Capacity",
+	#"t"#0,
+	0
+]
+☺
+2
+☺
+{
+	^tp#1:null
+}
+☺
+3
+☺
+{
+	^tp#12:null,
+	"_attr":#"_rid"#11,
+	"_events":#"_rid"#13,
+	"_parent":#"_rid"#20,
+	"_tag":"div",
+	"Text":"Clean all cache"
+}
+☺
+4
+☺
+{
+	^tp#14:null,
+	"_attr":#"_rid"#40,
+	"_kids":#"_rid"#58,
+	"_parent":#"_rid"#20,
+	"_tag":"div",
+	"ClientSideProperty":0
+}
+☺
+5
+☺
+{
+	^tp#15:null,
+	"m_loadedTypeIds":#"_rid"#6,
+	"m_loadedTypes":#"_rid"#9
+}
+☺
+6
+☺
+[
+	^tp#6,
+	"Version",
+	#"t"#0,
+	0,
+	"Comparer",
+	#"t"#26,
+	null,
+	"Capacity",
+	#"t"#0,
+	0
+]
+☺
+7
+☺
+{
+	^tp#4:null
+}
+☺
+8
+☺
+[
+	^tp#5,
+	"XPress.Web.Core.XPressCore.js",
+	"XPress.Web.JCom.JCom.js",
+	"XPress.Web.Core.GloablExtentions.js",
+	"XPress.Web.Core.jquery.js",
+	"XPress.Web.JavascriptClient.Client.js",
+	"TestMe.js",
+	"TestCss.css",
+	"XPress.Web.Controls.Generic.Button.js",
+	"XPress.Web.Controls.RemoteControl.js",
+	"XPress.Web.Controls.Generic.Generic.css",
+	"~/Controls/initscript.js",
+	"~/Controls/constructor.js"
+]
+☺
+9
+☺
+[
+	^tp#2,
+	"Version",
+	#"t"#0,
+	0,
+	"Comparer",
+	#"t"#26,
+	null,
+	"Capacity",
+	#"t"#0,
+	0
+]
+☺
+10
+☺
+[
+	^tp#7,
+	#"t"#8,
+	#"t"#9,
+	#"t"#10,
+	#"t"#11,
+	#"t"#12,
+	#"t"#13,
+	#"t"#14
+]
+☺
+11
+☺
+[
+	^tp#16,
+	"c",
+	#"t"#5,
+	#"_rid"#59
+]
+☺
+12
+☺
+[
+	^tp#5,
+	"class",
+	"genericButton",
+	"id",
+	"3"
+]
+☺
+13
+☺
+[
+	^tp#22,
+	"i",
+	#"t"#17,
+	#"_rid"#60,
+	"let",
+	#"t"#21,
+	false
+]
+☺
+14
+☺
+[
+	^tp#17,
+	"click",
+	#"_rid"#15
+]
+☺
+15
+☺
+[
+	^tp#17,
+	#"_rid"#16,
+	#"_rid"#17
+]
+☺
+16
+☺
+{
+	^tp#18:null,
+	"Name":"click"
+}
+☺
+17
+☺
+[
+	^tp#20,
+	#"mi"#19#"<.ctor>b__0",
+	19,
+	#"_rid"#18
+]
+☺
+18
+☺
+{
+	^tp#19:null,
+	"onClick":#"_rid"#19
+}
+☺
+19
+☺
+[
+	^tp#20,
+	#"mi"#8#"<Execute>b__0",
+	null,
+	null
+]
+☺
+20
+☺
+{
+	^tp#11:null,
+	"_kids":#"_rid"#52
+}
+☺
+21
+☺
+[
+	^tp#25,
+	#"_rid"#22,
+	#"_rid"#23,
+	#"_rid"#24,
+	#"_rid"#25,
+	#"_rid"#31,
+	#"_rid"#3,
+	#"_rid"#32,
+	#"_rid"#33,
+	#"_rid"#39,
+	#"_rid"#4,
+	#"_rid"#44,
+	#"_rid"#45,
+	#"_rid"#46
+]
+☺
+22
+☺
+{
+	^tp#9:null,
+	"_literal":"\r\n<!DOCTYPE html>\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n<head>\r\n    ",
+	"_parent":#"_rid"#20
+}
+☺
+23
+☺
+{
+	^tp#10:null,
+	"_html":"<!-- Head auto generated code -->\n<script language='javascript' type='text/javascript' src='_get.cmd.link?source=XPress.Web.Core.jquery.js&lid=%3f%3f%3f%17%3f%3f%3f1%0cI%3f7%3f%3f%3f%3f'></script>\n<script language='javascript' type='text/javascript' src='_get.cmd.link?source=XPress.Web.Core.GloablExtentions.js&lid=%3f%3f%3f%3f%3f%3f%3fpu%3f%3f)%3f%3f%3fP'></script>\n<script language='javascript' type='text/javascript' src='_get.cmd.link?source=XPress.Web.Core.XPressCore.js&lid=%3f%3f%3fh%3f%3f+d%3f%3f%3fk%3fq%3f%3f'></script>\n<script language='javascript' type='text/javascript' src='_get.cmd.link?source=XPress.Web.JCom.JCom.js&lid=%5e%3fl%3f%3fA%3f%3f%3f%26%3f%13P%3f%3fF'></script>\n<script language='javascript' type='text/javascript' src='_get.cmd.link?source=XPress.Web.JavascriptClient.Client.js&lid=%3f%26%3f%3fi%3f%3f%3f%3ff%3f%3f%3f%3f%7f%3f'></script>\n<script language='javascript' type='text/javascript' src='_get.cmd.link?source=XPress.Web.Controls.RemoteControl.js&lid=%0dz%0f%01%3f%3f%3fS%3f%3f%3fBO%3f%3f%01'></script>\n",
+	"_parent":#"_rid"#20
+}
+☺
+24
+☺
+{
+	^tp#9:null,
+	"_literal":"\r\n    <title>Test page</title>\r\n    <style>\r\n        .testc {\r\n            color: gray;\r\n            -webkit-transition: all 1s ease-in-out;\r\n            -ms-transition: all 1s ease-in-out;\r\n            -moz-transition: all 1s ease-in-out;\r\n        }\r\n\r\n            .testc:hover {\r\n                background-color: lightblue;\r\n            }\r\n    </style>\r\n</head>\r\n<body>\r\n    ",
+	"_parent":#"_rid"#20
+}
+☺
+25
+☺
+{
+	^tp#11:null,
+	"_attr":#"_rid"#26,
+	"_kids":#"_rid"#54,
+	"_parent":#"_rid"#20,
+	"_tag":"div"
+}
+☺
+26
+☺
+[
+	^tp#16,
+	"c",
+	#"t"#5,
+	#"_rid"#53,
+	"s",
+	#"t"#23,
+	#"_rid"#28
+]
+☺
+27
+☺
+[
+	^tp#5,
+	"me",
+	"ok",
+	"class",
+	"testc"
+]
+☺
+28
+☺
+[
+	^tp#23,
+	"uv",
+	#"t"#24,
+	"color:red;font-size:18.5pt;padding:5px"
+]
+☺
+29
+☺
+[
+	^tp#25,
+	#"_rid"#30
+]
+☺
+30
+☺
+{
+	^tp#9:null,
+	"_literal":"\r\n    This is internal text within the div.\r\n    ",
+	"_parent":#"_rid"#25
+}
+☺
+31
+☺
+{
+	^tp#9:null,
+	"_literal":"\r\n    This is a test page for html generation.\r\n    ",
+	"_parent":#"_rid"#20
+}
+☺
+32
+☺
+{
+	^tp#9:null,
+	"_literal":"\r\n    <br />\r\n    Loading internal:<br />\r\n    ",
+	"_parent":#"_rid"#20
+}
+☺
+33
+☺
+{
+	^tp#13:null,
+	"_attr":#"_rid"#34,
+	"_kids":#"_rid"#56,
+	"_parent":#"_rid"#20,
+	"_tag":"div"
+}
+☺
+34
+☺
+[
+	^tp#16,
+	"c",
+	#"t"#5,
+	#"_rid"#55,
+	"s",
+	#"t"#23,
+	#"_rid"#36
+]
+☺
+35
+☺
+[
+	^tp#5,
+	"class",
+	"testc"
+]
+☺
+36
+☺
+[
+	^tp#23,
+	"uv",
+	#"t"#24,
+	"color:red;font-size:10.5pt;padding:5px;font-family:Arial"
+]
+☺
+37
+☺
+[
+	^tp#25,
+	#"_rid"#38
+]
+☺
+38
+☺
+{
+	^tp#9:null,
+	"_literal":"Test for razor for loop inserts:\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 1</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 2</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 3</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 4</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 5</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 6</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 7</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 8</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 9</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 10</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 11</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 12</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 13</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 14</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 15</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 16</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 17</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 18</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 19</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 20</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 21</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 22</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 23</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 24</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 25</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 26</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 27</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 28</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 29</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 30</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 31</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 32</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 33</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 34</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 35</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 36</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 37</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 38</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 39</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 40</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 41</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 42</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 43</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 44</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 45</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 46</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 47</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 48</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 49</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 50</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 51</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 52</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 53</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 54</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 55</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 56</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 57</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 58</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 59</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 60</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 61</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 62</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 63</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 64</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 65</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 66</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 67</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 68</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 69</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 70</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 71</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 72</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 73</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 74</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 75</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 76</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 77</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 78</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 79</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 80</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 81</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 82</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 83</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 84</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 85</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 86</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 87</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 88</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 89</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 90</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 91</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 92</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 93</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 94</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 95</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 96</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 97</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 98</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 99</div>\r\n    <div style=\"background-color:lightgreen; box-sizing:border-box; padding:2px; margin:0px 10px;\">For insert number 100</div>\r\n    \r\n",
+	"_parent":#"_rid"#33
+}
+☺
+39
+☺
+{
+	^tp#9:null,
+	"_literal":"\r\n    ",
+	"_parent":#"_rid"#20
+}
+☺
+40
+☺
+[
+	^tp#16,
+	"c",
+	#"t"#5,
+	#"_rid"#57
+]
+☺
+41
+☺
+[
+	^tp#5,
+	"id",
+	"4"
+]
+☺
+42
+☺
+[
+	^tp#25,
+	#"_rid"#43
+]
+☺
+43
+☺
+{
+	^tp#9:null,
+	"_literal":"test...",
+	"_parent":#"_rid"#4
+}
+☺
+44
+☺
+{
+	^tp#9:null,
+	"_literal":"\r\n    ",
+	"_parent":#"_rid"#20
+}
+☺
+45
+☺
+{
+	^tp#10:null,
+	"_html":"<!-- Init auto generated code --><script>console.log('Initialzing page...');\n$(document).ready(function(){\ndocument.Debug=true;$.Vebrose=true;\n$.XPress.Commands.Execute($.JSON.From(\"{\\n	\\\"commands\\\":[\\n		{\\n			\\\"_et\\\":\\\"Pend\\\",\\n			\\\"_t\\\":\\\"link\\\",\\n			\\\"LinkType\\\":\\\"Script\\\",\\n			\\\"Name\\\":\\\"TestMe.js\\\",\\n			\\\"UniqueId\\\":\\\"%7E%3F%3FUA5%3F%0D%12AC%3F%3F%3FhG\\\",\\n			\\\"Url\\\":\\\"_get.cmd.link?source=TestMe.js&lid=%7e%3f%3fUA5%3f%0d%12AC%3f%3f%3fhG\\\"\\n		},\\n		{\\n			\\\"_et\\\":\\\"Pend\\\",\\n			\\\"_t\\\":\\\"link\\\",\\n			\\\"LinkType\\\":\\\"Css\\\",\\n			\\\"Name\\\":\\\"TestCss.css\\\",\\n			\\\"UniqueId\\\":\\\"%3FB%08f%29%3Fza%3F%3F%3FZ%3F%3F%3FT\\\",\\n			\\\"Url\\\":\\\"_get.cmd.link?source=TestCss.css&lid=%3fB%08f)%3fza%3f%3f%3fZ%3f%3f%3fT\\\"\\n		},\\n		{\\n			\\\"_et\\\":\\\"Pend\\\",\\n			\\\"_t\\\":\\\"link\\\",\\n			\\\"LinkType\\\":\\\"Script\\\",\\n			\\\"Name\\\":\\\"XPress.Web.Controls.Generic.Button.js\\\",\\n			\\\"UniqueId\\\":\\\"e%3F%3F%3F%3F%0D%3F%3F%12%3F%3F%3F%1D%3F%3A1\\\",\\n			\\\"Url\\\":\\\"_get.cmd.link?source=XPress.Web.Controls.Generic.Button.js&lid=e%3f%3f%3f%3f%0d%3f%3f%12%3f%3f%3f%1d%3f%3a1\\\"\\n		},\\n		{\\n			\\\"_et\\\":\\\"Pend\\\",\\n			\\\"_t\\\":\\\"link\\\",\\n			\\\"LinkType\\\":\\\"Css\\\",\\n			\\\"Name\\\":\\\"XPress.Web.Controls.Generic.Generic.css\\\",\\n			\\\"UniqueId\\\":\\\"%7C%01%3FY%138%02%3F%21%3Fd%3F%3F%3F%3Fq\\\",\\n			\\\"Url\\\":\\\"_get.cmd.link?source=XPress.Web.Controls.Generic.Generic.css&lid=%7c%01%3fY%138%02%3f!%3fd%3f%3f%3f%3fq\\\"\\n		},\\n		{\\n			\\\"_et\\\":\\\"Pend\\\",\\n			\\\"_t\\\":\\\"link\\\",\\n			\\\"LinkType\\\":\\\"Script\\\",\\n			\\\"Name\\\":\\\"~/Controls/initscript.js\\\",\\n			\\\"UniqueId\\\":\\\"Z%3FR%3F%3F%7E%3F%3F%3F%0A%3F%18N%3D%3F%3F\\\",\\n			\\\"Url\\\":\\\"_get.cmd.link?source=~/Controls/initscript.js&lid=Z%3fR%3f%3f%7e%3f%3f%3f%0a%3f%18N%3d%3f%3f\\\"\\n		},\\n		{\\n			\\\"_et\\\":\\\"Pend\\\",\\n			\\\"_t\\\":\\\"link\\\",\\n			\\\"LinkType\\\":\\\"Script\\\",\\n			\\\"Name\\\":\\\"~/Controls/constructor.js\\\",\\n			\\\"UniqueId\\\":\\\"%3Fh%3F8%3F%3FL%3F%3F%60q+%3F%3ES@\\\",\\n			\\\"Url\\\":\\\"_get.cmd.link?source=~/Controls/constructor.js&lid=%3fh%3f8%3f%3fL%3f%3f%60q%2b%3f%3eS%40\\\"\\n		},\\n		{\\n			\\\"_et\\\":\\\"Invoke\\\",\\n			\\\"_t\\\":\\\"JCOM_TypeDef\\\",\\n			\\\"Code\\\":\\\"{\\\\nEnabled:function(){return $.XPress.JCOM.Property(this,'Enabled',arguments,true,true,true);},\\\\nClick:function(){return $.XPress.JCOM.Method(this,'Click',arguments,true);},\\\\n\\\\n}\\\",\\n			\\\"Name\\\":\\\"XPress_Web_Controls_Generic_Button\\\"\\n		},\\n		{\\n			\\\"_et\\\":\\\"Invoke\\\",\\n			\\\"_t\\\":\\\"JCOM_TypeDef\\\",\\n			\\\"Code\\\":\\\"{\\\\nClientSideProperty:function(){return $.XPress.JCOM.Property(this,'ClientSideProperty',arguments,true,true,true);},\\\\nClientSideTestMethod:function(){return $.XPress.JCOM.Method(this,'ClientSideTestMethod',arguments,false);},\\\\n\\\\n}\\\",\\n			\\\"Name\\\":\\\"WebTester_Controls_TestControl\\\"\\n		}\\n	]\\n}\").commands);\n$.Vebrose=true;var dat=$.JSON.From(\"{\\n	\\\"ClientId\\\":\\\"jclient.whK6yqjOLb9xWNw1ZsJ0.state\\\"\\n}\");$.XPress.InitJClient(dat.ClientId,dat.options);\n$.XPress.GlobalJClient.ReciveCommand(\"{\\n	\\\"Timer\\\":[\\n		{\\n			\\\"Client and generation (with storage)\\\":{\\n				\\\"_ticks\\\":0\\n			},\\n			\\\"Client call creation\\\":{\\n				\\\"_ticks\\\":10095\\n			}\\n		}\\n	],\\n	\\\"Trace\\\":\\\"\\\"\\n}\");\nconsole.log('Page init completed.');\n});\n</script>",
+	"_parent":#"_rid"#20
+}
+☺
+46
+☺
+{
+	^tp#9:null,
+	"_literal":"\r\n</body>\r\n</html>\r\n",
+	"_parent":#"_rid"#20
+}
+☺
+47
+☺
+[
+	^tp#5,
+	"XPress.Web.Core.XPressCore.js",
+	"XPress.Web.JCom.JCom.js",
+	"XPress.Web.Core.GloablExtentions.js",
+	"XPress.Web.Core.jquery.js",
+	"XPress.Web.JavascriptClient.Client.js",
+	"TestMe.js",
+	"TestCss.css",
+	"XPress.Web.Controls.Generic.Button.js",
+	"XPress.Web.Controls.RemoteControl.js",
+	"XPress.Web.Controls.Generic.Generic.css",
+	"~/Controls/initscript.js",
+	"~/Controls/constructor.js"
+]
+☺
+48
+☺
+[
+	^tp#7,
+	#"t"#8,
+	#"t"#9,
+	#"t"#10,
+	#"t"#11,
+	#"t"#12,
+	#"t"#13,
+	#"t"#14
+]
+☺
+49
+☺
+[
+	^tp#5,
+	"class",
+	"genericButton",
+	"id",
+	"3"
+]
+☺
+50
+☺
+[
+	^tp#17,
+	"click",
+	#"_rid"#51
+]
+☺
+51
+☺
+[
+	^tp#17,
+	#"_rid"#16,
+	#"_rid"#17
+]
+☺
+52
+☺
+[
+	^tp#25,
+	#"_rid"#22,
+	#"_rid"#23,
+	#"_rid"#24,
+	#"_rid"#25,
+	#"_rid"#31,
+	#"_rid"#3,
+	#"_rid"#32,
+	#"_rid"#33,
+	#"_rid"#39,
+	#"_rid"#4,
+	#"_rid"#44,
+	#"_rid"#45,
+	#"_rid"#46
+]
+☺
+53
+☺
+[
+	^tp#5,
+	"me",
+	"ok",
+	"class",
+	"testc"
+]
+☺
+54
+☺
+[
+	^tp#25,
+	#"_rid"#30
+]
+☺
+55
+☺
+[
+	^tp#5,
+	"class",
+	"testc"
+]
+☺
+56
+☺
+[
+	^tp#25,
+	#"_rid"#38
+]
+☺
+57
+☺
+[
+	^tp#5,
+	"id",
+	"4"
+]
+☺
+58
+☺
+[
+	^tp#25,
+	#"_rid"#43
+]
+☺
+59
+☺
+[
+	^tp#5,
+	"class",
+	"genericButton",
+	"id",
+	"3"
+]
+☺
+60
+☺
+[
+	^tp#17,
+	"click",
+	#"_rid"#61
+]
+☺
+61
+☺
+[
+	^tp#17,
+	#"_rid"#16,
+	#"_rid"#17
+]

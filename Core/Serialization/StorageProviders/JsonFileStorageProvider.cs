@@ -28,10 +28,10 @@ namespace XPress.Serialization.StorageProviders
         public JsonFileStorageProvider(string extention = "cache.dat", string path = null)
         {
             Extention = extention;
-            if(path==null)
-                path="Cache\\Serialized";
+            if (path == null)
+                path = "Cache\\Serialized";
 
-            if(path[1]!=':') // is partial path.
+            if (path[1] != ':') // is partial path.
             {
                 path = path.ToPartialStoragePath();
             }
@@ -40,9 +40,21 @@ namespace XPress.Serialization.StorageProviders
 
             if (!path.HasWriteAccessToFolder())
                 throw new Exception("Cannot write to path \"" + Path + "\", or path dose not exist.");
+
+            UsePrettyJson =
+#if DEBUG
+ true;
+#else
+ false;
+#endif
         }
 
         #region members
+
+        /// <summary>
+        /// If true the current will use pretty json.
+        /// </summary>
+        public bool UsePrettyJson { get; private set; }
 
         /// <summary>
         /// The path to where the providers stores the data.
@@ -118,7 +130,7 @@ namespace XPress.Serialization.StorageProviders
 
         public SUType ReadUnit(string id)
         {
-            string fn = IdToFileName(id);
+            string fn = IdToFullPath(id);
             if (!File.Exists(fn))
                 return null;
             return FromByteArray(File.ReadAllBytes(fn)); // Serializer.Deserialize(Serializer.ParseByteArray(File.ReadAllBytes(fn)), typeof(BankStorageUnit)) as BankStorageUnit;
@@ -158,16 +170,24 @@ namespace XPress.Serialization.StorageProviders
 
             Task.Run(() =>
             {
-                while (m_PendingUnits.Count > 0)
+                try
                 {
-                    System.Collections.Concurrent.ConcurrentDictionary<string, SUType> pending = m_PendingUnits;
-                    m_PendingUnits = new System.Collections.Concurrent.ConcurrentDictionary<string, SUType>();
-                    pending.ForEach(kvp =>
+                    while (m_PendingUnits.Count > 0)
                     {
-                        WriteUnit(kvp.Key, kvp.Value);
-                    });
+                        System.Collections.Concurrent.ConcurrentDictionary<string, SUType> pending = m_PendingUnits;
+                        m_PendingUnits = new System.Collections.Concurrent.ConcurrentDictionary<string, SUType>();
+                        pending.ForEach(kvp =>
+                        {
+                            WriteUnit(kvp.Key, kvp.Value);
+                        });
+                    }
                 }
-                _isUpdateingPending = false;
+                catch(Exception ex)
+                {
+                    // update so there will be others that may be written.
+                    _isUpdateingPending = false;
+                    throw ex;
+                }
             });
         }
 

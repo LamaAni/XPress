@@ -39,7 +39,7 @@ namespace XPress.Web.Core
         public virtual CommandExecutionType ExecutionType { get; set; }
     }
 
-    public enum CommandExecutionType { 
+    public enum CommandExecutionType {
         /// <summary>
         /// Posted commands must wait for the all pending comman validations to compleate.
         /// </summary>

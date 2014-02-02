@@ -40,10 +40,10 @@ $.extend($, {
     },
     //#region Json commands
     JSON: {
-        DateMarker: "◙DT◙",
+        DateMarker: "#\"dt\"#",
         Parser: (function () {
             return function (key, data) {
-                if (typeof (data) == "string" && data.indexOf($.JSON.DateMarker) == 0) {
+                if (typeof (data) == "string" && data.trim().indexOf($.JSON.DateMarker) == 0) {
                     var ticks = parseInt(data.substring($.JSON.DateMarker.length), 10);
                     return new Date(ticks); // assume always in utc.
                 }
@@ -56,7 +56,7 @@ $.extend($, {
             if ($.trim(str) == "")
                 return {};
             try {
-                str = str.replace(/:\s*(new Date\()(-*[0-9]*)(\))/g, ":\"" + this.DateMarker + "$2\"");
+                //str = str.replace(/\s*(-*[0-9]*)/g, ":\"" + this.DateMarker + "$2\"");
                 return JSON.parse(str, this.Parser);
             }
             catch (e) {

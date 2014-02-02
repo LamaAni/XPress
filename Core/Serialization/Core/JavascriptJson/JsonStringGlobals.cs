@@ -91,7 +91,7 @@ namespace XPress.Serialization.Core.JavscriptJson
                 (d) => d.Source.Substring(d.StartIndex, d.EndIndex - d.StartIndex), s =>
                 {
                     return s;
-                }, "", directiveConverter, parseObjectConverter);
+                }, "null", directiveConverter, parseObjectConverter);
 
             def.AddConverter<bool>(typeof(bool), "boolean", (s) => s == "true" || s == "false", (b) => b ? "true" : "false", (s) => s == "true");
             def.AddConverter<DBNull>(typeof(DBNull), "null", (s) => s.Length == 0 || s == "null", (o) => "", (s) => null);

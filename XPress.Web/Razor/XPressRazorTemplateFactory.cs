@@ -40,7 +40,7 @@ namespace XPress.Web.Razor
 
             // mapping the type to url.
             T t = (T)System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(url, typeof(T));
-            
+
             // registering the template type if needed.
             Type tt = t.GetType();
             if (!m_typeToUrl.ContainsKey(tt))

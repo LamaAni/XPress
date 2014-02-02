@@ -85,6 +85,29 @@ namespace XPress.Serialization.Documents
         }
 
         #endregion
+
+        #region Find commands
+
+        /// <summary>
+        /// Finds a pair of values in the case the key is a core type.
+        /// Only searches throught json keys that are of type JsonData.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns>The pair, or null if not found</returns>
+        public JsonPair<T> FindPair(object key)
+        {
+            foreach(JsonPair<T> p in this)
+            {
+                JsonData<T> k = p.Key as JsonData<T>;
+                if (k == null)
+                    continue;
+                if (k.Value.Equals(key))
+                    return p;
+            }
+            return null;
+        }
+
+        #endregion
     }
 
 }

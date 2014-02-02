@@ -71,13 +71,18 @@ namespace XPress.Serialization.Map
             if (!m_nameByType.ContainsKey(t))
             {
                 identity = t.AssemblyQualifiedName;
+                if(identity.StartsWith("ASP."))
+                {
+                    // assume compiler generated assembly page, take only full name.
+                    identity = t.FullName;
+                }
                 if (t == null)
                     throw new Exception("Cannot find type " + identity);
                 m_nameByType[t] = identity;
                 m_typeByName[identity] = t;
             }
             else identity = m_nameByType[t];
-            return t.AssemblyQualifiedName;
+            return identity;
         }
 
         #endregion

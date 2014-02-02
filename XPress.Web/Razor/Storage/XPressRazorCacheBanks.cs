@@ -19,8 +19,8 @@ namespace XPress.Web.Razor.Storage
         /// <param name="directory"></param>
         public XPressRazorCacheBanks(string cacheDirectory)
         {
-            SerializationBank = new Bank<BankStorageUnit>(
-                new XPress.Serialization.StorageProviders.JsonSerializerFileStorageProvider<string>(
+            SerializationBank = new Bank<BankStorageSingleValueUnit>(
+                new XPress.Serialization.StorageProviders.JsonSerializerFileStorageProvider<BankStorageSingleValueUnit, string>(
                     XPress.Serialization.Javascript.JsonStringSerializer.Global, "cache.ser.dat", cacheDirectory));
 
             SerialziedRefrenceBank = new Bank<JsonRefrenceBankStorageUnit<string>>(
@@ -62,7 +62,7 @@ namespace XPress.Web.Razor.Storage
         /// <summary>
         /// Implements a serialization bank that serizalizes its objects via the JsonSerializer. (Slow non refrence serialization).
         /// </summary>
-        public Bank<BankStorageUnit> SerializationBank { get; private set; }
+        public Bank<BankStorageSingleValueUnit> SerializationBank { get; private set; }
 
         /// <summary>
         /// Implements a serialization bank that serizalizes its objects via XPress.Serialization.Reference.JsonRefrenceBank.
@@ -70,6 +70,30 @@ namespace XPress.Web.Razor.Storage
         /// </summary>
         public Bank<JsonRefrenceBankStorageUnit<string>> SerialziedRefrenceBank { get; private set; }
         
+        #endregion
+
+
+        #region Cache control
+
+        /// <summary>
+        /// Clears all the cached memory objects if needed.
+        /// </summary>
+        /// <param name="force">Force clean all objects.</param>
+        public void ClearAllCache(bool force)
+        {
+            SerializationBank.CleanCache(true);
+            SerialziedRefrenceBank.CleanCache(true);
+        }
+
+        /// <summary>
+        /// Returns the cached objects count.
+        /// </summary>
+        /// <returns></returns>
+        public int GetCacheObjectCount()
+        {
+            return SerializationBank.CacheObjectCount() + SerialziedRefrenceBank.CacheObjectCount();
+        }
+
         #endregion
     }
 }

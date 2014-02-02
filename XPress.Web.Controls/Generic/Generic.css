@@ -1,0 +1,54 @@
+﻿body
+{
+    font-size: 9.5pt;
+    font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+}
+
+.genericButtonBox
+{
+    border: 1px solid #808080;
+    background: -webkit-linear-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+    background: -ms-linear-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+    background-color: #ededed;
+}
+
+    .genericButtonBox:active
+    {
+        background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+        background-color: #dfdfdf;
+    }
+
+.genericDefaultButtonBox
+{
+    border: 1px solid #4d3fff;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c6d7ff), color-stop(1, #97b6ff) );
+    background-color: #c6d7ff;
+}
+
+    .genericDefaultButtonBox:active
+    {
+        background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #97b6ff), color-stop(1, #c6d7ff) );
+        background-color: #97b6ff;
+    }
+
+.genericButton
+{
+    display: inline-block;
+    overflow: hidden;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 3px;
+    min-height: 25px;
+    border-radius: 2px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 10.5pt;
+    cursor: pointer;
+}
+
+    .genericButton:hover
+    {
+        border: 1px solid #571919;
+        color: #1a1997;
+    }

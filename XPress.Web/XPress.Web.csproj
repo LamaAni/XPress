@@ -168,12 +168,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\XPress.csproj">
-      <Project>{b5195450-cdf5-4701-b485-51aaa75a0962}</Project>
-      <Name>XPress</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Controls\RemoteControl.js" />
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +187,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="JavascriptClient\Commands\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\XPress.csproj">
+      <Project>{b5195450-cdf5-4701-b485-51aaa75a0962}</Project>
+      <Name>XPress</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -94,7 +94,7 @@ $.extend($.XPress, {
                 // The request timeout for a beat command.
                 BeatTimeout:1*1000,
                 // if true there is a beat timer
-                HasBeat: true,
+                HasBeat: false,
                 // the maximal number of attempts to be sent.
                 MaxAttempts: 100,
                 // the maximal time when the client can be not connected to the server.
@@ -553,6 +553,12 @@ $.extend($.XPress, {
 
             ////////////////////////////////////////////////
             /// Beat and pending.
+            StopHartBeat:function(){
+                this.Options.HasBeat = false;
+            },
+            StartHartBeat:function(){
+                this.Options.HasBeat = true;
+            },
             _beatInitialized: false,
             BeatCommand: null,
             // The sending of beat commands
@@ -624,7 +630,13 @@ $.extend($.XPress, {
                             // send the command.
                             me.context.LastIntervalIndex = null;
                             me.timeout = me.context.Client.Options.BeatTimeout;
-                            $.ajax(me);
+                            if(me.Client.Options.HasBeat)
+                                $.ajax(me);
+                            else 
+                            {
+                                // Missed hart beat since client has Options.Beat=false, attempting to resend on next interval.
+                                me.Send(time);
+                            }
                         }
                         this.context.LastIntervalIndex = window.setTimeout(f, time);
                     },
@@ -637,7 +649,8 @@ $.extend($.XPress, {
                 });
 
                 this.BeatCommand.context.Command = this.BeatCommand;
-                this.BeatCommand.Send(Math.round(Math.random() * 200));
+                if(this.Options.HasBeat)
+                    this.BeatCommand.Send(Math.round(Math.random() * 200));
             },
 
             ///////////////////////////////////////

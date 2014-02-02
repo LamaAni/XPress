@@ -11,7 +11,8 @@ namespace XPress.Serialization.StorageProviders
     /// <summary>
     /// Implements a json serializer file storage provider.
     /// </summary>
-    public class JsonSerializerFileStorageProvider<T> : JsonFileStorageProvider<BankStorageUnit,T>
+    public class JsonSerializerFileStorageProvider<SUType, T> : JsonFileStorageProvider<SUType, T>
+        where SUType : BankStorageUnit
     {
         /// <summary>
         /// Creates the file storage serializer. 
@@ -27,14 +28,14 @@ namespace XPress.Serialization.StorageProviders
 
         public IJsonSerializer<T> Serializer { get; private set; }
 
-        protected override byte[] ToByteArray(StorageBank.BankStorageUnit unit)
+        protected override byte[] ToByteArray(SUType unit)
         {
-            return Serializer.ToByteArray(Serializer.Serialize(unit));
+            return Serializer.ToByteArray(Serializer.Serialize(unit, false, UsePrettyJson));
         }
 
-        protected override StorageBank.BankStorageUnit FromByteArray(byte[] bytes)
+        protected override SUType FromByteArray(byte[] bytes)
         {
-            return Serializer.Deserialize(Serializer.ParseByteArray(bytes), typeof(BankStorageUnit)) as BankStorageUnit;
+            return Serializer.Deserialize(Serializer.ParseByteArray(bytes), typeof(SUType)) as SUType;
         }
     }
 }

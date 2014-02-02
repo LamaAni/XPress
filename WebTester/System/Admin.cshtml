@@ -1,0 +1,25 @@
+﻿@inherits XPress.Web.Controls.XPressPage
+@using XPress.Web
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Admin commands page</title>
+    @this.InsertAutoPageHead()
+</head>
+<body>
+    Commands list:<br />
+    @{var cacheCount = new XPress.Web.Controls.Generic.Div();}
+    @(new XPress.Web.Controls.Generic.Button("Clear cache").Click((s, e) =>
+{
+    XPress.Web.Razor.Storage.XPressRazorCacheBanks.Global.ClearAllCache(true);
+    GC.Collect();
+    cacheCount.Html = XPress.Web.Razor.Storage.XPressRazorCacheBanks.Global.GetCacheObjectCount().ToString();
+    cacheCount.RequiresUpdate = true;
+}
+    ))
+    @Open(cacheCount)
+        @XPress.Web.Razor.Storage.XPressRazorCacheBanks.Global.GetCacheObjectCount()
+    @Close()
+    @this.InsertAutoPageInit()
+</body>
+</html>

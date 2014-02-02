@@ -121,9 +121,12 @@ namespace XPress.Serialization
         /// </summary>
         /// <param name="o">The object to convert</param>
         /// <param name="baseType">The type of the object for conversion of no object type is defined or no converter is defined for the base type.</param>
+        /// <param name="prepareConverterObjectValue">Use this function to add initialization to the conveterd object value.</param>
         /// <returns></returns>
-        public virtual IJsonValue<T> GetJsonValue(object o, Type t)
+        public virtual IJsonValue<T> GetJsonValue(object o, Type t, Action<IJsonValue<T>> prepareConverterObjectValue = null)
         {
+            if (o == null)
+                return new JsonData<T>(null); // nothing to add here.
             TotalObjectsProcessed += 1;
             SerializationTypeMap<T> stm = GetMapInfo(t);
             if (stm.IsCoreValue)
@@ -135,12 +138,17 @@ namespace XPress.Serialization
             else
             {
                 IJsonValue<T> val = stm.Converter.GetUinitializedJsonValue(stm, o, this);
+
+                // call to preprare converter object value. 
+                if (prepareConverterObjectValue != null)
+                    prepareConverterObjectValue(val);
+
                 if (stm.Info.InvokeOnSerializing != null)
                     stm.Info.InvokeOnSerializing(o, StreamingContext);
                 stm.Converter.PopulateJsonValue(stm, o, val, this);
                 if (stm.Info.InvokeOnSerialized != null)
                     stm.Info.InvokeOnSerialized(o, StreamingContext);
-                
+
                 if (!stm.Converter.IgnoreTypeDirectives && !IgnoreTypes)
                 {
                     IJsonEnumrableObject<T> eo = val as IJsonEnumrableObject<T>;
@@ -160,34 +168,17 @@ namespace XPress.Serialization
         /// </summary>
         /// <param name="val">The json value</param>
         /// <param name="baseType">The type of the object if not type is found.</param>
+        /// <param name="prepareCreateObject">Use this function to prepare the created object.</param>
         /// <returns></returns>
-        public virtual object GetObject(IJsonValue<T> val, Type t)
+        public virtual object GetObject(IJsonValue<T> val, Type t, Action<object> prepareCreateObject=null)
         {
-            TotalObjectsProcessed += 1;
-            JsonData<T> asValue = val as JsonData<T>;
-            if (asValue != null)
+            SerializationTypeMap<T> stm = GetMapInfo(t);
+
+            // checking for post deserializeable.
+            if (stm.Info.IsPostDeserialize)
             {
-                JsonObjectPhrase<T> parse = asValue.Value as JsonObjectPhrase<T>;
-                // general object read. No idea about the object type and therefore we need to check the type marker.
-                if (parse != null)
-                {
-                    // this is an object parser then need to get the parse from the list, and apply its parser to it. (If exist, else null).
-                    IJsonObjectParser<T> parser = Definitions.GetParser(parse);
-                    return parser.FromParse(parse, this);
-                }
-
-                JsonNumber<T> num = asValue.Value as JsonNumber<T>;
-                // checking for number. 
-                if (num != null)
-                {
-                    if (typeof(object) == t)
-                        return num;
-                    // finishing the load.
-                    return num.As(t);
-                }
-
-                // as the actual value. No more conversions needed. (This can only be a value).
-                return asValue.Value;
+                // return the post deserialize value.
+                return Activator.CreateInstance(t, this, val);
             }
 
             // checking for type directive.
@@ -204,21 +195,59 @@ namespace XPress.Serialization
                         // only when the type is assignable from the value type. Otherwise try and parse to the given type.
                         if (t.IsAssignableFrom(td))
                             t = td;
+                        stm = GetMapInfo(t);
                     }
                 }
             }
 
-            SerializationTypeMap<T> stm = GetMapInfo(t);
-            if (stm.IsCoreValue)
-                return asValue.Value;
-            else if (stm.IsJsonValue)
+            TotalObjectsProcessed += 1;
+
+            if (stm.IsJsonValue)
                 return val;
+
+            JsonData<T> asValue = val as JsonData<T>;
+
+            if (asValue != null)
+            {
+                JsonObjectPhrase<T> parse = asValue.Value as JsonObjectPhrase<T>;
+                // general object read. No idea about the object type and therefore we need to check the type marker.
+                if (parse != null)
+                {
+                    // this is an object parser then need to get the parse from the list, and apply its parser to it. (If exist, else null).
+                    IJsonObjectParser<T> parser = Definitions.GetParser(parse);
+                    return parser.FromParse(parse, this);
+                }
+
+                JsonNumber<T> num = asValue.Value as JsonNumber<T>;
+                // checking for number.
+                if (num != null)
+                {
+                    if (typeof(object) == t)
+                        return num;
+                    // finishing the load.
+                    return num.As(t);
+                }
+            }
+
+           
+            if(stm.Info.IsObjectCoreType)
+            {
+                // this means that the current dose not have a specific type, and therefore.
+                if (asValue != null)
+                    return asValue.Value;
+                throw new Exception("Ambigues type when deserializing json value.");
+            }
+            else if (stm.IsCoreValue)
+                return asValue.Value;
             else
             {
                 if (stm.Converter == null)
                     return null; // reached unknown type converter.
 
                 object o = stm.Converter.GetUninitializedInstance(stm, val, this);
+                if (prepareCreateObject != null)
+                    prepareCreateObject(o);
+
                 if (stm.Info.InvokeOnDeserialzing != null)
                     stm.Info.InvokeOnDeserialzing.Invoke(o, StreamingContext);
                 stm.Converter.PopulateObjectValue(stm, o, val, this);

@@ -35,7 +35,6 @@ namespace Tester
             return m_getNestIndex();
         }
 
-
         public static NestedTestObject CreateNested(int nestDepth)
         {
             NestedTestObject cur = null;

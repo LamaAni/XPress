@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XPress.Serialization.Documents;
 using XPress.Serialization.Map;
 
 namespace XPress.Serialization.Reference
@@ -42,16 +43,19 @@ namespace XPress.Serialization.Reference
         /// <param name="t"></param>
         /// <param name="ignoreBinder"></param>
         /// <returns></returns>
-        public override Documents.IJsonValue<T> GetJsonValue(object o, Type t)
+        public override Documents.IJsonValue<T> GetJsonValue(object o, Type t, Action<IJsonValue<T>> prepareConverterObjectValue = null)
         {
-            SerializationTypeMap<T> tm = GetMapInfo(t);
-            if(tm.IsRefrenceType)
+            if (o != null)
             {
-                // the object is a refrence type that should be serialized by the reference collection.
-                uint id = this.Collection.GetObjectId(o);
-                return this.GetJsonValue(o, t, id);
+                SerializationTypeMap<T> tm = GetMapInfo(t);
+                if (tm.IsRefrenceType)
+                {
+                    // the object is a refrence type that should be serialized by the reference collection.
+                    uint id = this.Collection.GetObjectId(o);
+                    return this.GetJsonValue(o, t, id);
+                }
             }
-            return base.GetJsonValue(o, t);
+            return base.GetJsonValue(o, t, prepareConverterObjectValue);
         }
 
         /// <summary>
@@ -61,12 +65,14 @@ namespace XPress.Serialization.Reference
         /// <param name="t"></param>
         /// <param name="ignoreBinder"></param>
         /// <returns></returns>
-        public override object GetObject(Documents.IJsonValue<T> val, Type t)
+        public override object GetObject(Documents.IJsonValue<T> val, Type t, Action<object> prepareCreateObject = null)
         {
-            object o = base.GetObject(val, t);
+            object o = base.GetObject(val, t, prepareCreateObject);
             RefrenceId rid = o as RefrenceId;
             if (rid != null)
+            {
                 return GetObject(t, rid.Value);
+            }
             return o;
         }
 
@@ -91,12 +97,7 @@ namespace XPress.Serialization.Reference
                 return null; // nothing to return, this value dose not exist.
 
             // deserializing the object and setting the object as the value.
-            object o = base.GetObject(Collection.GetObjectValue(id), t);
-
-            // registering the object.
-            Collection.RegisterObject(o, id);
-
-            return o;
+            return base.GetObject(Collection.GetObjectValue(id), t, (obj) => Collection.RegisterObject(obj, id));
         }
 
         /// <summary>
@@ -115,7 +116,9 @@ namespace XPress.Serialization.Reference
                     Collection.MarkChildRefrence(CurParent.Value, id);
                 uint? lastParent = CurParent;
                 CurParent = id;
-                Collection.RegisterObjectValue(id, base.GetJsonValue(o, t));
+
+                base.GetJsonValue(o, t, (val) => Collection.RegisterObjectValue(id, val));
+                
                 CurParent = lastParent;
             }
 

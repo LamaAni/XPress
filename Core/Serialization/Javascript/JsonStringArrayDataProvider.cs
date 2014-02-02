@@ -72,7 +72,7 @@ namespace XPress.Serialization.Javascript
             builder.Append(Serializer.Serialize(Binder, true, isPretty).EscapeForDelimiter(ObjectDelimiter));
             timer.Mark("binder");
 
-            uint[] allIds = JsonValues.Keys.Union(SourceValues.Keys).ToArray();
+            uint[] allIds = JsonValues.Keys.Union(SourceValues.Keys).OrderBy(id => id).ToArray();
 
             allIds.ForEach(id => ValidateSourceValue(id, isPretty));
             timer.Mark("Id validation");
@@ -138,7 +138,7 @@ namespace XPress.Serialization.Javascript
                 ChildReferences[uint.Parse(kvp[0])] = new HashSet<uint>(kvp[1].Split('|').Select(v => uint.Parse(v)));
             }
             timer.Mark("Child refrences");
-            Binder = Serializer.Deserialize<string, SerializationTypeBinder<string>>(objs[3]);
+            Binder = Serializer.Deserialize<string, SerializationTypeBinder<string>>(objs[3], true);
             timer.Mark("Binder");
 
             // reading the object values.

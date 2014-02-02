@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using XPress.Coding;
 using XPress.Serialization.Core;
+using XPress.Serialization.Javascript;
 
 namespace Tester
 {
@@ -13,6 +14,9 @@ namespace Tester
     {
         static void Main(string[] args)
         {
+            AddMenuItem(TestPostDeserializeJsonRefrence);
+            AddMenuItem(TestTraceJsonType);
+            AddMenuItem(TestCircularRefrence);
             AddMenuItem(TestNewJsonRefrenceBank);
             AddMenuItem(TestSingleObjectJsonSerialziation);
             AddMenuItem(TestNewJsonBinderSerialization);
@@ -114,6 +118,73 @@ namespace Tester
 
         #region run methods
 
+        static void TestTraceJsonType(CodeTimer timer)
+        {
+            string source = JsonStringSerializer.Global.Serialize(DateTime.Now);
+        }
+
+        static void TestCircularRefrence(CodeTimer timer)
+        {
+            XPress.Serialization.Javascript.JsonStringArrayDataProvider provider = new XPress.Serialization.Javascript.JsonStringArrayDataProvider();
+            //XPress.Serialization.IJsonSerializer<string> serializer = XPress.Serialization.Javascript.JsonStringSerializer.Global;
+            XPress.Serialization.Reference.JsonRefrenceBank<string> bank
+                = new XPress.Serialization.Reference.JsonRefrenceBank<string>(provider);
+
+            int N = 2;
+            Console.WriteLine("Testing json circular refrence storage.");
+            ObjectCircularRefrenceTester o = new ObjectCircularRefrenceTester(-1,null);
+            bank.Anchor(bank.Store(o));
+            ObjectCircularRefrenceTester cur = o;
+            for (int i = 0; i < N; i++)
+            {
+                ObjectCircularRefrenceTester no = new ObjectCircularRefrenceTester(i, cur);
+                cur.Child = no;
+                cur = no;
+            }
+                
+            timer.Mark("Single object anchored prepare (" + N + " objects)");
+            bank.Update(false);
+            timer.Mark("Single object anchored update, found " + bank.Collection.GetAllValueIds().Length + " refrence items");
+            bank.CollectGarbage();
+            timer.Mark("Single object grabage collection");
+            bank.WriteToSource(false, false, true);
+            timer.Mark("Single object anchored write");
+
+            string source = provider.RawSource;
+            Console.WriteLine("Total source length " + Math.Round(source.Length * 1.0 / 1000) + " Kb");
+            provider = new XPress.Serialization.Javascript.JsonStringArrayDataProvider(source);
+            bank = new XPress.Serialization.Reference.JsonRefrenceBank<string>(provider);
+            timer.Mark("Created new data provider and bank from source (" + Math.Round(source.Length * 1.0 / 1000) + " Kb)");
+            ObjectCircularRefrenceTester loadO = bank.Load(0) as ObjectCircularRefrenceTester;
+            timer.Mark("Read a single object.");
+        }
+
+        static void TestPostDeserializeJsonRefrence(CodeTimer timer)
+        {
+            XPress.Serialization.Javascript.JsonStringArrayDataProvider provider = new XPress.Serialization.Javascript.JsonStringArrayDataProvider();
+            //XPress.Serialization.IJsonSerializer<string> serializer = XPress.Serialization.Javascript.JsonStringSerializer.Global;
+            XPress.Serialization.Reference.JsonRefrenceBank<string> bank
+                = new XPress.Serialization.Reference.JsonRefrenceBank<string>(provider);
+
+            PostDeserialzieTester o = new PostDeserialzieTester();
+            uint oid=bank.Store(o, true);
+            timer.Mark("object anchored prepare");
+            bank.Update(false);
+            timer.Mark("object anchored update, found " + bank.Collection.GetAllValueIds().Length + " refrence items");
+            bank.CollectGarbage();
+            timer.Mark("object grabage collection");
+            bank.WriteToSource(false, false, true);
+            timer.Mark("object anchored write");
+
+            string source = provider.RawSource;
+            Console.WriteLine("Total source length " + Math.Round(source.Length * 1.0 / 1000) + " Kb");
+            provider = new XPress.Serialization.Javascript.JsonStringArrayDataProvider(source);
+            bank = new XPress.Serialization.Reference.JsonRefrenceBank<string>(provider);
+            timer.Mark("Created new data provider and bank from source (" + Math.Round(source.Length * 1.0 / 1000) + " Kb)");
+            PostDeserialzieTester loadO = bank.Load(oid) as PostDeserialzieTester;
+            timer.Mark("Read a single object.");
+        }
+
 
         static void TestNewJsonRefrenceBank(CodeTimer timer)
         {
@@ -121,7 +192,7 @@ namespace Tester
             //XPress.Serialization.IJsonSerializer<string> serializer = XPress.Serialization.Javascript.JsonStringSerializer.Global;
             XPress.Serialization.Reference.JsonRefrenceBank<string> bank
                 = new XPress.Serialization.Reference.JsonRefrenceBank<string>(provider);
-            int N = 10000;
+            int N = 3;
             Console.WriteLine("Testing json refrence bank storage.");
             for (int i = 0; i < N; i++)
                 bank.Anchor(bank.Store(new TestObject()));
@@ -139,7 +210,7 @@ namespace Tester
             bank = new XPress.Serialization.Reference.JsonRefrenceBank<string>(provider);
             timer.Mark("Created new data provider and bank from source (" + Math.Round(source.Length * 1.0 / 1000) + " Kb)");
             TestObject loadO = bank.Load(0) as TestObject;
-            timer.Mark("Read a single object.");
+            timer.Mark("Read a single object with post deserialize list of " + loadO.PdList.Count + " items");
         }
 
         static void TestSingleObjectJsonSerialziation(CodeTimer timer)

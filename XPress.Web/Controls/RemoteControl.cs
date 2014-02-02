@@ -51,7 +51,7 @@ namespace XPress.Web.Controls
         {
             get
             {
-                return JavascriptClient.JClientCallContext.Current.Client.Cache.Store(this);
+                return JavascriptClient.JClientCallContext.Current.Client.ReferenceBank.Store(this);
             }
         }
 

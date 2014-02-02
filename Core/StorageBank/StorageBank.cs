@@ -17,6 +17,7 @@ namespace XPress.StorageBank
         public Bank(IStorageProvider<SUType> provider, TimeSpan? keepInMemoryInterval = null, TimeSpan? cleanCacheInterval = null)
         {
             UnitCache = new CacheCollection<SUType>(cleanCacheInterval == null ? GlobalCleanCacheInterval : cleanCacheInterval.Value);
+            StorageProvider = provider;
         }
 
         #region static members
@@ -150,6 +151,15 @@ namespace XPress.StorageBank
             if (force)
                 this.UnitCache.Clear();
             else this.UnitCache.ForceCleanCache();
+        }
+
+        /// <summary>
+        /// Returns the cache object count.
+        /// </summary>
+        /// <returns></returns>
+        public int CacheObjectCount()
+        {
+            return this.UnitCache.GetCachedObjectCount();
         }
 
         /// <summary>

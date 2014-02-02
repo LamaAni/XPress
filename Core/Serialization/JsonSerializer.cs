@@ -271,9 +271,9 @@ namespace XPress.Serialization
         /// <param name="serializer"></param>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static OType Deserialize<T,OType>(this IJsonSerializer<T> serializer, T source)
+        public static OType Deserialize<T, OType>(this IJsonSerializer<T> serializer, T source, bool ignoreTypes = false)
         {
-            return (OType)serializer.Deserialize(source, typeof(OType));
+            return (OType)serializer.Deserialize(source, typeof(OType), ignoreTypes);
         }
     }
 }

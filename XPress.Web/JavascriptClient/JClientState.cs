@@ -51,7 +51,7 @@ namespace XPress.Web.JavascriptClient
         /// The storage unit associated with the bank.
         /// </summary>
         [XPressIgnore]
-        public XPress.StorageBank.BankStorageUnit StorageUnit { get; internal set; } 
+        public XPress.StorageBank.BankStorageSingleValueUnit StorageUnit { get; internal set; } 
 
         /// <summary>
         /// The JClient id.
@@ -174,6 +174,7 @@ namespace XPress.Web.JavascriptClient
                 else
                 {
                     JClientState state = kvp.Value.Value as JClientState;
+                    state.StorageUnit = kvp.Value;
                     if (!state.IsAlive)
                         JClientState.DestroyClient(state, bank);
                 }
@@ -194,7 +195,9 @@ namespace XPress.Web.JavascriptClient
             if (bank == null)
                 bank = XPressRazorCacheBanks.Global;
             CollectStateGarbage(bank);
-            XPress.StorageBank.BankStorageUnit unit = bank.SerializationBank.Load(id);
+            XPress.StorageBank.BankStorageSingleValueUnit unit = bank.SerializationBank.Load(id);
+            if (unit == null)
+                return null;
             JClientState state = unit.Value as JClientState;
             state.StorageUnit = unit;
             return state;
@@ -236,19 +239,19 @@ namespace XPress.Web.JavascriptClient
 
             // Crete the client state.
             JClientState state = new JClientState();
-            state.StorageUnit = new StorageBank.BankStorageUnit(false);
+            state.StorageUnit = new StorageBank.BankStorageSingleValueUnit(state, false);
             bank.SerializationBank.Store(state.StorageUnit, "jclient.", ".state");
 
             // Creating and storing the client.
             client.ClientStateId = state.Id;
             client.State = state;
             client.StorageUnit = new Serialization.Javascript.JsonStringRefrenceBankStorageUnit();
-            client.StorageUnit.ReferenceBank.Store(client);
+            client.StorageUnit.ReferenceBank.Store(client, true);
             bank.SerialziedRefrenceBank.Store(client.StorageUnit, state.Id + ".", ".client");
 
             // restoring the state to include the client id. Now they are connected.
             state.ClientId = client.Id;
-            bank.SerializationBank.Store(state.StorageUnit);
+            state.Store(bank);
 
             return client;
         }

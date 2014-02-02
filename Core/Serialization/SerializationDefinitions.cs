@@ -25,7 +25,7 @@ namespace XPress.Serialization
             // Some basics serializers.
             this.AddConverter(typeof(Array), new Converters.ArrayConverter<T>());
             this.AddConverter(typeof(Delegate), new Converters.DelegateConvertor<T>());
-            
+            this.AddConverter(typeof(Enum), new Converters.EnumConverter<T>());
 
             // adding interface serializers.
             this.AddConverter(typeof(IList), new Converters.ListConveter<T>());

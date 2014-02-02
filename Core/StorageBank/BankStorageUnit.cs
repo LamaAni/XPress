@@ -17,6 +17,7 @@ namespace XPress.StorageBank
         /// </summary>
         /// <param name="isCached">If true this object can be cached in memory</param>
         /// <param name="keepInMemoryInterval">Time interval to keep the object in memory without regard if the object has any refrences to it.</param>
+        /// <param name="value">The value stored in the bank unit.</param>
         public BankStorageUnit(bool isCached = true, TimeSpan keepInMemoryInterval = default(TimeSpan))
         {
             IsCached = isCached;
@@ -57,12 +58,22 @@ namespace XPress.StorageBank
         [XPressMember]
         public virtual string Id { get; internal set; }
 
+        #endregion
+    }
+
+    public class BankStorageSingleValueUnit : BankStorageUnit
+    {
+        public BankStorageSingleValueUnit(object value, bool isCached = true, TimeSpan keepInMemoryInterval = default(TimeSpan))
+            : base(isCached, keepInMemoryInterval)
+        {
+            Value = value;
+        }
+
+
         /// <summary>
         /// The object value of the bank storeable. This is the storage 
         /// </summary>
         [XPressMember]
         public virtual object Value { get; private set; }
-
-        #endregion
     }
 }

@@ -33,7 +33,7 @@ namespace XPress.Serialization.StorageProviders
                 throw new Exception("Cannot find refrence bank in the unit.");
 
             // updating the bank and writing the bank data.
-            unit.ReferenceBank.WriteToSource();
+            unit.ReferenceBank.WriteToSource(true, true, UsePrettyJson);
 
             return Serializer.ToByteArray(unit.ReferenceBank.DataProvider.GetSource());
         }

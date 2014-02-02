@@ -47,7 +47,7 @@ namespace XPress.Web.Controls.Client
 
             // check for controls that need updating, and add the updating commands.
             HtmlElement[] allThatNeedUpdate =
-                Client.Cache.GetCachedObjects().Where(o => o is IRemoteControl).Cast<IRemoteControl>().Where(rmc => rmc.RequiresUpdate).Cast<HtmlElement>().ToArray();
+                Client.ReferenceBank.GetCachedObjects().Where(o => o is HtmlElement && o is IRemoteControl).Cast<IRemoteControl>().Where(rmc => rmc.RequiresUpdate).Cast<HtmlElement>().ToArray();
             
             // checking for updating parents (if any).
             HtmlElement[] requireUpdate = allThatNeedUpdate.Where(c =>

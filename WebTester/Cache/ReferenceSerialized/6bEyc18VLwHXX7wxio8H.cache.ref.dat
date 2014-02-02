@@ -1,0 +1,634 @@
+62
+☺
+0,3,4
+☺
+0:1|5,1:2,5:6|9,6:7|8|32|40,9:10|33|41|49|56,3:11|13,11:12|34|42|50|57,13:14|35|43|51|58,14:15,15:16|17,17:18,18:4,4:19|21|23|38|46|54|61,19:20|37|45|53|60,21:22,23:24|39|48,24:25|26|27|28|29|30|31,35:36,36:16|17,38:22,39:25|26|27|28|29|30|31,43:44,44:16|17,46:47,48:25|26|27|28|29|30|31,51:52,52:16|17,54:55,58:59,59:16|17,61:55
+☺
+{
+	"cid":24,
+	"typeinfo":[
+		0,
+		"System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		1,
+		"System.Collections.Generic.ObjectEqualityComparer`1[[System.Type, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		2,
+		"System.Collections.Generic.HashSet`1[[System.Type, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		3,
+		"XPress.Web.Controls.Client.ControlsClient, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		4,
+		"System.Collections.Generic.GenericEqualityComparer`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		5,
+		"System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		6,
+		"System.Collections.Generic.HashSet`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		7,
+		"System.Type[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		8,
+		"ASP._Page_system_admin_cshtml",
+		9,
+		"XPress.Web.Html.HtmlLiteral, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		10,
+		"XPress.Web.Html.HtmlSnippet, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		11,
+		"XPress.Web.Controls.Generic.Button, XPress.Web.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		12,
+		"XPress.Web.Controls.Generic.Div, XPress.Web.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		13,
+		"XPress.Web.Html.Collections.TypeDependentCacheCollection, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		14,
+		"XPress.Web.Html.Collections.AttributeCollection, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		15,
+		"System.Object[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		16,
+		"XPress.Web.Html.Events.EventInfo, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		17,
+		"ASP._Page_system_admin_cshtml+<>c__DisplayClass1",
+		18,
+		"XPress.Web.Html.HtmlElement[], XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		19,
+		"XPress.Web.Html.HtmlElement, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		20,
+		"System.Action`2[[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.EventArgs, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		21,
+		"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		22,
+		"XPress.Web.Html.Collections.EventCollection, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+		23,
+		"System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+	]
+}
+☺
+0
+☺
+{
+	^tp#3:null,
+	"ClientStateId":"jclient.D4AfRiZsXpO82t7n5dzc.state",
+	"LoadedTypeDefs":#"_rid"#1,
+	"TypeDependentDefitions":#"_rid"#5
+}
+☺
+1
+☺
+[
+	^tp#2,
+	"Version",
+	#"t"#0,
+	0,
+	"Comparer",
+	#"t"#23,
+	null,
+	"Capacity",
+	#"t"#0,
+	0
+]
+☺
+2
+☺
+{
+	^tp#1:null
+}
+☺
+3
+☺
+{
+	^tp#11:null,
+	"_attr":#"_rid"#11,
+	"_events":#"_rid"#13,
+	"_parent":#"_rid"#23,
+	"_tag":"div",
+	"Text":"Clear cache"
+}
+☺
+4
+☺
+{
+	^tp#12:null,
+	"_attr":#"_rid"#19,
+	"_kids":#"_rid"#61,
+	"_parent":#"_rid"#23,
+	"_tag":"div",
+	"Html":"0"
+}
+☺
+5
+☺
+{
+	^tp#13:null,
+	"m_loadedTypeIds":#"_rid"#6,
+	"m_loadedTypes":#"_rid"#9
+}
+☺
+6
+☺
+[
+	^tp#6,
+	"Version",
+	#"t"#0,
+	0,
+	"Comparer",
+	#"t"#23,
+	null,
+	"Capacity",
+	#"t"#0,
+	0
+]
+☺
+7
+☺
+{
+	^tp#4:null
+}
+☺
+8
+☺
+[
+	^tp#5,
+	"XPress.Web.Core.XPressCore.js",
+	"XPress.Web.JCom.JCom.js",
+	"XPress.Web.Core.GloablExtentions.js",
+	"XPress.Web.Core.jquery.js",
+	"XPress.Web.JavascriptClient.Client.js",
+	"XPress.Web.Controls.Generic.Button.js",
+	"XPress.Web.Controls.RemoteControl.js",
+	"XPress.Web.Controls.Generic.Generic.css"
+]
+☺
+9
+☺
+[
+	^tp#2,
+	"Version",
+	#"t"#0,
+	0,
+	"Comparer",
+	#"t"#23,
+	null,
+	"Capacity",
+	#"t"#0,
+	3,
+	"Elements",
+	#"t"#7,
+	#"_rid"#56
+]
+☺
+10
+☺
+[
+	^tp#7,
+	#"t"#8,
+	#"t"#9,
+	#"t"#10,
+	#"t"#11,
+	#"t"#12
+]
+☺
+11
+☺
+[
+	^tp#14,
+	"c",
+	#"t"#5,
+	#"_rid"#57
+]
+☺
+12
+☺
+[
+	^tp#5,
+	"class",
+	"genericButton",
+	"id",
+	"3"
+]
+☺
+13
+☺
+[
+	^tp#22,
+	"i",
+	#"t"#15,
+	#"_rid"#58,
+	"let",
+	#"t"#21,
+	false
+]
+☺
+14
+☺
+[
+	^tp#15,
+	"click",
+	#"_rid"#15
+]
+☺
+15
+☺
+[
+	^tp#15,
+	#"_rid"#16,
+	#"_rid"#17
+]
+☺
+16
+☺
+{
+	^tp#16:null,
+	"Name":"click"
+}
+☺
+17
+☺
+[
+	^tp#20,
+	#"mi"#17#"<Execute>b__0",
+	17,
+	#"_rid"#18
+]
+☺
+18
+☺
+{
+	^tp#17:null,
+	"cacheCount":#"_rid"#4
+}
+☺
+19
+☺
+[
+	^tp#14,
+	"c",
+	#"t"#5,
+	#"_rid"#60
+]
+☺
+20
+☺
+[
+	^tp#5,
+	"id",
+	"4"
+]
+☺
+21
+☺
+[
+	^tp#18,
+	#"_rid"#22
+]
+☺
+22
+☺
+{
+	^tp#9:null,
+	"_literal":"\r\n        6\r\n    ",
+	"_parent":#"_rid"#4
+}
+☺
+23
+☺
+{
+	^tp#19:null,
+	"_kids":#"_rid"#48
+}
+☺
+24
+☺
+[
+	^tp#18,
+	#"_rid"#25,
+	#"_rid"#26,
+	#"_rid"#27,
+	#"_rid"#3,
+	#"_rid"#28,
+	#"_rid"#4,
+	#"_rid"#29,
+	#"_rid"#30,
+	#"_rid"#31
+]
+☺
+25
+☺
+{
+	^tp#9:null,
+	"_literal":"<!DOCTYPE html>\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n<head>\r\n    <title>Admin commands page</title>\r\n    ",
+	"_parent":#"_rid"#23
+}
+☺
+26
+☺
+{
+	^tp#10:null,
+	"_html":"<!-- Head auto generated code -->\n<script language='javascript' type='text/javascript' src='_get.cmd.link?source=XPress.Web.Core.jquery.js&lid=%3f%3f%3f%17%3f%3f%3f1%0cI%3f7%3f%3f%3f%3f'></script>\n<script language='javascript' type='text/javascript' src='_get.cmd.link?source=XPress.Web.Core.GloablExtentions.js&lid=%3f%3f%3f%3f%3f%3f%3fpu%3f%3f)%3f%3f%3fP'></script>\n<script language='javascript' type='text/javascript' src='_get.cmd.link?source=XPress.Web.Core.XPressCore.js&lid=%3f%3f%3fh%3f%3f+d%3f%3f%3fk%3fq%3f%3f'></script>\n<script language='javascript' type='text/javascript' src='_get.cmd.link?source=XPress.Web.JCom.JCom.js&lid=%5e%3fl%3f%3fA%3f%3f%3f%26%3f%13P%3f%3fF'></script>\n<script language='javascript' type='text/javascript' src='_get.cmd.link?source=XPress.Web.JavascriptClient.Client.js&lid=%3f%26%3f%3fi%3f%3f%3f%3ff%3f%3f%3f%3f%7f%3f'></script>\n<script language='javascript' type='text/javascript' src='_get.cmd.link?source=XPress.Web.Controls.RemoteControl.js&lid=%0dz%0f%01%3f%3f%3fS%3f%3f%3fBO%3f%3f%01'></script>\n",
+	"_parent":#"_rid"#23
+}
+☺
+27
+☺
+{
+	^tp#9:null,
+	"_literal":"\r\n</head>\r\n<body>\r\n    Commands list:<br />\r\n\r\n    ",
+	"_parent":#"_rid"#23
+}
+☺
+28
+☺
+{
+	^tp#9:null,
+	"_literal":"\r\n    ",
+	"_parent":#"_rid"#23
+}
+☺
+29
+☺
+{
+	^tp#9:null,
+	"_literal":"\r\n    ",
+	"_parent":#"_rid"#23
+}
+☺
+30
+☺
+{
+	^tp#10:null,
+	"_html":"<!-- Init auto generated code --><script>console.log('Initialzing page...');\n$(document).ready(function(){\ndocument.Debug=true;$.Vebrose=true;\n$.XPress.Commands.Execute($.JSON.From(\"{\\n	\\\"commands\\\":[\\n		{\\n			\\\"_et\\\":\\\"Pend\\\",\\n			\\\"_t\\\":\\\"link\\\",\\n			\\\"LinkType\\\":\\\"Script\\\",\\n			\\\"Name\\\":\\\"XPress.Web.Controls.Generic.Button.js\\\",\\n			\\\"UniqueId\\\":\\\"e%3F%3F%3F%3F%0D%3F%3F%12%3F%3F%3F%1D%3F%3A1\\\",\\n			\\\"Url\\\":\\\"_get.cmd.link?source=XPress.Web.Controls.Generic.Button.js&lid=e%3f%3f%3f%3f%0d%3f%3f%12%3f%3f%3f%1d%3f%3a1\\\"\\n		},\\n		{\\n			\\\"_et\\\":\\\"Pend\\\",\\n			\\\"_t\\\":\\\"link\\\",\\n			\\\"LinkType\\\":\\\"Css\\\",\\n			\\\"Name\\\":\\\"XPress.Web.Controls.Generic.Generic.css\\\",\\n			\\\"UniqueId\\\":\\\"%7C%01%3FY%138%02%3F%21%3Fd%3F%3F%3F%3Fq\\\",\\n			\\\"Url\\\":\\\"_get.cmd.link?source=XPress.Web.Controls.Generic.Generic.css&lid=%7c%01%3fY%138%02%3f!%3fd%3f%3f%3f%3fq\\\"\\n		},\\n		{\\n			\\\"_et\\\":\\\"Invoke\\\",\\n			\\\"_t\\\":\\\"JCOM_TypeDef\\\",\\n			\\\"Code\\\":\\\"{\\\\nEnabled:function(){return $.XPress.JCOM.Property(this,'Enabled',arguments,true,true,true);},\\\\nClick:function(){return $.XPress.JCOM.Method(this,'Click',arguments,true);},\\\\n\\\\n}\\\",\\n			\\\"Name\\\":\\\"XPress_Web_Controls_Generic_Button\\\"\\n		}\\n	]\\n}\").commands);\nvar dat=$.JSON.From(\"{\\n	\\\"ClientId\\\":\\\"jclient.D4AfRiZsXpO82t7n5dzc.state\\\"\\n}\");$.XPress.InitJClient(dat.ClientId,dat.options);\n$.XPress.GlobalJClient.ReciveCommand(\"{\\n	\\\"Timer\\\":[\\n		{\\n			\\\"Client and generation (with storage)\\\":{\\n				\\\"_ticks\\\":0\\n			},\\n			\\\"Client call creation\\\":{\\n				\\\"_ticks\\\":0\\n			}\\n		}\\n	],\\n	\\\"Trace\\\":\\\"\\\"\\n}\");\nconsole.log('Page init completed.');\n});\n</script>",
+	"_parent":#"_rid"#23
+}
+☺
+31
+☺
+{
+	^tp#9:null,
+	"_literal":"\r\n</body>\r\n</html>\r\n",
+	"_parent":#"_rid"#23
+}
+☺
+32
+☺
+[
+	^tp#5,
+	"XPress.Web.Core.XPressCore.js",
+	"XPress.Web.JCom.JCom.js",
+	"XPress.Web.Core.GloablExtentions.js",
+	"XPress.Web.Core.jquery.js",
+	"XPress.Web.JavascriptClient.Client.js",
+	"XPress.Web.Controls.Generic.Button.js",
+	"XPress.Web.Controls.RemoteControl.js",
+	"XPress.Web.Controls.Generic.Generic.css"
+]
+☺
+33
+☺
+[
+	^tp#7,
+	#"t"#8,
+	#"t"#9,
+	#"t"#10,
+	#"t"#11,
+	#"t"#12
+]
+☺
+34
+☺
+[
+	^tp#5,
+	"class",
+	"genericButton",
+	"id",
+	"3"
+]
+☺
+35
+☺
+[
+	^tp#15,
+	"click",
+	#"_rid"#36
+]
+☺
+36
+☺
+[
+	^tp#15,
+	#"_rid"#16,
+	#"_rid"#17
+]
+☺
+37
+☺
+[
+	^tp#5,
+	"id",
+	"4"
+]
+☺
+38
+☺
+[
+	^tp#18,
+	#"_rid"#22
+]
+☺
+39
+☺
+[
+	^tp#18,
+	#"_rid"#25,
+	#"_rid"#26,
+	#"_rid"#27,
+	#"_rid"#3,
+	#"_rid"#28,
+	#"_rid"#4,
+	#"_rid"#29,
+	#"_rid"#30,
+	#"_rid"#31
+]
+☺
+40
+☺
+[
+	^tp#5,
+	"XPress.Web.Core.XPressCore.js",
+	"XPress.Web.JCom.JCom.js",
+	"XPress.Web.Core.GloablExtentions.js",
+	"XPress.Web.Core.jquery.js",
+	"XPress.Web.JavascriptClient.Client.js",
+	"XPress.Web.Controls.Generic.Button.js",
+	"XPress.Web.Controls.RemoteControl.js",
+	"XPress.Web.Controls.Generic.Generic.css"
+]
+☺
+41
+☺
+[
+	^tp#7,
+	#"t"#8,
+	#"t"#9,
+	#"t"#10,
+	#"t"#11,
+	#"t"#12
+]
+☺
+42
+☺
+[
+	^tp#5,
+	"class",
+	"genericButton",
+	"id",
+	"3"
+]
+☺
+43
+☺
+[
+	^tp#15,
+	"click",
+	#"_rid"#44
+]
+☺
+44
+☺
+[
+	^tp#15,
+	#"_rid"#16,
+	#"_rid"#17
+]
+☺
+45
+☺
+[
+	^tp#5,
+	"id",
+	"4"
+]
+☺
+46
+☺
+[
+	^tp#18,
+	#"_rid"#47
+]
+☺
+47
+☺
+{
+	^tp#9:null,
+	"_parent":#"_rid"#4
+}
+☺
+48
+☺
+[
+	^tp#18,
+	#"_rid"#25,
+	#"_rid"#26,
+	#"_rid"#27,
+	#"_rid"#3,
+	#"_rid"#28,
+	#"_rid"#4,
+	#"_rid"#29,
+	#"_rid"#30,
+	#"_rid"#31
+]
+☺
+49
+☺
+[
+	^tp#7
+]
+☺
+50
+☺
+[
+	^tp#5,
+	"class",
+	"genericButton",
+	"id",
+	"3"
+]
+☺
+51
+☺
+[
+	^tp#15,
+	"click",
+	#"_rid"#52
+]
+☺
+52
+☺
+[
+	^tp#15,
+	#"_rid"#16,
+	#"_rid"#17
+]
+☺
+53
+☺
+[
+	^tp#5,
+	"id",
+	"4"
+]
+☺
+54
+☺
+[
+	^tp#18,
+	#"_rid"#55
+]
+☺
+55
+☺
+{
+	^tp#9:null,
+	"_literal":"0",
+	"_parent":#"_rid"#4
+}
+☺
+56
+☺
+[
+	^tp#7
+]
+☺
+57
+☺
+[
+	^tp#5,
+	"class",
+	"genericButton",
+	"id",
+	"3"
+]
+☺
+58
+☺
+[
+	^tp#15,
+	"click",
+	#"_rid"#59
+]
+☺
+59
+☺
+[
+	^tp#15,
+	#"_rid"#16,
+	#"_rid"#17
+]
+☺
+60
+☺
+[
+	^tp#5,
+	"id",
+	"4"
+]
+☺
+61
+☺
+[
+	^tp#18,
+	#"_rid"#55
+]

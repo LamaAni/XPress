@@ -1,0 +1,43 @@
+﻿@inherits XPress.Web.Controls.XPressPage
+@using WebTester.Controls
+@attrib{
+// Add attributes for the template class here (Same as adding attributes before a class name).
+// Example: [LinkConstructor("example.js")]
+[LinkScript("TestMe.js")]
+[LinkCss("TestCss.css")]
+}
+@{this.VebroseClientJavascript = true;}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    @InsertAutoPageHead()
+    <title>Test page</title>
+    <style>
+        .testc {
+            color: gray;
+            -webkit-transition: all 1s ease-in-out;
+            -ms-transition: all 1s ease-in-out;
+            -moz-transition: all 1s ease-in-out;
+        }
+
+            .testc:hover {
+                background-color: lightblue;
+            }
+    </style>
+</head>
+<body>
+    @Open(new HtmlElement("div")).Css("color", "red", "font-size", "18.5pt", "padding", "5px").Attr("me", "ok").Class("testc")
+    This is internal text within the div.
+    @Close()
+    This is a test page for html generation.
+    @(new XPress.Web.Controls.Generic.Button("Clean all cache", (o, e) =>
+{
+    XPress.Web.Razor.Storage.XPressRazorCacheBanks.Global.ClearAllCache(true);
+}))
+    <br />
+    Loading internal:<br />
+    @this.Load("testbaseinternal.cshtml").TagName("div").Css("color", "red", "font-size", "10.5pt", "padding", "5px","font-family","Arial").Class("testc")
+    @(new TestControl())
+    @InsertAutoPageInit()
+</body>
+</html>

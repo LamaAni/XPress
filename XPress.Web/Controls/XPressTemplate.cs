@@ -36,7 +36,7 @@ namespace XPress.Web.Controls
             {
                 if (el is IRemoteControl)
                 {
-                    JavascriptClient.JClientCallContext.Current.Client.Cache.Store(el);
+                    JavascriptClient.JClientCallContext.Current.Client.ReferenceBank.Store(el, true);
                     return false;
                 }
                 else return true;

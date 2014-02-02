@@ -109,7 +109,7 @@ namespace XPress.Web.JCom.Map
                     PropertyInfo pi = mi as PropertyInfo;
                     if (pi == null)
                         return true;
-                    if (pi.GetOptionalCustomModifiers().Length > 0)
+                    if (pi.GetIndexParameters().Length > 0)
                         return false;
                     return true;
                 }).ToArray();

@@ -57,7 +57,7 @@ namespace XPress.Web.JavascriptClient
             // Searching commnads that have a specific responce value and returning the responce values as a command to the client side.
             Request.Commands.Where(rq => rq.ResponseValue != null).ForEach(rq =>
             {
-                Response.ResponseValues[rq.CommandId] = rq.ResponseValue;
+                Response.ResponseValues[rq.CommandId.ToString()] = rq.ResponseValue;
             });
         }
 

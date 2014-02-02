@@ -44,6 +44,15 @@ namespace XPress.Coding.Collections
         #region methods
 
         /// <summary>
+        /// Returns the chached object count.
+        /// </summary>
+        /// <returns></returns>
+        public int GetCachedObjectCount()
+        {
+            return m_timeoutKept.Keys.Union(m_refrenceKept.Keys).Count();
+        }
+
+        /// <summary>
         /// If true the object is in the cache collection.
         /// </summary>
         /// <param name="key"></param>

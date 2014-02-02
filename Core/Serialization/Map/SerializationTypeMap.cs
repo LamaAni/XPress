@@ -22,11 +22,14 @@ namespace XPress.Serialization.Map
             IsJsonValue = typeof(IJsonValue<T>).IsAssignableFrom(MappedType);
             Parser = context.Definitions.GetParser(info);
             Converter = IsCoreValue || IsParseValue ? null : context.Definitions.GetConvertor(info);
-            IsRefrenceType = info.IsRefrenceType && !IsParseValue && !context.CoreTypes.Contains(info.MappedType);
+            IsRefrenceType = !info.IsPostDeserialize && info.IsRefrenceType && !IsParseValue && !context.CoreTypes.Contains(info.MappedType);
         }
 
         #region members
 
+        /// <summary>
+        /// If true the current type is to be regarded as a refrence type (pointer) for refrence serialization.
+        /// </summary>
         public bool IsRefrenceType { get; private set; }
 
         /// <summary>

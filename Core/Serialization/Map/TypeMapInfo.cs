@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using XPress.Serialization.Documents;
 
 namespace XPress.Serialization.Map
 {
@@ -97,6 +98,16 @@ namespace XPress.Serialization.Map
         public bool IsCompilerGeneratedAssembly { get; private set; }
 
         /// <summary>
+        /// If true the current type is the "object" type.
+        /// </summary>
+        public bool IsObjectCoreType { get; private set; }
+
+        /// <summary>
+        /// If true the current is a post deserialization value.
+        /// </summary>
+        public bool IsPostDeserialize { get; private set; }
+
+        /// <summary>
         /// Called when the object is deserializing.
         /// </summary>
         public Action<object, StreamingContext> InvokeOnDeserialzing { get; private set; }
@@ -168,6 +179,8 @@ namespace XPress.Serialization.Map
                 GenericTypeArguments = MappedType.GetGenericArguments().ToArray();
             }
 
+            IsObjectCoreType = typeof(object) == MappedType;
+            IsPostDeserialize = typeof(IPostDeserialize).IsAssignableFrom(MappedType);
             ArrayElementType = typeof(Array).IsAssignableFrom(MappedType) ? MappedType.GetElementType() : null;
 
             IsCompilerGeneratedClass = MappedType.IsDefined(typeof(System.Runtime.CompilerServices.CompilerGeneratedAttribute), false);
@@ -207,31 +220,6 @@ namespace XPress.Serialization.Map
             allMembers = MappedType.GetMembers(
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
-            // finding deserialization and serialization methods.
-            allMembers.Where(mi => mi is MethodInfo).Cast<MethodInfo>().ForEach(mi =>
-            {
-                if (Attribute.GetCustomAttribute(mi, typeof(System.Runtime.Serialization.OnDeserializedAttribute)) != null)
-                {
-                    InvokeOnDeserialized = (o, context) => mi.Invoke(o, new object[1] { context });
-                }
-
-                if (Attribute.GetCustomAttribute(mi, typeof(System.Runtime.Serialization.OnDeserializingAttribute)) != null)
-                {
-                    InvokeOnDeserialzing = (o, context) => mi.Invoke(o, new object[1] { context });
-                }
-
-                if (Attribute.GetCustomAttribute(mi, typeof(System.Runtime.Serialization.OnSerializedAttribute)) != null)
-                {
-                    InvokeOnSerialized = (o, context) => mi.Invoke(o, new object[1] { context });
-                }
-
-                if (Attribute.GetCustomAttribute(mi, typeof(System.Runtime.Serialization.OnSerializingAttribute)) != null)
-                {
-                    InvokeOnSerializing = (o, context) => mi.Invoke(o, new object[1] { context });
-                }
-
-            });
-
             allMembers = allMembers.Where(mi => mi.DeclaringType == this.MappedType) // only the current type, do not apply to base types. that comes later.
                 .Where(mi => mi is FieldInfo || mi is PropertyInfo)
                 .Where(mi =>
@@ -239,7 +227,7 @@ namespace XPress.Serialization.Map
                     PropertyInfo pi = mi as PropertyInfo;
                     if (pi == null)
                         return true;
-                    if (pi.GetOptionalCustomModifiers().Length > 0)
+                    if (pi.GetIndexParameters().Length > 0)
                         return false;
                     return true;
                 })
@@ -279,11 +267,40 @@ namespace XPress.Serialization.Map
             // merging with base type, not including the members that are validated by the current.
             if (baseInfo != null)
                 mapInfos = mapInfos.Concat(baseInfo.Members.Where(mi => !memberNamesTaken.Contains(mi.Name)));
+
             members = mapInfos.OrderBy(m => m.Order).ThenBy(m => m.Name).ToList();
+
+            // finding deserialization and serialization methods.
+            members.Select(mmi => mmi.MemberInfo).Where(mi => mi is MethodInfo).Cast<MethodInfo>().ForEach(mi =>
+            {
+                if (InvokeOnDeserialized==null && Attribute.GetCustomAttribute(mi, typeof(System.Runtime.Serialization.OnDeserializedAttribute)) != null)
+                {
+                    InvokeOnDeserialized = (o, context) => mi.Invoke(o, new object[1] { context });
+                }
+
+                if (InvokeOnDeserialzing == null && Attribute.GetCustomAttribute(mi, typeof(System.Runtime.Serialization.OnDeserializingAttribute)) != null)
+                {
+                    InvokeOnDeserialzing = (o, context) => mi.Invoke(o, new object[1] { context });
+                }
+
+                if (InvokeOnSerialized == null && Attribute.GetCustomAttribute(mi, typeof(System.Runtime.Serialization.OnSerializedAttribute)) != null)
+                {
+                    InvokeOnSerialized = (o, context) => mi.Invoke(o, new object[1] { context });
+                }
+
+                if (InvokeOnSerializing == null && Attribute.GetCustomAttribute(mi, typeof(System.Runtime.Serialization.OnSerializingAttribute)) != null)
+                {
+                    InvokeOnSerializing = (o, context) => mi.Invoke(o, new object[1] { context });
+                }
+            });
 
             writeableMembers = members.Where(mmi => mmi.Required || !mmi.IgnoreMode.HasFlag(Attributes.XPressIgnoreMode.NeverIncluded)).ToArray();
 
-            _MembersByName = members.ToDictionary(mmi => mmi.Name, mmi => mmi);
+            _MembersByName=new Dictionary<string,MemberMapInfo>();
+            members.ForEach(mmi =>
+            {
+                _MembersByName.Add(mmi.Name, mmi);
+            });
         }
 
         #endregion

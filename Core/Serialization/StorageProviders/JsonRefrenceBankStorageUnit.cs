@@ -12,7 +12,8 @@ namespace XPress.Serialization.StorageProviders
     /// </summary>
     public class JsonRefrenceBankStorageUnit<T> : BankStorageUnit
     {
-        public JsonRefrenceBankStorageUnit(Reference.JsonRefrenceBank<T> bank)
+        public JsonRefrenceBankStorageUnit(Reference.JsonRefrenceBank<T> bank, TimeSpan keepInMemory = default(TimeSpan))
+            : base(true, keepInMemory)
         {
             ReferenceBank = bank;
         }

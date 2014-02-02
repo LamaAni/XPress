@@ -141,10 +141,11 @@ namespace XPress.Serialization.Core
                 return null;
 
             T raw = PrepareValue(data.GetRawData());
-            if (data.IsDirective)
-                return DirectiveConverter.FromRaw(raw);
 
-            object o = GetObjectFromRawValue(raw);
+            if (raw.Equals(NullValue))
+                return null;
+
+            object o = GetObjectFromRawValue(raw, data.IsDirective);
 
             if (o != null)
                 return o;
@@ -162,8 +163,17 @@ namespace XPress.Serialization.Core
         /// </summary>
         /// <param name="data">The raw data.</param>
         /// <returns>The value</returns>
-        public object GetObjectFromRawValue(T raw)
+        public object GetObjectFromRawValue(T raw, bool isDirective = false)
         {
+            if (raw.Equals(NullValue))
+                return null;
+
+            if (isDirective)
+                return DirectiveConverter.FromRaw(raw);
+
+            if (raw.Equals(NullValue))
+                return null;
+
             foreach (JsonValueConverter<T> c in m_converters)
             {
                 if (c.CanConvert(raw))

@@ -57,10 +57,13 @@ namespace XPress.Serialization.Reference
         /// </summary>
         /// <param name="o"></param>
         /// <returns>The object id</returns>
-        public uint Store(object o)
+        public uint Store(object o, bool anchor = false)
         {
             // stores the object to the collection.
-            return Collection.GetObjectId(o);
+            uint id = Collection.GetObjectId(o);
+            if (anchor)
+                Anchor(id);
+            return id;
         }
 
         /// <summary>
@@ -192,13 +195,13 @@ namespace XPress.Serialization.Reference
                     black = new HashSet<uint>();
 
                 // blacken all gray elements.
+                List<uint> newGrayed = new List<uint>();
                 while (gray.Count > 0)
                 {
-                    List<uint> newGrayed = new List<uint>();
-                    foreach (uint id in gray.ToArray())
+                    newGrayed.Clear(); 
+                    foreach (uint id in gray)
                     {
                         // no need to add this key to the black.
-                        gray.Remove(id);
                         black.Add(id);
 
                         if (!Collection.DataProvider.ChildReferences.ContainsKey(id))
@@ -207,7 +210,8 @@ namespace XPress.Serialization.Reference
                         // adding child refrences to gray.
                         newGrayed.AddRange(Collection.DataProvider.ChildReferences[id]);
                     }
-                    gray.UnionWith(newGrayed.Distinct().Except(black));
+                    gray.ExceptWith(black); // removing all blacked ids.
+                    gray.UnionWith(newGrayed.Distinct().Except(black)); // adding all the ids that are new.
                 }
 
                 // delete all the white elements.

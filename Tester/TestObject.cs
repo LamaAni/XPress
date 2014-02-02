@@ -19,7 +19,7 @@ namespace Tester
             thistype = this.GetType();
             string externalTarget = "extern";
             internalFunc = (s) => externalTarget + " :" + s;
-            _pdList = new PostDeserialize<List<string>>(new List<string>());
+            _pdList = new PostDeserialize<List<string>>(new List<string>(new string[] { "a", "b" }));
         }
 
         [XPressMember("linqfunc")]
@@ -40,6 +40,9 @@ namespace Tester
         [XPressMember("pdlist")]
         public PostDeserialize<List<string>> _pdList;
 
+        [XPressMember("enum")]
+        public TestEnum ValueEnum = TestEnum.Value2;
+
         public List<string> PdList
         {
             get { return _pdList.Value; }
@@ -50,4 +53,6 @@ namespace Tester
             return internalFunc(base.ToString());
         }
     }
+
+    public enum TestEnum { Value1, Value2 }
 }

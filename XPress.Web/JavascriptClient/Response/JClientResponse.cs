@@ -29,17 +29,17 @@ namespace XPress.Web.JavascriptClient.Response
 
 
         [XPressMember("ResponseVals")]
-        Dictionary<ulong, object> m_responseValues;
+        Dictionary<string, object> m_responseValues;
 
         /// <summary>
         /// Responce values to specific requests.
         /// </summary>
-        public Dictionary<ulong, object> ResponseValues
+        public Dictionary<string, object> ResponseValues
         {
             get
             {
                 if (m_responseValues == null)
-                    m_responseValues = new Dictionary<ulong, object>();
+                    m_responseValues = new Dictionary<string, object>();
                 return m_responseValues;
             }
         }

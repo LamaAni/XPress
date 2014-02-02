@@ -24,7 +24,9 @@ namespace XPress.Serialization.Converters
                     if (mmi.IgnoreMode.HasFlag(Attributes.XPressIgnoreMode.IfDefualt) && mmi.DefaultValue != null && mmi.DefaultValue.Value.Equals(oval))
                         return;
                 }
-                val.AddRawValue(context.GetJsonValue(mmi.Name, typeof(string)), context.GetJsonValue(oval, oval.GetType()), false);
+                IJsonValue<T> nv = context.GetJsonValue(mmi.Name, typeof(string));
+                IJsonValue<T> ov = context.GetJsonValue(oval, oval.GetType());
+                val.AddRawValue(nv, ov, false);
             });
         }
 

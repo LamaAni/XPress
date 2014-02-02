@@ -37,13 +37,18 @@ namespace XPress.Serialization.Converters
             while (e.MoveNext())
             {
                 val.Add(context.GetJsonValue(e.Current.Name, typeof(string)));
-                val.Add(context.GetJsonValue(e.Current.ObjectType, typeof(Type)));
-                val.Add(context.GetJsonValue(e.Current.Value, e.Current.ObjectType));
+                Type otype = e.Current.Value == null ? typeof(object) : e.Current.Value.GetType();
+                if (!context.IgnoreTypes)
+                    val.Add(context.GetJsonValue(otype, typeof(Type)));
+                val.Add(context.GetJsonValue(e.Current.Value, otype));
             }
         }
 
         public override void PopulateObjectValue(SerializationTypeMap<T> stm, object o, JsonArray<T> val, SerializationContext<T> context)
         {
+            if (context.IgnoreTypes)
+                throw new Exception("Cannot use ISerializeable without type mapping (Ignore types).");
+
             // populating the streaming constructor.
             SerializationInfo info = new SerializationInfo(o.GetType(), DefaultFormatterConverter);
 
@@ -52,7 +57,7 @@ namespace XPress.Serialization.Converters
             {
                 string name = context.GetObject(val[i], typeof(string)) as string;
                 Type t = context.GetObject(val[i + 1], typeof(Type)) as Type;
-                object io = context.GetObject(val[1], t);
+                object io = context.GetObject(val[i + 2], t);
                 info.AddValue(name, io);
             }
 

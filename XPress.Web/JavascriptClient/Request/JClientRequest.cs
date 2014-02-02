@@ -18,17 +18,17 @@ namespace XPress.Web.JavascriptClient.Request
 
         static JClientRequest()
         {
-            Translators = new ConcurrentDictionary<string, Func<IJsonValue<string>, JClient, Core.XPressRequestCommand>>();
+            Translators = new ConcurrentDictionary<string, Func<JsonObject<string>, JClient, Core.XPressRequestCommand>>();
         }
 
-        static ConcurrentDictionary<string, Func<IJsonValue<string>, JClient, Core.XPressRequestCommand>> Translators { get; set; }
+        static ConcurrentDictionary<string, Func<JsonObject<string>, JClient, Core.XPressRequestCommand>> Translators { get; set; }
 
         /// <summary>
         ///  Adds a new translator.
         /// </summary>
         /// <param name="type"></param>
         /// <param name="f"></param>
-        public static void AddTranslator(string type, Func<IJsonValue<string>, JClient, Core.XPressRequestCommand> f)
+        public static void AddTranslator(string type, Func<JsonObject<string>, JClient, Core.XPressRequestCommand> f)
         {
             Translators[type.ToLower()] = f;
         }
@@ -108,18 +108,19 @@ namespace XPress.Web.JavascriptClient.Request
             {
                 m_Commands.AddRange(CommandsSourceArray.Select<IJsonValue<string>, Core.XPressRequestCommand>(dat =>
                 {
-                    if (!(dat is JsonObject<string>))
+                    JsonObject<string> co = dat as JsonObject<string>;
+                    if (co == null)
                         return null;
 
-                    Dictionary<string, IJsonValue<string>> dic = dat.FromJSJson<Dictionary<string, IJsonValue<string>>>();
-                    if (!dic.ContainsKey("Type"))
+                    JsonPair<string> tpair = co.FindPair("Type");
+                    if (tpair == null)
                         return null;
 
-                    string type = dic["Type"].FromJSJson<string>();
+                    string type = ((tpair.Value as JsonData<string>).Value as string).ToLower();
                     if (!Translators.ContainsKey(type))
                         return null;
 
-                    return Translators[type.ToLower()](dat, client);
+                    return Translators[type](co, client);
                 }).Where(c => c != null).OrderBy(c => c.Priority));
             }
         }

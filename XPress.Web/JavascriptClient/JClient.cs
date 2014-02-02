@@ -12,6 +12,7 @@ using XPress.Web.JavascriptClient.Response;
 using System.Collections.Concurrent;
 using XPress.Web.JCom.Com;
 using XPress.Web.Razor.Storage;
+using XPress.Serialization.Documents;
 
 namespace XPress.Web.JavascriptClient
 {
@@ -34,12 +35,13 @@ namespace XPress.Web.JavascriptClient
 
         static JClient()
         {
-            JClientRequest.AddTranslator("System", (doc, client) =>
+            JClientRequest.AddTranslator("System", (val, client) =>
             {
                 Request.SystemCommands cmnd = SystemCommands.Unknown;
-                Dictionary<string, string> dic = doc.FromJSJson<Dictionary<string, string>>();
-                if (dic.ContainsKey("Command"))
-                    Enum.TryParse<Request.SystemCommands>(dic["Command"], out cmnd);
+                JsonPair<string> cp = val.FindPair("Command");
+                if (cp == null)
+                    return null;
+                Enum.TryParse<Request.SystemCommands>((cp.Value as JsonData<string>).Value as string, out cmnd);
                 return new Request.JClientSystemRequestCommand(cmnd);
             });
 
@@ -66,7 +68,7 @@ namespace XPress.Web.JavascriptClient
             /// <returns></returns>
             public ulong GetObjectId(object o)
             {
-                return Client.Cache.Store(o);
+                return Client.ReferenceBank.Store(o);
             }
 
             /// <summary>
@@ -76,7 +78,7 @@ namespace XPress.Web.JavascriptClient
             /// <returns></returns>
             public object GetObject(uint id)
             {
-                return Client.Cache.Load(id);
+                return Client.ReferenceBank.Load(id);
             }
 
             #endregion
@@ -170,12 +172,6 @@ namespace XPress.Web.JavascriptClient
         /// </summary>
         [XPressIgnore]
         public JClientState State { get; internal set; }
-
-        /// <summary>
-        /// The context objects associated with the client object. (XPress.Serialization handled) - partiall objects serialization.
-        /// </summary>
-        [XPressIgnore]
-        public XPress.Serialization.Reference.JsonRefrenceBank<string> Cache { get; internal set; }
 
         #endregion
 

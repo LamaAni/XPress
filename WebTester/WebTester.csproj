@@ -57,8 +57,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="System\Admin.cshtml" />
+    <Content Include="TestControls\TestCss.css" />
+    <Content Include="TestControls\TestMe.js" />
     <Content Include="TestHtml\testbase.cshtml" />
     <Content Include="TestHtml\testbaseInternal.cshtml" />
+    <Content Include="TestControls\testbase.cshtml" />
+    <Content Include="TestControls\testbaseInternal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -68,8 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="main.css" />
-    <Content Include="TestHtml\constructor.js" />
-    <Content Include="TestHtml\InitScript.js" />
+    <Content Include="Controls\constructor.js" />
+    <Content Include="Controls\InitScript.js" />
     <Content Include="TestHtml\TestCss.css" />
     <Content Include="TestHtml\TestMe.js" />
     <Content Include="Web.config">
@@ -78,12 +83,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestHtml\TestControl.cs" />
+    <Compile Include="Controls\TestControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\XPress.csproj">
       <Project>{b5195450-cdf5-4701-b485-51aaa75a0962}</Project>
       <Name>XPress</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPress.Web.Controls\XPress.Web.Controls.csproj">
+      <Project>{054c9e3e-b4fc-475d-b286-82dfc7f178e6}</Project>
+      <Name>XPress.Web.Controls</Name>
     </ProjectReference>
     <ProjectReference Include="..\XPress.Web\XPress.Web.csproj">
       <Project>{e13bc0fe-af80-4d63-8a29-1b71a21c0ca1}</Project>

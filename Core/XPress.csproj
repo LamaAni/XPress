@@ -66,6 +66,7 @@
     <Compile Include="Serialization\Converters\ArrayConverter.cs" />
     <Compile Include="Serialization\Converters\DelegateConvertor.cs" />
     <Compile Include="Serialization\Converters\DictionaryConverter.cs" />
+    <Compile Include="Serialization\Converters\EnumConverter.cs" />
     <Compile Include="Serialization\Converters\HashSetConverter.cs" />
     <Compile Include="Serialization\Converters\JsonSerializeableConverter.cs" />
     <Compile Include="Serialization\Converters\ListConveter.cs" />

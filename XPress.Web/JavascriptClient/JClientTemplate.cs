@@ -123,7 +123,7 @@ namespace XPress.Web.JavascriptClient
         /// <summary>
         /// Request processing for the JClient template page.
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="context">The write context.</param>
         public override void ProcessRequest(System.Web.HttpContext context)
         {
             // working by request

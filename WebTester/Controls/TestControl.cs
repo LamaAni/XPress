@@ -8,10 +8,10 @@ using System.Web;
 using XPress.Web.JCom.Attributes;
 using XPress.Web.Controls;
 
-namespace WebTester.TestHtml
+namespace WebTester.Controls
 {
-    [LinkConstructor("~/TestHtml/constructor.js")]
-    [LinkInitScript("~/TestHtml/initscript.js")]
+    [LinkConstructor("~/Controls/constructor.js")]
+    [LinkInitScript("~/Controls/initscript.js")]
     [LinkActivationEvent(XPress.Web.Links.ActivationEvent.ActiveContext)]
     public class TestControl : RemoteControl
     {
