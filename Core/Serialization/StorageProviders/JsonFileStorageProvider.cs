@@ -28,10 +28,11 @@ namespace XPress.Serialization.StorageProviders
         public JsonFileStorageProvider(string extention = "cache.dat", string path = null)
         {
             Extention = extention;
+
             if (path == null)
                 path = "Cache\\Serialized";
 
-            if (path[1] != ':') // is partial path.
+            if(path[1]!=':') // is partial path.
             {
                 path = path.ToPartialStoragePath();
             }
