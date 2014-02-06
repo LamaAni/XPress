@@ -132,6 +132,7 @@
     <Compile Include="StorageBank\IStorageProvider.cs" />
     <Compile Include="StorageBank\StorageBank.cs" />
     <Compile Include="Strings\CompressionExtentions.cs" />
+    <Compile Include="Strings\GeneralExtentions.cs" />
     <Compile Include="Strings\HashExtentions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

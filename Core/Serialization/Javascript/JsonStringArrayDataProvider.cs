@@ -109,7 +109,7 @@ namespace XPress.Serialization.Javascript
             JsonValues = new Dictionary<uint, Documents.IJsonValue<string>>();
             SourceValues = new Dictionary<uint, string>();
 
-            if (source == null)
+            if (source.IsNullOrEmpty(true))
             {
                 Anchors = new HashSet<uint>();
                 ChildReferences = new Dictionary<uint, HashSet<uint>>();

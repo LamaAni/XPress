@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using XPress.Coding;
 
 namespace XPress.Web.JavascriptClient
 {
@@ -48,17 +49,21 @@ namespace XPress.Web.JavascriptClient
         /// </summary>
         public virtual void ProcessJsonRequest(HttpContext context)
         {
+            CodeTimer timer = new CodeTimer();
             // Executing commands.
-            Request.Commands.ForEach(cmnd =>
+            IEnumerable<Core.XPressRequestCommand> commands = Request.Commands;
+            timer.Mark("Read commands");
+            commands.ForEach(cmnd =>
             {
                 cmnd.ExecuteCommand();
             });
-
+            timer.Mark("Executed commands");
             // Searching commnads that have a specific responce value and returning the responce values as a command to the client side.
             Request.Commands.Where(rq => rq.ResponseValue != null).ForEach(rq =>
             {
                 Response.ResponseValues[rq.CommandId.ToString()] = rq.ResponseValue;
             });
+            timer.Mark("Read responces");
         }
 
         /// <summary>

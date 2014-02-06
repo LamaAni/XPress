@@ -66,7 +66,7 @@ namespace XPress.Coding
             // writing internals
             timer.ForEach(kvp =>
             {
-                dic[kvp.Key] = kvp.Value;
+                dic[kvp.Key] = kvp.Value.TotalMilliseconds;
             });
             return dic;
         }

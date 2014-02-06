@@ -73,11 +73,6 @@
     <Compile Include="Razor\XPressRazorTemplateFactory.cs" />
     <Compile Include="Razor\XPressWebPageRazorHost.cs" />
     <Compile Include="Razor\Storage\XPressRazorCacheBanks.cs" />
-    <None Include="Controls\Services\Call\ControlsServiceCall.cs" />
-    <None Include="Controls\Services\IServiceAccesable.cs" />
-    <None Include="Controls\Services\IStorageProvider.cs" />
-    <None Include="Controls\Services\ControlsService.cs" />
-    <None Include="Controls\Services\ControlsServiceState.cs" />
     <Compile Include="Core\JSScriptResponce.cs" />
     <Compile Include="Core\XPressRequestCommand.cs" />
     <Compile Include="Core\XPressResponseCommand.cs" />

@@ -88,7 +88,7 @@ namespace XPress.Web.JavascriptClient.Request
             {
                 if (m_Commands == null)
                 {
-                    ReadCommandsFromBsonValue(JClientCallContext.Current.Client);
+                    ReadCommandsFromJsonValue(JClientCallContext.Current.Client);
                 }
                 return m_Commands;
             }
@@ -101,7 +101,7 @@ namespace XPress.Web.JavascriptClient.Request
         /// <summary>
         /// Reads the commands collection from the bason value of the specific command.
         /// </summary>
-        public void ReadCommandsFromBsonValue(JClient client)
+        public void ReadCommandsFromJsonValue(JClient client)
         {
             m_Commands = new List<Core.XPressRequestCommand>();
             if (CommandsSourceArray != null)
