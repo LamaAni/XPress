@@ -17,13 +17,13 @@ namespace XPress.Web.Controls
     /// </summary>
     [XPressMemberSelection(XPressMemberSelectionType.OptIn)]
     [XPressInheritedMemberSelection(XPressMemberSelectionType.Properties)]
-    public class RemoteControl : Html.HtmlElement, IRemoteControl
+    public class XPressControl : Html.HtmlElement, IXPressControl
     {
         /// <summary>
         /// Construct a new control. 
         /// </summary>
         /// <param name="tagName">Cannot be null.</param>
-        public RemoteControl(string tagName = "div")
+        public XPressControl(string tagName = "div")
             : base(tagName)
         {
             if (tagName == null)

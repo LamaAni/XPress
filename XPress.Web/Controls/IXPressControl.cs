@@ -10,8 +10,8 @@ namespace XPress.Web.Controls
     /// <summary>
     /// Implements an interface for the RemoteControl. Holds linked scripts.
     /// </summary>
-    [Links.Attributes.LinkScript("XPress.Web.Controls.RemoteControl.js", Links.LinkOrigin.Embedded, LoadType = LinkLoadType.HeadIfPossible, LoadIndex=10)]
-    public interface IRemoteControl
+    [Links.Attributes.LinkScript("XPress.Web.Controls.XPressControl.js", Links.LinkOrigin.Embedded, LoadType = LinkLoadType.HeadIfPossible, LoadIndex=10)]
+    public interface IXPressControl
     {
         /// <summary>
         /// If true this control needs to be rendered to the client side.

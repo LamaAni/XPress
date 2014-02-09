@@ -47,9 +47,9 @@
     <Compile Include="Controls\Client\ControlsClient.cs" />
     <Compile Include="Controls\Client\ControlsClientCall.cs" />
     <Compile Include="Controls\Client\ControlsClientType.cs" />
-    <Compile Include="Controls\IRemoteControl.cs" />
+    <Compile Include="Controls\IXPressControl.cs" />
     <Compile Include="Controls\Linq\RemoteControlExtentions.cs" />
-    <Compile Include="Controls\RemoteControl.cs" />
+    <Compile Include="Controls\XPressControl.cs" />
     <Compile Include="Controls\XPressPage.cs" />
     <Compile Include="Controls\XPressTemplate.cs" />
     <Compile Include="Extentions\JavascriptJsonExtentions.cs" />
@@ -164,7 +164,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\RemoteControl.js" />
+    <EmbeddedResource Include="Controls\XPressControl.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Core\GloablExtentions.js" />

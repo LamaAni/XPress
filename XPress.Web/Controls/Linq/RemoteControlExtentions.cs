@@ -19,8 +19,8 @@ namespace XPress.Web.Controls.Linq
         public static T UpdateClient<T>(this T c)
             where T : HtmlElement
         {
-            if (c is IRemoteControl)
-                (c as IRemoteControl).RequiresUpdate = true;
+            if (c is IXPressControl)
+                (c as IXPressControl).RequiresUpdate = true;
             else if (c.Parent != null)
             {
                 // try and get the parent to update.

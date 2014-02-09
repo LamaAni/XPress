@@ -43,6 +43,7 @@
     <Compile Include="Generic\Button.cs" />
     <Compile Include="Generic\ContextMenu.cs" />
     <Compile Include="Generic\Div.cs" />
+    <Compile Include="Generic\FloatingBox.cs" />
     <Compile Include="Generic\IGenericControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

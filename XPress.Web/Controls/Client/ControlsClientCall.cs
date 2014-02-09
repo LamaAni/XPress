@@ -33,8 +33,8 @@ namespace XPress.Web.Controls.Client
             // marking all controls that have been rendered as rendered.
             template.Invoke(c =>
             {
-                if (c is IRemoteControl)
-                    ((IRemoteControl)c).RequiresUpdate = false;
+                if (c is IXPressControl)
+                    ((IXPressControl)c).RequiresUpdate = false;
             }, true, BubbleDirection.ToChildren);
         }
 
@@ -46,7 +46,7 @@ namespace XPress.Web.Controls.Client
 
             // check for controls that need updating, and add the updating commands.
             HtmlElement[] allThatNeedUpdate =
-                Client.ReferenceBank.GetCachedObjects().Where(o => o is HtmlElement && o is IRemoteControl).Cast<IRemoteControl>().Where(rmc => rmc.RequiresUpdate).Cast<HtmlElement>().ToArray();
+                Client.ReferenceBank.GetCachedObjects().Where(o => o is HtmlElement && o is IXPressControl).Cast<IXPressControl>().Where(rmc => rmc.RequiresUpdate).Cast<HtmlElement>().ToArray();
             
             // checking for updating parents (if any).
             HtmlElement[] requireUpdate = allThatNeedUpdate.Where(c =>
@@ -60,9 +60,9 @@ namespace XPress.Web.Controls.Client
                     cur = cur.Parent;
                     if (cur == null)
                         return true;
-                    if (!(cur.Parent is IRemoteControl))
+                    if (!(cur.Parent is IXPressControl))
                         continue;
-                    if (((IRemoteControl)cur).RequiresUpdate)
+                    if (((IXPressControl)cur).RequiresUpdate)
                         return false;
                 }
                 return true;
@@ -103,7 +103,7 @@ namespace XPress.Web.Controls.Client
             });
 
             // marking all rendered as updated.
-            allThatNeedUpdate.Cast<IRemoteControl>().ForEach(c => c.RequiresUpdate = false);
+            allThatNeedUpdate.Cast<IXPressControl>().ForEach(c => c.RequiresUpdate = false);
             
         }
     }

@@ -13,7 +13,7 @@ namespace WebTester.Controls
     [LinkConstructor("~/Controls/constructor.js")]
     [LinkInitScript("~/Controls/initscript.js")]
     [LinkActivationEvent(XPress.Web.Links.ActivationEvent.ActiveContext)]
-    public class TestControl : RemoteControl
+    public class TestControl : XPressControl
     {
         public TestControl()
             : base("div")

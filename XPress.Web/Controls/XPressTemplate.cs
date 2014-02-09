@@ -34,7 +34,7 @@ namespace XPress.Web.Controls
             // marking all the first IRemoteControl children as roots.
             this.Invoke((el) =>
             {
-                if (el is IRemoteControl)
+                if (el is IXPressControl)
                 {
                     JavascriptClient.JClientCallContext.Current.Client.ReferenceBank.Store(el, true);
                     return BubbleContinueMode.DontContinueToChildren;

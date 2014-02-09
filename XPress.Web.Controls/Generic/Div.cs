@@ -10,7 +10,7 @@ namespace XPress.Web.Controls.Generic
     /// <summary>
     /// Implements a remote controlled div control that allows one to controls its internal html.
     /// </summary>
-    public class Div : Controls.RemoteControl
+    public class Div : Controls.XPressControl
     {
         public Div(string tagName="div")
             :base(tagName)

@@ -15,7 +15,7 @@ namespace XPress.Web.Controls.Generic
     /// Represents a generic html button. (with edit mode and edit selection, controlled by theaming).
     /// </summary>
     [XPress.Web.Links.Attributes.LinkConstructor("XPress.Web.Controls.Generic.Button.js", Links.LinkOrigin.Embedded)]
-    public class Button : RemoteControl, IGenericControl
+    public class Button : XPressControl, IGenericControl
     {
         public Button(string text = null, Action<object, EventArgs> onClick = null)
             : base("div")
