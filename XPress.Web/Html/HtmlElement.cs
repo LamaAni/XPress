@@ -63,6 +63,11 @@ namespace XPress.Web.Html
         }
 
         /// <summary>
+        /// True if the control has any attributes.
+        /// </summary>
+        public virtual bool HasAttributes { get { return m_attribs == null || m_attribs.Count == 0; } }
+
+        /// <summary>
         /// A style collection
         /// </summary>
         public Collections.StyleCollection Style

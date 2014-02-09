@@ -15,7 +15,7 @@ namespace XPress.Web.Controls.Generic
     /// </summary>
     [XPress.Web.Links.Attributes.LinkConstructor("XPress.Web.Controls.Generic.FloatingBox.js", Links.LinkOrigin.Embedded)]
     [XPress.Web.Links.Attributes.LinkScript("XPress.Web.Controls.Generic.FloatingBoxGlobals.js", Links.LinkOrigin.Embedded, LoadIndex=90)]
-    public class FloatingBox : XPress.Web.Controls.XPressControlTemplate
+    public class FloatingBox : XPress.Web.Controls.XPressControlTemplate, IGenericControl
     {
         /// <summary>
         /// Creates a floating box

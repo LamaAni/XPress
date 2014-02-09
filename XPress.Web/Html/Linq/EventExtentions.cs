@@ -96,9 +96,49 @@ namespace XPress.Web.Html.Linq
 
         #endregion
 
+        #region client events
+
+        /// <summary>
+        /// The event to run on the client.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="c"></param>
+        /// <param name="eventName"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static T OnClientEvent<T>(this T c, string eventName, string code)
+            where T : IQuery
+        {
+            eventName = eventName.Trim().ToLower();
+            eventName = eventName.StartsWith("on") ? eventName : "on" + eventName;
+            c.GetLinqEnumrable().ForEach(e =>
+                {
+                    if (e.HasAttributes && e.Attributes[eventName] != null)
+                        e.Attributes[eventName] += ";" + code;
+                    else e.Attributes[eventName] = code;
+                });
+            return c;
+        }
+
+        /// <summary>
+        /// The event to run on the client.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="c"></param>
+        /// <param name="eventName"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static T OnClientEvent<T>(this T c, ClientHtmlEvents ev, string code)
+            where T : IQuery
+        {
+            return c.OnClientEvent(c.ToString(), code);
+        }
+
+        #endregion
+
         #region event invocation
 
-                /// <summary>
+        /// <summary>
         /// Calls a specific event on the query.
         /// </summary>
         /// <param name="q">The query</param>
@@ -143,7 +183,7 @@ namespace XPress.Web.Html.Linq
 
         #endregion
 
-        #region Tree commands
+        #region Events tree commands
 
         /// <summary>
         /// Invokes all the controls in the current invocation list. All controls are only invoked once.
@@ -222,6 +262,198 @@ namespace XPress.Web.Html.Linq
         }
 
         #endregion
+    }
+
+    public enum ClientHtmlEvents
+    {
+        /// <summary>
+        /// Fires the moment that the element loses focus
+        /// </summery>
+        onblur,
+        /// <summary>
+        /// Fires the moment when the value of the element is changed
+        /// </summery>
+        onchange,
+        /// <summary>
+        /// Script to be run when a context menu is triggered
+        /// </summery>
+        oncontextmenuNew,
+        /// <summary>
+        /// Fires the moment when the element gets focus
+        /// </summery>
+        onfocus,
+        /// <summary>
+        /// Script to be run when a form changes
+        /// </summery>
+        onformchangeNew,
+        /// <summary>
+        /// Script to be run when a form gets user input
+        /// </summery>
+        onforminputNew,
+        /// <summary>
+        /// Script to be run when an element gets user input
+        /// </summery>
+        oninputNew,
+        /// <summary>
+        /// Script to be run when an element is invalid
+        /// </summery>
+        oninvalidNew,
+        /// <summary>
+        /// Fires when the Reset button in a form is clicked
+        /// </summery>
+        onreset,
+        /// <summary>
+        /// Fires after some text has been selected in an element, Not supported in HTML5
+        /// </summery>
+        onselect,
+        /// <summary>
+        /// Fires when a form is submitted, Not supported in HTML5
+        /// </summery>
+        onsubmit,
+        /// <summary>
+        /// Fires on a mouse click on the element
+        /// </summery>
+        onclick,
+        /// <summary>
+        /// Fires on a mouse double-click on the element
+        /// </summery>
+        ondblclick,
+        /// <summary>
+        /// Script to be run when an element is dragged
+        /// </summery>
+        ondragNew,
+        /// <summary>
+        /// Script to be run at the end of a drag operation
+        /// </summery>
+        ondragendNew,
+        /// <summary>
+        /// Script to be run when an element has been dragged to a valid drop target
+        /// </summery>
+        ondragenterNew,
+        /// <summary>
+        /// Script to be run when an element leaves a valid drop target
+        /// </summery>
+        ondragleaveNew,
+        /// <summary>
+        /// Script to be run when an element is being dragged over a valid drop target
+        /// </summery>
+        ondragoverNew,
+        /// <summary>
+        /// Script to be run at the start of a drag operation
+        /// </summery>
+        ondragstartNew,
+        /// <summary>
+        /// Script to be run when dragged element is being dropped
+        /// </summery>
+        ondropNew,
+        /// <summary>
+        /// Fires when a mouse button is pressed down on an element
+        /// </summery>
+        onmousedown,
+        /// <summary>
+        /// Fires when the mouse pointer moves over an element
+        /// </summery>
+        onmousemove,
+        /// <summary>
+        /// Fires when the mouse pointer moves out of an element
+        /// </summery>
+        onmouseout,
+        /// <summary>
+        /// Fires when the mouse pointer moves over an element
+        /// </summery>
+        onmouseover,
+        /// <summary>
+        /// Fires when a mouse button is released over an element
+        /// </summery>
+        onmouseup,
+        /// <summary>
+        /// Script to be run when the mouse wheel is being rotated
+        /// </summery>
+        onmousewheelNew,
+        /// <summary>
+        /// Script to be run when an element's scrollbar is being scrolled
+        /// </summery>
+        onscrollNew,
+        /// <summary>
+        /// Fires when a user is pressing a key
+        /// </summery>
+        onkeydown,
+        /// <summary>
+        /// Fires when a user presses a key
+        /// </summery>
+        onkeypress,
+        /// <summary>
+        /// Fires when a user releases a key
+        /// </summery>
+        onkeyup,
+        /// <summary>
+        /// Script to be run after the document is printed
+        /// </summery>
+        onafterprintNew,
+        /// <summary>
+        /// Script to be run before the document is printed
+        /// </summery>
+        onbeforeprintNew,
+        /// <summary>
+        /// Script to be run before the document is unloaded
+        /// </summery>
+        onbeforeunloadNew,
+        /// <summary>
+        /// Script to be run when an error occur
+        /// </summery>
+        onerrorNew,
+        /// <summary>
+        /// Script to be run when the document has changed
+        /// </summery>
+        onhaschangeNew,
+        /// <summary>
+        /// Fires after the page is finished loading
+        /// </summery>
+        onload,
+        /// <summary>
+        /// Script to be run when the message is triggered
+        /// </summery>
+        onmessageNew,
+        /// <summary>
+        /// Script to be run when the document goes offline
+        /// </summery>
+        onofflineNew,
+        /// <summary>
+        /// Script to be run when the document comes online
+        /// </summery>
+        ononlineNew,
+        /// <summary>
+        /// Script to be run when the window is hidden
+        /// </summery>
+        onpagehideNew,
+        /// <summary>
+        /// Script to be run when the window becomes visible
+        /// </summery>
+        onpageshowNew,
+        /// <summary>
+        /// Script to be run when the window's history changes
+        /// </summery>
+        onpopstateNew,
+        /// <summary>
+        /// Script to be run when the document performs a redo
+        /// </summery>
+        onredoNew,
+        /// <summary>
+        /// Fires when the browser window is resized
+        /// </summery>
+        onresizeNew,
+        /// <summary>
+        /// Script to be run when a Web Storage area is updated
+        /// </summery>
+        onstorageNew,
+        /// <summary>
+        /// Script to be run when the document performs an undo
+        /// </summery>
+        onundoNew,
+        /// <summary>
+        /// Fires once a page has unloaded (or the browser window has been closed)
+        /// </summery>
+        onunload,
     }
 
 }

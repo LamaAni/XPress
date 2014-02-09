@@ -3,7 +3,6 @@
         // registering the floating box.
         $.XPress.Floating.RegisterBox(this);
         $(this).css("display", "none").css("position", "fixed");
-        console.log("registered floating box.");
     },
     // shows the float.
     Show: function (doShow) {
@@ -28,7 +27,7 @@
         $(this).css("display", "none");
     },
     // Moves the control near another control.
-    MoveNear: function () {
+    MoveNear: function (ctrl, left, top) {
 
     }
 });

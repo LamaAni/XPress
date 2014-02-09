@@ -183,3 +183,8 @@ $.extend($, {
         return timer;
     }
 });
+
+// Added function mapping methods.
+$.extend($.fn, {
+
+});

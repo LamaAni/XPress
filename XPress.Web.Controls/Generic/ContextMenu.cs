@@ -14,7 +14,7 @@ namespace XPress.Web.Controls.Generic
     /// Implements a context menu control.
     /// </summary>
     [XPress.Web.Links.Attributes.LinkConstructor("XPress.Web.Controls.Generic.ContextMenu.js", Links.LinkOrigin.Embedded)]
-    public class ContextMenu : XPress.Web.Controls.XPressControl
+    public class ContextMenu : XPress.Web.Controls.XPressControl, IGenericControl
     {
         public ContextMenu()
             :base("div")

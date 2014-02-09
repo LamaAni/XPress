@@ -7,8 +7,9 @@ using XPress.Web.Links;
 
 namespace XPress.Web.Controls.Generic
 {
+    
     [XPress.Web.Links.Attributes.LinkCss("XPress.Web.Controls.Generic.Generic.css", Origin = LinkOrigin.Embedded)]
-    public interface IGenericControl
+    public interface IGenericControl : IXPressUIControl
     {
     }
 }
