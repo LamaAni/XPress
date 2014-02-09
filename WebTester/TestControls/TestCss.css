@@ -1,7 +1,23 @@
 ﻿body {
 }
 
-.SomeClass
-{
-    background-color:cyan;
+.testc {
+
+}
+
+.insert {
+	color:red;
+	font-size:10.5pt;
+	font-family:Arial;
+    background-color:lightcyan;
+    box-sizing:border-box;
+    padding:2px;
+    margin:0px 10px;
+}
+
+.insertcontainer:hover {
+             background-color: lightgreen;
+            //-webkit-transition: all 1s ease-in-out;
+            //-ms-transition: all 1s ease-in-out;
+            //-moz-transition: all 1s ease-in-out;
 }
