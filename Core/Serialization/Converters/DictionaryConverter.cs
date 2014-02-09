@@ -23,7 +23,9 @@ namespace XPress.Serialization.Converters
             IDictionaryEnumerator dicEnum = o.GetEnumerator();
             while (dicEnum.MoveNext())
             {
-                val.Add(new JsonPair<T>(context.GetJsonValue(dicEnum.Key, dicEnum.Key.GetType()), context.GetJsonValue(dicEnum.Value, dicEnum.Value.GetType())));
+                val.Add(new JsonPair<T>(
+                    context.GetJsonValue(dicEnum.Key, dicEnum.Key == null ? typeof(Nullable) : dicEnum.Key.GetType()), 
+                    context.GetJsonValue(dicEnum.Value, dicEnum.Value == null ? typeof(Nullable) : dicEnum.Value.GetType())));
             }
         }
 

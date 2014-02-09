@@ -21,6 +21,8 @@ namespace XPress.Web.Html.Linq
         {
             if (q.GetLinqEnumrable().IsEmpty())
                 return null;
+            if (name == "id")
+                return q.GetLinqEnumrable().First().Id;
             return q.GetLinqEnumrable().First().Attributes[name];
         }
 
@@ -34,6 +36,8 @@ namespace XPress.Web.Html.Linq
         public static T Attr<T>(this T q, string name, string value)
             where T : IQuery
         {
+            if (name.ToLower() == "id")
+                throw new Exception("Cannot set the attribute id using the attrib extention or the attributes collection, this value must be set directly on the object (using Id()).");
             q.GetLinqEnumrable().ForEach(c => c.Attributes[name] = value);
             return q;
         }
@@ -63,12 +67,52 @@ namespace XPress.Web.Html.Linq
 
         #region specific attributes
 
+        /// <summary>
+        /// Returns the element id.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="q"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static string Id<T>(this T q)
+            where T : IQuery
+        {
+            return q.GetLinqEnumrable().First().Id;
+        }
+
+        /// <summary>
+        /// Sets the element id
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="q"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static T Id<T>(this T q, string value)
+            where T : IQuery
+        {
+            q.GetLinqEnumrable().First().Id = value;
+            return q;
+        }
+
+        /// <summary>
+        /// Returns the element class
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="q"></param>
+        /// <returns></returns>
         public static string Class<T>(this T q)
             where T : IQuery
         {
             return q.Attr("class");
         }
 
+        /// <summary>
+        /// Sets the element class.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="q"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static T Class<T>(this T q, string name)
             where T : IQuery
         {

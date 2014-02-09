@@ -104,7 +104,6 @@ namespace XPress.Web.Controls.Client
 
             // marking all rendered as updated.
             allThatNeedUpdate.Cast<IXPressControl>().ForEach(c => c.RequiresUpdate = false);
-            
         }
     }
 }

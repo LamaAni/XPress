@@ -17,5 +17,10 @@ namespace XPress.Web.Controls
         /// If true this control needs to be rendered to the client side.
         /// </summary>
         bool RequiresUpdate { get; set; }
+
+        /// <summary>
+        /// The call context associated with the client.
+        /// </summary>
+        JavascriptClient.JClientCallContext CallContext { get; }
     }
 }

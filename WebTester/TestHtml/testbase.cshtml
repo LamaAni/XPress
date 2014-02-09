@@ -35,5 +35,11 @@
     Loading internal:<br />
     @(new TestControl())
     @InsertAutoPageInit()
+    @Open(new XPress.Web.Controls.Generic.FloatingBox()).Class("FloatBack").Css("left", "100px", "top", "100px").Attr("onclick", "$$(this);this.Show();")
+    This is some html content for first floating box, Click to make this the top box.
+    @Close()
+    @Open(new XPress.Web.Controls.Generic.FloatingBox()).Class("FloatBack").Css("left", "120px", "top", "120px").Attr("onclick", "$$(this);this.Show();")
+    This is some html content for second floating box, Click to make this the top box.
+    @Close()
 </body>
 </html>

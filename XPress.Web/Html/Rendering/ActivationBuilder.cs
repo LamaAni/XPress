@@ -85,6 +85,10 @@ namespace XPress.Web.Html.Rendering
             // adding the activation
             if (NeedsActivation)
             {
+                // need to validate the control has an id.
+                if (element.Id == null)
+                    element.Id = writer.ObjectSource.GetObjectId(element).ToString();
+
                 revertAttribs = new List<Tuple<string, string>>();
                 // writing the activation for the html element.
                 element.Attributes["_bc"] = Commands.ToJSJson().EscapeForHtmlAttribute();
@@ -94,7 +98,7 @@ namespace XPress.Web.Html.Rendering
                     string id = element.Attributes["id"];
                     if (id == null)
                         throw new Exception("Cannot initialize an HtmlElement that has no id using link activation: Links.ActivationEvent.OnUpdate.");
-                    writer.InitCommands.Add(new Core.JSScriptResponce("$$($.FromId(\"" + id.EscapeForJS() + "\"));", Core.CommandExecutionType.Post));
+                    writer.InitCommands.Add(new Core.JScriptCommandResponce("$$($.FromId(\"" + id.EscapeForJS() + "\"));", Core.CommandExecutionType.Post));
                 }
                 else
                 {

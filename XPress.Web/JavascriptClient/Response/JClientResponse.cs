@@ -69,6 +69,18 @@ namespace XPress.Web.JavascriptClient.Response
             }
         }
 
+        [XPressIgnore]
+        Dictionary<string, XPressResponseCommand> m_CommandsByUniqueId = new Dictionary<string, XPressResponseCommand>();
+
+        /// <summary>
+        /// A collection of responce commands by name, that need to be added to the collection of responces.
+        /// </summary>
+        [XPressIgnore]
+        public Dictionary<string, XPressResponseCommand> CommandsByUniqueId
+        {
+            get { return m_CommandsByUniqueId; }
+        }
+
         [XPressMember("sys")]
         [XPressIgnore(XPressIgnoreMode.IfNull)]
         List<XPressResponseCommand> m_systemCommands;
@@ -133,6 +145,9 @@ namespace XPress.Web.JavascriptClient.Response
         /// <returns></returns>
         public string RenderResponse()
         {
+            // preparing the commands by name collection.
+            this.Commands.AddRange(CommandsByUniqueId.Values);
+            CommandsByUniqueId.Clear();
             return this.ToJSJson();
         }
 

@@ -104,6 +104,8 @@ namespace XPress.Web.Html.Collections
                 name = name.ToLower();
                 if (name == "style")
                     return Style.Value;
+                else if (name == "id")
+                    throw new Exception("The id of the html element cannot be set/get through the attributes collection and must be set directly on the element or by using the 'Id' extention method.");
                 return GetValue(name);
             }
             set
@@ -111,6 +113,8 @@ namespace XPress.Web.Html.Collections
                 name = name.ToLower();
                 if (name == "style")
                     Style.Value = value;
+                else if (name == "id")
+                    throw new Exception("The id of the html element cannot be set/get through the attributes collection and must be set directly on the element or by using the 'Id' extention method.");
                 else SetValue(name, value);
             }
         }

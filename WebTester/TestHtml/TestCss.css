@@ -4,3 +4,12 @@
 .SomeClass{
     background-color:yellow;
 }
+
+.FloatBack
+{
+    border:1px solid black;
+    background-color:white;
+    border-radius:3px;
+    padding:8px;
+    box-shadow:rgba(137, 78, 78, 0.64) 3px 3px;
+}

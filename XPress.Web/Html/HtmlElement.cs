@@ -25,6 +25,15 @@ namespace XPress.Web.Html
         #region Members
 
         /// <summary>
+        /// The client id that will be used when the object is rendered.
+        /// </summary>
+        public virtual string Id
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// The current http context.
         /// </summary>
         public System.Web.HttpContext Context { get { return System.Web.HttpContext.Current; } }
@@ -81,7 +90,7 @@ namespace XPress.Web.Html
             if (builder.LinksInfo.RequiresActivation)
                 // creating the initialziation command. (if any).
                 builder.Commands.Add(
-                    new Core.JSScriptResponce(Links.Compilers.JSCompiler.Global.CreateInitCode(builder.LinksInfo), Core.CommandExecutionType.Post));
+                    new Core.JScriptCommandResponce(Links.Compilers.JSCompiler.Global.CreateInitCode(builder.LinksInfo), Core.CommandExecutionType.Post));
 
             // check if need to construct the object client side defention
             if (builder.JComInfo.RequiresDataObject)

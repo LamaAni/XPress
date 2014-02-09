@@ -97,6 +97,12 @@ namespace XPress.Web.Html.Rendering
         {
             WriteTagName(element);
             Write(" ");
+            if (element.Id != null)
+            {
+                Write("id=\"");
+                Write(element.Id);
+                Write("\" ");
+            }
             if (withAttributes)
                 WriteAttributes(element, element.Attributes);
             Write(">");
@@ -157,14 +163,17 @@ namespace XPress.Web.Html.Rendering
 
         #region IJComObjectSource Members
 
+        ulong curId = 0;
+
         public ulong GetObjectId(object o)
         {
-            return 0;
+            curId += 1;
+            return curId;
         }
 
         public object GetObject(uint id)
         {
-            return 0;
+            throw new Exception("Cannot return the object in a dummy generate");
         }
 
         #endregion

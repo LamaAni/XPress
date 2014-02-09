@@ -50,6 +50,7 @@
     <Compile Include="Controls\IXPressControl.cs" />
     <Compile Include="Controls\Linq\RemoteControlExtentions.cs" />
     <Compile Include="Controls\XPressControl.cs" />
+    <Compile Include="Controls\XPressControlTemplate.cs" />
     <Compile Include="Controls\XPressPage.cs" />
     <Compile Include="Controls\XPressTemplate.cs" />
     <Compile Include="Extentions\JavascriptJsonExtentions.cs" />

@@ -9,9 +9,9 @@ namespace XPress.Web.Core
     /// <summary>
     /// A command to execute a script on the client side.
     /// </summary>
-    public class JSScriptResponce : Core.XPressResponseCommand
+    public class JScriptCommandResponce : Core.XPressResponseCommand
     {
-        public JSScriptResponce(string code, CommandExecutionType type = CommandExecutionType.Post)
+        public JScriptCommandResponce(string code, CommandExecutionType type = CommandExecutionType.Post)
             : base("script", type)
         {
             Code = code;

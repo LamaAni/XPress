@@ -34,40 +34,27 @@ namespace XPress.Web.Controls
         #region members
 
         /// <summary>
-        /// A collection of attributes of the control. Id and style attributes are handled internally.
+        /// The call context associated with the client.
         /// </summary>
-        public override Html.Collections.AttributeCollection Attributes
-        {
-            get
-            {
-                return base.Attributes;
-            }
-        }
+        public virtual JavascriptClient.JClientCallContext CallContext { get { return JavascriptClient.JClientCallContext.Current; } }
 
         /// <summary>
         /// The client id that will be used when the object is rendered.
         /// </summary>
-        public ulong ClientId
+        public override string Id
         {
             get
             {
-                return JavascriptClient.JClientCallContext.Current.Client.ReferenceBank.Store(this);
+                if (JavascriptClient.JClientCallContext.Current == null)
+                    return base.Id;
+                return JavascriptClient.JClientCallContext.Current.Client.ReferenceBank.Store(this).ToString();
             }
-        }
-
-        #endregion
-
-        #region overriden members
-
-        /// <summary>
-        /// Called when the object is pre rendered.
-        /// </summary>
-        /// <param name="writer"></param>
-        public override void PreRender(Html.Rendering.HtmlWriter writer)
-        {
-            if (this.Attr("id") == null)
-                this.Attr("id", writer.ObjectSource.GetObjectId(this).ToString());
-            base.PreRender(writer);
+            set
+            {
+                if (JavascriptClient.JClientCallContext.Current == null)
+                    base.Id = value;
+                else throw new Exception("The id for a remote control cannot be set (not implemented), please use the auto generated id.");
+            }
         }
 
         #endregion
