@@ -19,6 +19,8 @@ namespace XPress.Web.Razor
             this.NamespaceImports.Clear();
             this.NamespaceImports.Add("XPress.Web");
             this.NamespaceImports.Add("XPress.Web.Controls");
+            this.NamespaceImports.Add("XPress.Web.Html.Linq");
+            this.NamespaceImports.Add("XPress.Web.Controls.Linq");
         }
 
         public override System.Web.Razor.Parser.ParserBase DecorateCodeParser(System.Web.Razor.Parser.ParserBase incomingCodeParser)

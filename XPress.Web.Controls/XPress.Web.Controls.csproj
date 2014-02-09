@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Generic\Button.cs" />
+    <Compile Include="Generic\ContextMenu.cs" />
     <Compile Include="Generic\Div.cs" />
     <Compile Include="Generic\IGenericControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,6 +59,9 @@
       <Project>{e13bc0fe-af80-4d63-8a29-1b71a21c0ca1}</Project>
       <Name>XPress.Web</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Generic\ContextMenu.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

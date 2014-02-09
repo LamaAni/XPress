@@ -90,6 +90,7 @@ namespace XPress.Web.Html.Linq
             { 
                 c.Events.UnBind(info);
             }
+
             return q;
         }
 
@@ -217,7 +218,7 @@ namespace XPress.Web.Html.Linq
         public static T Invoke<T>(this T q, object sender, EventArgs e, EventInfo info, bool once = true, BubbleDirection dir = BubbleDirection.ToParent)
              where T : HtmlElement
         {
-            return q.Invoke((on) => { on.Events.Trigger(sender, e, info); return true; }, once, dir);
+            return q.Invoke((on) => { on.Events.Trigger(sender, e, info); }, once, dir);
         }
 
         #endregion

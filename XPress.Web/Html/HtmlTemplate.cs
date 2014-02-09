@@ -374,7 +374,6 @@ namespace XPress.Web.Html
                 Type t = el.GetType();
                 if (!types.Contains(t))
                     types.Add(t);
-                return true;
             }, true, BubbleDirection.ToChildren);
 
             // adding the type commands.

@@ -35,7 +35,6 @@ namespace XPress.Web.Controls.Client
             {
                 if (c is IRemoteControl)
                     ((IRemoteControl)c).RequiresUpdate = false;
-                return true;
             }, true, BubbleDirection.ToChildren);
         }
 
@@ -76,7 +75,6 @@ namespace XPress.Web.Controls.Client
                 Type t= el.GetType();
                 if(!loadedTypes.Contains(t))
                     loadedTypes.Add(t);
-                return true;
             }, true, BubbleDirection.ToChildren);
 
             // Calling to update client type definitions.

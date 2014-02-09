@@ -37,9 +37,9 @@ namespace XPress.Web.Controls
                 if (el is IRemoteControl)
                 {
                     JavascriptClient.JClientCallContext.Current.Client.ReferenceBank.Store(el, true);
-                    return false;
+                    return BubbleContinueMode.DontContinueToChildren;
                 }
-                else return true;
+                else return BubbleContinueMode.Continue;
             }, true, BubbleDirection.ToChildren);
         }
 

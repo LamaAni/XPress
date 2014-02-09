@@ -94,5 +94,6 @@ namespace XPress.Web.Html.Linq
             HttpContext context = c.HttpContext();
             return context == null ? null : context.Session;
         }
+
     }
 }
