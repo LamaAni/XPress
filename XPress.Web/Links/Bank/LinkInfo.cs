@@ -31,6 +31,12 @@ namespace XPress.Web.Links.Bank
         Func<string> m_getLinkBody = null;
 
         string m_contentType, m_fileExtention, m_sourceMD5;
+
+        /// <summary>
+        /// If true then the current link is valid. (if null then ignore).
+        /// </summary>
+        Func<bool> m_getLinkValidity = null;
+
         Encoding m_sourceEncoding;
 
         #endregion
@@ -43,10 +49,14 @@ namespace XPress.Web.Links.Bank
         /// </summary>
         public void ValidateLink(HttpContext context)
         {
-            if (m_getLinkBody != null)
+            bool needGenerateLink = false;
+            if (m_getLinkBody == null || (m_getLinkValidity != null && !m_getLinkValidity()))
+                needGenerateLink = true;
+
+            if (!needGenerateLink)
                 return;
 
-            StringBuilder source = GetStringSource(context);
+            StringBuilder source = GetStringSource(context, out m_getLinkValidity);
 
             m_contentType = "text/javascript";
             m_sourceEncoding = Encoding.UTF8;
@@ -129,10 +139,11 @@ namespace XPress.Web.Links.Bank
                 };
         }
 
-        private StringBuilder GetStringSource(HttpContext context)
+        private StringBuilder GetStringSource(HttpContext context, out Func<bool> getLinkValidity)
         {
             LinkOrigin actualOrigin = Link.Origin;
             StringBuilder source = new StringBuilder();
+            getLinkValidity = () => true;
             switch(actualOrigin)
             {
                 case LinkOrigin.AsIs:
@@ -142,17 +153,20 @@ namespace XPress.Web.Links.Bank
                     break;
                 case LinkOrigin.File:
                                     // Create a new WebClient instance.
-                if (Link.Url.StartsWith("http://"))
-                    using (System.Net.WebClient myWebClient = new System.Net.WebClient())
+                    if (Link.Url.StartsWith("http://"))
+                        using (System.Net.WebClient myWebClient = new System.Net.WebClient())
+                        {
+                            // Download the Web resource and save it into the current filesystem folder.
+                            source.Append(TrimExtras(myWebClient.DownloadString(Link.Url), this.Link.Type));
+                        }
+                    else
                     {
-                        // Download the Web resource and save it into the current filesystem folder.
-                        source.Append(TrimExtras(myWebClient.DownloadString(Link.Url), this.Link.Type));
+                        // mapping to the correct path.
+                        string filePath = context.Server.MapPath(Link.Url);
+                        DateTime dt = File.GetLastWriteTime(filePath);
+                        getLinkValidity = () => File.GetLastWriteTime(filePath) == dt;
+                        source.Append(TrimExtras(File.ReadAllText(filePath), this.Link.Type));
                     }
-                else
-                {
-                    string filePath = context.Server.MapPath(Link.Url);
-                    source.Append(TrimExtras(File.ReadAllText(filePath), this.Link.Type));
-                }
                     break;
                 default:
                                     if (Link.ParentType == null)

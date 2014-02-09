@@ -26,13 +26,13 @@
     </style>
 </head>
 <body>
+    <div class="SomeClass">asdsd</div>
     @Open(new HtmlElement("div")).Css("color", "red", "font-size", "18.5pt", "padding", "5px").Attr("me", "ok").Class("testc")
     This is internal text within the div.
     @Close()
     This is a test page for html generation.
     <br />
     Loading internal:<br />
-    @this.Load("testbaseinternal.cshtml").TagName("div").Css("color", "red", "font-size", "10.5pt", "padding", "5px","font-family","Arial").Class("testc")
     @(new TestControl())
     @InsertAutoPageInit()
 </body>

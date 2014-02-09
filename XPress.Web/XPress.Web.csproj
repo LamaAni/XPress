@@ -53,6 +53,7 @@
     <Compile Include="Controls\XPressPage.cs" />
     <Compile Include="Controls\XPressTemplate.cs" />
     <Compile Include="Extentions\JavascriptJsonExtentions.cs" />
+    <Compile Include="Links\Attributes\LinkFilesRootUrl.cs" />
     <Compile Include="Razor\Code\XPressAttribCodeGenerator.cs" />
     <Compile Include="Razor\Code\XPressCodeGenerator.cs" />
     <Compile Include="Razor\Code\XPressCodeParser.cs" />

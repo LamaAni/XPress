@@ -1,0 +1,20 @@
+{
+	^tp#"XPress.StorageBank.BankStorageSingleValueUnit, XPress, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null":null,
+	"Id":"jclient.jsEVGYvPFpQOcNMfpKFf.state",
+	"IsCached":false,
+	"KeepInMemoryInterval":{
+		^tp#"System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089":null,
+		"_ticks":0
+	},
+	"LastAccessed":#"dt"#-62135596800000,
+	"LastDeserialized":#"dt"#-62135596800000,
+	"Value":{
+		^tp#"XPress.Web.JavascriptClient.JClientState, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null":null,
+		"ClientId":"jclient.jsEVGYvPFpQOcNMfpKFf.state.LoYzBTjK9xXl17xYqh4z.client",
+		"ExecutingRequestId":0,
+		"HasPendingResponses":false,
+		"IsInWaitForResponseMode":false,
+		"LastHartbeat":#"dt"#1391907492251,
+		"LastRequestId":0
+	}
+}

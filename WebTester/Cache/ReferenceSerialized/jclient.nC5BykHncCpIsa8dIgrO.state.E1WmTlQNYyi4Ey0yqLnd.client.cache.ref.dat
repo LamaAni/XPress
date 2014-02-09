@@ -1,0 +1,48 @@
+3
+☺
+0
+☺
+0:1,1:2
+☺
+{
+	"cid":4,
+	"typeinfo":[
+		0,
+		"System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		1,
+		"System.Collections.Generic.ObjectEqualityComparer`1[[System.Type, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		2,
+		"System.Collections.Generic.HashSet`1[[System.Type, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+		3,
+		"XPress.Web.Controls.Client.ControlsClient, XPress.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+	]
+}
+☺
+0
+☺
+{
+	^tp#3:null,
+	"ClientStateId":"jclient.nC5BykHncCpIsa8dIgrO.state",
+	"LoadedTypeDefs":#"_rid"#1
+}
+☺
+1
+☺
+[
+	^tp#2,
+	"Version",
+	#"t"#0,
+	0,
+	"Comparer",
+	#"t"#1,
+	#"_rid"#2,
+	"Capacity",
+	#"t"#0,
+	0
+]
+☺
+2
+☺
+{
+	^tp#1:null
+}

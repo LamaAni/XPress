@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using XPress.Strings;
 
 namespace XPress.Web.Links
 {
@@ -20,7 +21,7 @@ namespace XPress.Web.Links
         {
             // getting the link id.
             string linkMD5 = context.Request.Unvalidated["lid"];
-            if (linkMD5 == null)
+            if (linkMD5.IsNullOrEmpty(false))
                 throw new Exception("Cannot find link id");
             Bank.LinkBank.Global.WriteAsLinkResponse(context, linkMD5);
             context.Response.Cache.SetCacheability(HttpCacheability.Private);
@@ -35,6 +36,7 @@ namespace XPress.Web.Links
         public static string WriteLinkCommand(string uid, HttpContext context)
         {
             Bank.LinkInfo info = Bank.LinkBank.Global.GetLinkInfo(uid);
+            info.ValidateLink(context);
             return WriteLinkCommand(info, context);
         }
 

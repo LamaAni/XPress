@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,9 +14,11 @@ namespace XPress.Web.Razor
         public XPressWebPageRazorHost(string virtualPath, string physicalPath)
             : base(virtualPath, physicalPath)
         {
-            this.DefaultPageBaseClass = "XPress.Web.Controls.Template";
+            this.DefaultPageBaseClass = "XPress.Web.Controls.XPressPage";
             this.DefaultBaseClass = "XPress.Web.Controls.Template";
             this.NamespaceImports.Clear();
+            this.NamespaceImports.Add("XPress.Web");
+            this.NamespaceImports.Add("XPress.Web.Controls");
         }
 
         public override System.Web.Razor.Parser.ParserBase DecorateCodeParser(System.Web.Razor.Parser.ParserBase incomingCodeParser)
@@ -34,6 +37,12 @@ namespace XPress.Web.Razor
 
         public override void PostProcessGeneratedCode(System.Web.Razor.Generator.CodeGeneratorContext context)
         {
+            // parsing the virtual path
+            string partialPath = this.VirtualPath.Substring(0, this.VirtualPath.LastIndexOf("/"));
+            // adding attribute decleration to class for partial file paths.
+            CodeAttributeDeclaration dec = new CodeAttributeDeclaration("XPress.Web.Links.Attributes.LinkFilesRootUrl",
+                new CodeAttributeArgument(new CodeSnippetExpression("\"" + partialPath + "\"")));
+            context.GeneratedClass.CustomAttributes.Add(dec);
             base.PostProcessGeneratedCode(context);
         }
     }

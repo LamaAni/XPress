@@ -12,7 +12,6 @@ namespace XPress.Web.Razor.Code
         public XPressCodeGenerator(string className, string rootNamesapce, string sourceFileName, System.Web.Razor.RazorEngineHost host)
             : base(className, rootNamesapce, sourceFileName, host)
         {
-            //this.
         }
     }
 }

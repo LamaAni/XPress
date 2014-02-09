@@ -48,6 +48,7 @@ namespace XPress.Web.Links.Attributes
 
             // adding the links.
             m_links = allAttribs.ToArray();
+            m_fileLinksWithPartialUrl = m_links.Where(l => l.IsPartialFileUrl).ToArray();
             m_linksThatNeedActivation = allAttribs.Where(la => la.ForceActivation || la.Type == LinkType.Constructor || la.Type == LinkType.InitScriptFunction).ToArray();
 
             //// finding post collection if any is defined.
@@ -59,29 +60,33 @@ namespace XPress.Web.Links.Attributes
 
             // check for activation.
             this.RequiresActivation = m_linksThatNeedActivation.Length > 0;
+
+            // finding root url.
+            this.RootUrl = Attribute.IsDefined(MappedType, typeof(LinkFilesRootUrlAttribute)) ?
+                (LinkFilesRootUrlAttribute)Attribute.GetCustomAttribute(MappedType, typeof(LinkFilesRootUrlAttribute)) : null;
+
+            if (m_fileLinksWithPartialUrl.Length > 0)
+            {
+                if (RootUrl == null)
+                    throw new Exception("Found link files with partial url, where the class the files are linked to is missing the XPress.Web.Links.Attributes.LinksFileRootUrl attibute. This attribute provides the directory from where to load partial urls.");
+
+                m_fileLinksWithPartialUrl.ForEach(l => l.ValidateRootUrl(RootUrl));
+            }
         }
 
-        //private System.Reflection.MethodInfo FindPostCollection()
-        //{
-        //    System.Reflection.MethodInfo pcm =
-        //        Type.GetMethods(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic)
-        //        .Where(m => Attribute.IsDefined(m, typeof(LinkPostCollectAttribute))).FirstOrDefault();
+        /// <summary>
+        /// The root url associated with the type. Non inherited.
+        /// </summary>
+        public LinkFilesRootUrlAttribute RootUrl { get; private set; }
 
-        //    if (pcm != null)
-        //    {
-        //        // need activation.
-        //        System.Reflection.ParameterInfo[] prs = pcm.GetParameters();
-        //        if (prs.Length != 1 || !typeof(LinkCollector).IsAssignableFrom(prs[0].ParameterType))
-        //            throw new Exception("Post collect links attribute must recive only one parameter of type LinkCollector");
-        //    }
-
-        //    return pcm;
-        //}
-
-        //public System.Reflection.MethodInfo PostCollectionFunction { get; private set; }
-
+        /// <summary>
+        /// The activation event associated with the type.
+        /// </summary>
         public LinkActivationEventAttribute Activation { get; private set; }
 
+        /// <summary>
+        /// The type that was mapped.
+        /// </summary>
         public Type MappedType { get; protected set; }
 
         LinkAttribute[] m_links;
@@ -89,6 +94,13 @@ namespace XPress.Web.Links.Attributes
         public IReadOnlyList<LinkAttribute> Links
         {
             get { return m_links; }
+        }
+
+        LinkAttribute[] m_fileLinksWithPartialUrl;
+
+        public LinkAttribute[] FileLinksWithPartialUrl
+        {
+            get { return m_fileLinksWithPartialUrl; }
         }
 
         LinkAttribute[] m_linksThatNeedActivation;

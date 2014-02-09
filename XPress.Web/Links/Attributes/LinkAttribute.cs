@@ -19,7 +19,7 @@ namespace XPress.Web.Links.Attributes
         /// </param>
         public LinkAttribute(string url, LinkOrigin origin = LinkOrigin.File)
         {
-            m_Url = url;
+            m_Url = url.Trim();
             Type = LinkType.Script;
             LoadType = LinkLoadType.Inline;
             LoadIndex = 100;
@@ -28,7 +28,7 @@ namespace XPress.Web.Links.Attributes
             PageStatic = true;
         }
 
-        readonly string m_Url;
+        string m_Url;
 
         /// <summary>
         /// The url associated with the link. 
@@ -104,7 +104,10 @@ namespace XPress.Web.Links.Attributes
                 }
                 return m_uniqueId;
             }
-            set { m_uniqueId = value; }
+            set
+            {
+                m_uniqueId = value;
+            }
         }
 
         /// <summary>
@@ -124,6 +127,24 @@ namespace XPress.Web.Links.Attributes
         /// Depending on the link origin, the link data can be taken from the specified source.
         /// </summary>
         public string DynamicSource { get; set; }
+
+        /// <summary>
+        /// True if the link is a partial file url.
+        /// </summary>
+        public bool IsPartialFileUrl { get { return Origin == LinkOrigin.File && !Url.StartsWith("~"); } }
+
+        /// <summary>
+        /// Validated that the link url is complient with the root url associated with the type the link originated from.
+        /// </summary>
+        /// <param name="root"></param>
+        internal void ValidateRootUrl(LinkFilesRootUrlAttribute root)
+        {
+            // validated the root url accoding to the type.
+            if (!IsPartialFileUrl)
+                return;
+            m_Url = root.RootUrl +
+                (m_Url.StartsWith("/") ? "" : "/") + m_Url;
+        }
     }
 
 }
