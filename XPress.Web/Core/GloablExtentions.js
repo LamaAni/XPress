@@ -186,5 +186,19 @@ $.extend($, {
 
 // Added function mapping methods.
 $.extend($.fn, {
-
+    // checks if any of the elements have the condition.
+    any: function (condition) {
+        for(var i=0;i<this.length;i++)
+        {
+            if (condition(this[i]))
+                return true;
+        }
+        return false;
+    },
+    // checks if all of the elements have the condition.
+    all: function (condition) {
+        return !this.any(function (el) {
+            return !condition(el);
+        });
+    }
 });

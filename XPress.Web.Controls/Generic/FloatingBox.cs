@@ -7,6 +7,7 @@ using XPress.Web.JCom.Attributes;
 using XPress.Web.Controls.Linq;
 using XPress.Web.Html.Linq;
 using XPress.Web.Controls.Generic;
+using System.ComponentModel;
 
 namespace XPress.Web.Controls.Generic
 {
@@ -26,6 +27,7 @@ namespace XPress.Web.Controls.Generic
             IsShown = isShown;
             this.Style["display"] = "none";
             this.MoveWindowToTopInStackWhenShown = true;
+            HideOnLoseContext = false;
             this.ZStack = 1;
         }
 
@@ -36,18 +38,21 @@ namespace XPress.Web.Controls.Generic
         /// the z index group the floating box belongs to. Default is 1. (zindex=1000+).
         /// </summary>
         [ClientSideProperty]
+        [DefaultValue(1)]
         public int ZStack { get; set; }
 
         /// <summary>
         /// Moves the window to the top of the window stack when showing the window.
         /// </summary>
         [ClientSideProperty]
+        [DefaultValue(true)]
         public bool MoveWindowToTopInStackWhenShown { get; set; }
 
         /// <summary>
         /// If true the current is shown.
         /// </summary>
         [ClientSideProperty]
+        [DefaultValue(false)]
         public bool IsShown { get; private set; }
 
         /// <summary>
@@ -56,6 +61,14 @@ namespace XPress.Web.Controls.Generic
         /// </summary>
         [ClientSideProperty]
         public string BindId { get; private set; }
+
+        /// <summary>
+        /// If true then hides the floating box when context is lost (focus to any of the child elements).
+        /// In order for this to work the control must be able to take focus, on any child. (Set CanHaveFocus = true).
+        /// </summary>
+        [ClientSideProperty]
+        [DefaultValue(true)]
+        public bool HideOnLoseContext { get; set; }
 
         #endregion
 
@@ -123,6 +136,20 @@ namespace XPress.Web.Controls.Linq
             where T : FloatingBox
         {
             c.Show(isShown);
+            return c;
+        }
+
+        /// <summary>
+        /// Hides the control when focus is lost, toggle on off.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="c"></param>
+        /// <param name="isShown"></param>
+        /// <returns></returns>
+        public static T HideOnLoseContext<T>(this T c, bool hideOnContextLost)
+            where T : FloatingBox
+        {
+            c.HideOnLoseContext = hideOnContextLost;
             return c;
         }
     }

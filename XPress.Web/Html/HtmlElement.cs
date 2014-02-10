@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XPress.Strings;
+using System.ComponentModel;
 
 namespace XPress.Web.Html
 {
@@ -27,6 +28,7 @@ namespace XPress.Web.Html
         /// <summary>
         /// The client id that will be used when the object is rendered.
         /// </summary>
+        [XPressMember(IgnoreMode = XPressIgnoreMode.IfNull, Name = "_id")]
         public virtual string Id
         {
             get;
@@ -34,10 +36,19 @@ namespace XPress.Web.Html
         }
 
         /// <summary>
+        /// If true the current may have focus.
+        /// </summary>
+        [XPressMember(IgnoreMode = XPressIgnoreMode.IfDefualt, Name = "_canHaveFocus")]
+        [DefaultValue(false)]
+        public bool CanHaveFocus { get; set; }
+
+        /// <summary>
         /// The current http context.
         /// </summary>
         public System.Web.HttpContext Context { get { return System.Web.HttpContext.Current; } }
 
+        [XPressMember(IgnoreMode = XPressIgnoreMode.IfDefualt, Name = "_AsSingleTag")]
+        [DefaultValue(false)]
         /// <summary>
         /// True if the elment should be rendered as a signle tag element. 
         /// </summary>

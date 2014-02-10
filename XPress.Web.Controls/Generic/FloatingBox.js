@@ -3,6 +3,12 @@
         // registering the floating box.
         $.XPress.Floating.RegisterBox(this);
         $(this).css("display", "none").css("position", "fixed");
+        if (this.HideOnLoseContext()) {
+            var me = this;
+            $(this).OnContextOut(function (el) {
+                me.Hide();
+            });
+        }
     },
     // shows the float.
     Show: function (doShow) {

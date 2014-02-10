@@ -26,7 +26,12 @@
     </style>
 </head>
 <body>
-    <div class="SomeClass">asdsd</div>
+    <div id="a" class="SomeClass" tabindex="0">
+        <div id="b" tabindex="1">
+            Child
+        </div>
+        Parent
+    </div>
     @Open(new XPress.Web.Controls.Generic.Button("")).OnClientEvent("click", "$$('#firstfloat,#secondfloat').each(function(idx,elm){elm.Show()})")
     Show floats
     @Close()
@@ -38,10 +43,11 @@
     Loading internal:<br />
     @(new TestControl())
     @InsertAutoPageInit()
-    @Open(new XPress.Web.Controls.Generic.FloatingBox()).Class("FloatBack").Id("firstfloat").Css("left", "100px", "top", "100px").Attr("onclick", "$$(this);this.Show();")
+    @(Open(new XPress.Web.Controls.Generic.FloatingBox()).Attr("tabindex","1").Class("FloatBack")
+        .Id("firstfloat").Css("left", "100px", "top", "100px").OnClientEvent("onclick", "$$(this).focus();this.Show();this.focus();").HideOnLoseContext(true))
     This is some html content for first floating box, Click to make this the top box.
     @Close()
-    @Open(new XPress.Web.Controls.Generic.FloatingBox()).Class("FloatBack").Id("secondfloat").Css("left", "120px", "top", "120px").Attr("onclick", "$$(this);this.Show();")
+    @Open(new XPress.Web.Controls.Generic.FloatingBox()).Class("FloatBack").Id("secondfloat").Css("left", "120px", "top", "120px").OnClientEvent("click", "$$(this);this.Show();")
     This is some html content for second floating box, Click to make this the top box.
     @Close()
 </body>
