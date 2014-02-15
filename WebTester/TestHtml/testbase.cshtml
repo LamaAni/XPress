@@ -1,4 +1,6 @@
 ﻿@inherits XPress.Web.Html.HtmlPage
+@using XPress.Web.Controls.Linq;
+@using XPress.Web.Html.Linq;
 @using WebTester.Controls
 @attrib{
 // Add attributes for the template class here (Same as adding attributes before a class name).
@@ -19,7 +21,6 @@
             -ms-transition: all 1s ease-in-out;
             -moz-transition: all 1s ease-in-out;
         }
-
             .testc:hover {
                 background-color: lightblue;
             }
@@ -32,7 +33,7 @@
         </div>
         Parent
     </div>
-    @Open(new XPress.Web.Controls.Generic.Button("")).OnClientEvent("click", "$$('#firstfloat,#secondfloat').each(function(idx,elm){elm.Show()})")
+    @Open(new XPress.Web.Controls.Generic.Button("")).OnClientEvent("click", "$$('#firstfloat,#secondfloat').each(function(idx,elm){elm.Show()});$$('#firstfloat')[0].focus();")
     Show floats
     @Close()
     @Open(new HtmlElement("div")).Css("color", "red", "font-size", "18.5pt", "padding", "5px").Attr("me", "ok").Class("testc")
@@ -44,7 +45,7 @@
     @(new TestControl())
     @InsertAutoPageInit()
     @(Open(new XPress.Web.Controls.Generic.FloatingBox()).Attr("tabindex","1").Class("FloatBack")
-        .Id("firstfloat").Css("left", "100px", "top", "100px").OnClientEvent("onclick", "$$(this).focus();this.Show();this.focus();").HideOnLoseContext(true))
+                .Id("firstfloat").Css("left", "100px", "top", "100px").OnClientEvent("onclick", "$$(this).focus();this.Show();").HideBoxOnLoseFocus(true))
     This is some html content for first floating box, Click to make this the top box.
     @Close()
     @Open(new XPress.Web.Controls.Generic.FloatingBox()).Class("FloatBack").Id("secondfloat").Css("left", "120px", "top", "120px").OnClientEvent("click", "$$(this);this.Show();")

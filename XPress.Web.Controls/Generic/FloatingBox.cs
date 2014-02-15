@@ -146,7 +146,7 @@ namespace XPress.Web.Controls.Linq
         /// <param name="c"></param>
         /// <param name="isShown"></param>
         /// <returns></returns>
-        public static T HideOnLoseContext<T>(this T c, bool hideOnContextLost)
+        public static T HideBoxOnLoseFocus<T>(this T c, bool hideOnContextLost)
             where T : FloatingBox
         {
             c.HideOnLoseContext = hideOnContextLost;

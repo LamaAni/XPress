@@ -102,6 +102,55 @@ var console = window.console ? window.console : {
     warn: function (txt) { }
 };
 
+// mousewheel events (copied from web, source??).
+(function ($) {
+    // General type for diffrence between explorer and others.
+    var types = ['DOMMouseScroll', 'mousewheel'];
+    $.event.special.mousewheel = {
+        setup: function () {
+            if (this.addEventListener) // for the case of explorer.
+                for (var i = types.length; i;)
+                    this.addEventListener(types[--i], handler, false);
+            else
+                this.onmousewheel = handler;
+        },
+
+        teardown: function () {
+            if (this.removeEventListener)
+                for (var i = types.length; i;)
+                    this.removeEventListener(types[--i], handler, false);
+            else
+                this.onmousewheel = null;
+        }
+    };
+
+    $.fn.extend({
+        mousewheel: function (fn) {
+            return fn ? this.bind("mousewheel", fn) : this.trigger("mousewheel");
+        },
+
+        unmousewheel: function (fn) {
+            return this.unbind("mousewheel", fn);
+        }
+    });
+
+    function handler(event) {
+        var args = [].slice.call(arguments, 1), delta = 0, returnValue = true;
+
+        event = $.event.fix(event || window.event);
+        event.type = "mousewheel";
+
+        if (event.wheelDelta) delta = event.wheelDelta / 120;
+        else if (event.detail) delta = -event.detail / 3;
+
+        // Add event and delta to the front of the arguments
+        args.unshift(event, delta);
+
+        return $.event.handle.apply(this, args);
+    }
+
+})(jQuery);
+
 function _as(o, prs) {
     if (typeof (o) == "function")
         return o(prs);
@@ -200,5 +249,102 @@ $.extend($.fn, {
         return !this.any(function (el) {
             return !condition(el);
         });
+    }
+});
+
+// collections
+$.extend($, {
+    // Sortes the children of an array.
+    SortChildren: function (comparer, kids) {
+        if (kids == null)
+            kids = this.children();
+        else if (kids.jQuery == null)
+            kids = $(kids);
+
+        // sorting the children...
+        //this.remove(kids);
+        kids.sort(comparer);
+        kids.remove();
+        this.append(kids);
+        return kids;
+    },
+    Dictionary: function (kvps) {
+        // cretes the dictionary.
+        var dic = {
+            Add: function (key, val) {
+                if (this.ContainsKey(key))
+                    throw "Key already exists.";
+                this[key] = val;
+            },
+            Get: function (key) {
+                return this[key];
+            },
+            Set: function (key, val) {
+                this[key] = val;
+            },
+            Remove: function (key) {
+                if (!this.ContainsKey(key))
+                    throw "Key dose not exists.";
+                delete this[key];
+            },
+            ContainsKey: function (key) {
+                return key in this;
+            },
+            ContainsValue: function (val) {
+                for (var k in this)
+                    if (this[k] == val)
+                        return true;
+                return false;
+            },
+            Clear: function () {
+                for (var k in this)
+                    this.Remove(k);
+            }
+        }
+
+        if (kvps != null) {
+            if (!$.isArray(kvps))
+                kvps = [kvps];
+            for (var i = 0; i < kvps.length; i++) {
+                var kvp = kvps[i];
+                var isArray = $.isArray(kvp) && kvp.length < 2;
+                var isKvp = 'Key' in kvp && 'Value' in kvp && typeof kvp['Key'] == 'string';
+                if (!isArray && !isKvp) {
+                    continue;
+                }
+                if (isArray) {
+                    dic[kvp[0]] = kvp[1];
+                }
+                else {
+                    dic[kvp.Key] = kvp.Value;
+                }
+            }
+        }
+
+        return dic;
+    },
+    HashSet: function (vals) {
+        var set = {
+            Add: function (val) {
+                if (this.Contains(val))
+                    throw "Key already exists.";
+                this[val] = true;
+            },
+            Set: function (val) {
+                this[val] = true;
+            },
+            Contains: function (val) {
+                return val in this;
+            },
+            Remove: function (val) {
+                if (!this.ContainsKey(val))
+                    throw "Key dose not exists.";
+                delete this[val];
+            },
+            Clear: function () {
+                for (var k in this)
+                    this.Remove(k);
+            }
+        }
     }
 });
