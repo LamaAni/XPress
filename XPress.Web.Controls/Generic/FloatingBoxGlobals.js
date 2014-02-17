@@ -4,6 +4,9 @@ $.extend($.XPress, {
         BoxInfos: {},
         LastBoxValidationTime: new Date(),
         Stacks: {},
+        Events: {
+            BeforeMoveNear: "float_beforemovenear",
+        },
         GetStack: function (stackIndex) {
             if (this.Stacks[stackIndex + ""] == null) {
                 this.Stacks[stackIndex + ""] = new Array();
@@ -25,7 +28,7 @@ $.extend($.XPress, {
                     if ($.FromId(bids[i]) == null) {
                         var stack = me.BoxInfos[bids[i]].Stack;
                         // remove from stack.
-                        
+
                         me.BoxInfos[bids[i]] = null;
                         delete me.BoxInfos[bids[i]];
                     }

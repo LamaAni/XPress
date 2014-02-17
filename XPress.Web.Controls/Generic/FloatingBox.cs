@@ -60,7 +60,7 @@ namespace XPress.Web.Controls.Generic
         /// the BindState.
         /// </summary>
         [ClientSideProperty]
-        public string BindId { get; private set; }
+        public string BoundQuery { get; private set; }
 
         /// <summary>
         /// If true then hides the floating box when context is lost (focus to any of the child elements).
@@ -77,6 +77,10 @@ namespace XPress.Web.Controls.Generic
         public override void PreRender(Html.Rendering.HtmlWriter writer)
         {
             // shows the values if nesscesary.
+
+            // cleras the responce command to show if any.
+            if (this.CallContext != null)
+                this.ClearResponseCommand(this.Id + "_show"); // clearing the responce command to show.
             if (IsShown)
                 writer.InitCommands.Add(new XPress.Web.Core.JScriptCommandResponce(this.ClientGetScript() + ".Show();", Core.CommandExecutionType.Post));
 
@@ -93,8 +97,10 @@ namespace XPress.Web.Controls.Generic
         /// <param name="isShown"></param>
         public void Show(bool isShown)
         {
+            // creates the responce command.
             if (this.RequiresUpdate || this.CallContext == null)
                 return;
+
             var cmndId = this.Id + "_show";
 
             if (isShown && !IsShown)
@@ -105,10 +111,7 @@ namespace XPress.Web.Controls.Generic
             {
                 this.RegisterResponseCommand(cmndId, new XPress.Web.Core.JScriptCommandResponce(this.ClientGetScript() + ".Hide();"));
             }
-            else
-            {
-                this.ClearResponseCommand(cmndId);
-            }
+
             IsShown = isShown;
         }
 
