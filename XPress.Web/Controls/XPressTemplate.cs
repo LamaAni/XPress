@@ -16,7 +16,7 @@ namespace XPress.Web.Controls
     /// </summary>
     [XPressMemberSelection(XPressMemberSelectionType.OptIn)]
     [XPressInheritedMemberSelection(XPressMemberSelectionType.Properties)]
-    public class XPressTemplate : XPress.Web.JavascriptClient.JClientTemplate
+    public class XPressTemplate : XPress.Web.JavascriptClient.JClientTemplate, IXPressContext
     {
         /// <summary>
         /// Generates a new template.
@@ -42,6 +42,11 @@ namespace XPress.Web.Controls
                 else return BubbleContinueMode.Continue;
             }, true, BubbleDirection.ToChildren);
         }
+
+        /// <summary>
+        /// The call context associated with the client.
+        /// </summary>
+        public virtual JavascriptClient.JClientCallContext CallContext { get { return JavascriptClient.JClientCallContext.Current; } }
 
         #region IRemoteControl Members
 
@@ -78,5 +83,6 @@ namespace XPress.Web.Controls
         }
 
         #endregion
+
     }
 }
