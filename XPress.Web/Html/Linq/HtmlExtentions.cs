@@ -96,25 +96,28 @@ namespace XPress.Web.Html.Linq
         }
 
         /// <summary>
-        /// Writes html to the control as literal
-        /// If the last child is literal then adds to this HtmlElement,
-        /// otherwise adds a new literal control.
+        /// Writes html to the control as literal, [Element].Children.Append(new HtmlLiteral(html)).
+        /// If the last child is HtmlLiteral then appends only the text to the exisiting literal.
         /// </summary>
         /// <typeparam name="T">The type of the query</typeparam>
         /// <param name="q">The query</param>
         /// <param name="html">The html to insert</param>
+        /// <param name="forceNewLiteral">If true a new literal is forced.</param>
         /// <returns>The query</returns>
-        public static T Write<T>(this T q, string html)
+        public static T Write<T>(this T q, string html, bool forceNewLiteral = false)
             where T : IQuery
         {
             HtmlElement el = q.GetLinqEnumrable().First();
             HtmlLiteral literal = null;
-            if (el.HasChildren)
+            if (!forceNewLiteral && el.HasChildren)
             {
                 literal = el.Children.Last() as HtmlLiteral;
             }
             if (literal == null)
+            {
                 literal = new HtmlLiteral(html);
+                el.Children.Append(literal);
+            }
             else literal.LiteralBuilder.Append(html);
 
             return q;
