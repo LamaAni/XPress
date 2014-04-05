@@ -25,22 +25,31 @@ namespace XPress.Strings
             return Microsoft.JScript.GlobalObject.unescape(val);
         }
 
-        static string __escapeForJsMatch(Match m)
+        static string __matchReplaceEscapeCodes(Match m)
         {
-            switch(m.Value[0])
+            switch (m.Value[0])
             {
-                case '\n':
-                    return "\\n";
-                case '\r':
-                    return "\\r";
-                case '\\':
-                    return "\\\\";
-                case '\'':
-                    return "\\'";
-                case '\"':
-                    return "\\\"";
+                case '\b': return "\\b";
+                case '\f': return "\\f";
+                case '\n': return "\\n";
+                case '\r': return "\\r";
+                case '\t': return "\\t";
+                case '\v': return "\\v";
+                case '\\': return "\\\\";
+                case '\'': return "\\'";
+                case '\"': return "\\\"";
             }
             return m.Value;
+        }
+
+        /// <summary>
+        /// Escapes the string to a json format to allow for string.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        public static string EscapeForJson(this string val, bool addApostrophe = false)
+        {
+            return Regex.Replace(val, "(\x08|\x0c|\x0a|\x0d|\x09|\"" + (addApostrophe ? "|'" : "") + "|\\\\)", __matchReplaceEscapeCodes);
         }
 
         /// <summary>
@@ -51,30 +60,40 @@ namespace XPress.Strings
         /// <returns></returns>
         public static string EscapeForJS(this string val, bool addApostrophe = false)
         {
-            return Regex.Replace(val, "(\"|\\n|\\r" + (addApostrophe ? "|'" : "") + "|\\\\)", __escapeForJsMatch);
+            return Regex.Replace(val, "(\"|\\n|\\r" + (addApostrophe ? "|'" : "") + "|\\\\)", __matchReplaceEscapeCodes);
             //return val;
         }
 
+
         static string __unescapeForJsMatch(Match m)
         {
-            switch (m.Value[1])
-            {
-                case '\\':
-                    return "\\";
-                    break;
-                case 'n':
-                    return "\n";
-                    break;
-                case 'r':
-                    return "\r";
-                    break;
-                case '"':
-                    return "\"";
-                    break;
-                case '\'':
-                    return "'";
-                    break;
-            }
+            if (m.Value.Length > 1)
+                switch (m.Value[1])
+                {
+                    case 'n': return "\b";
+                    case 'r': return "\b";
+                    case '\\': return "\\";
+                    case '\'': return "'";
+                    case '"': return "\"";
+                }
+            return m.Value;
+        }
+
+        static string __unescapeForJsonMatch(Match m)
+        {
+            if (m.Value.Length > 1)
+                switch (m.Value[1])
+                {
+                    case 'b': return "\b";
+                    case 'f': return "\b";
+                    case 'n': return "\b";
+                    case 'r': return "\b";
+                    case 't': return "\b";
+                    case 'v': return "\b";
+                    case '\\': return "\\";
+                    case '\'': return "'";
+                    case '"': return "\"";
+                }
             return m.Value;
         }
 
@@ -84,9 +103,21 @@ namespace XPress.Strings
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
-        public static string UnEscapeFromJs(this string val)
+        public static string UnEscapeFromJsString(this string val)
         {
             return Regex.Replace(val, "\\\\.", __unescapeForJsMatch);
+        }
+
+
+        /// <summary>
+        /// Unescapes a string that was escaped to be represented in a single js line.
+        /// Unescapes the charecteds (by removing \ before them) of ",', and newLine.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        public static string UnEscapeFromJsonString(this string val)
+        {
+            return Regex.Replace(val, "\\\\.", __unescapeForJsonMatch);
         }
 
         /// <summary>

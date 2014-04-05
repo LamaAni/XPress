@@ -40,7 +40,7 @@ namespace XPress.Web.Html
             get
             {
                 if (m_builder == null)
-                    m_builder = new StringBuilder();
+                    m_builder = Html == null ? new StringBuilder() : new StringBuilder(Html);
                 return m_builder;
             }
         }

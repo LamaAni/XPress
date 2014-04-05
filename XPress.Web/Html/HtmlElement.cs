@@ -109,7 +109,7 @@ namespace XPress.Web.Html
                     new Core.JScriptCommandResponce(Links.Compilers.JSCompiler.Global.CreateInitCode(builder.LinksInfo), Core.CommandExecutionType.Post));
 
             // check if need to construct the object client side defention
-            if (builder.JComInfo.RequiresDataObject)
+            if (builder.JComInfo.RequiresClientSideDefinition)
                 builder.Commands.Add(new JCom.Com.Response.JComBuildObjectResponse(this, writer.ObjectSource.GetObjectId(this), 
                     false, builder.JComInfo, JCom.Compilers.Specialized.JavaScriptCompiler.Global));
         }

@@ -144,6 +144,12 @@ namespace XPress.Web.JCom.Com.Request
                 index++;
             }
 
+            int paramCount = mi.GetParameters().Length;
+            while (rt.Count < paramCount)
+            {
+                rt.Add(null);
+            }
+
             return rt.ToArray();
         }
 

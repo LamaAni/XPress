@@ -1,0 +1,19 @@
+﻿@inherits XPress.Web.Controls.XPressPage
+@using WebTester.Controls
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    @{var ctrl = new XPress.Web.Controls.XPressControl("div"); 
+      ctrl.Write("Update to command."); 
+      ctrl.Attributes["onclick"] = "$$(this)[0].Update();";
+      ctrl.OnUpdate((s, e) =>
+      {
+          ctrl.Write("all ok.");
+          ctrl.UpdateClient();
+      });}
+    @ctrl
+</body>
+</html>

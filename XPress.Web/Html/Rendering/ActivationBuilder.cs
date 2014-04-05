@@ -68,7 +68,7 @@ namespace XPress.Web.Html.Rendering
         /// <summary>
         /// If true the object needs activation.
         /// </summary>
-        public bool NeedsActivation { get { return ForceActivation || Commands.Count > 0; } }
+        public bool NeedsActivation { get { return ForceActivation || Commands.Count > 0 || JComInfo.RequiresClientSideDefinition; } }
 
         #endregion
 

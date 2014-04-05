@@ -71,5 +71,47 @@ namespace XPress.Web.Controls
         }
 
         #endregion
+
+        #region generic updating commmands
+
+        /// <summary>
+        /// Called when the client side calls for update command.
+        /// </summary>
+        /// <param name="cmnd"></param>
+        [XPress.Web.JCom.Attributes.ClientSideMethod(Name = "Update")]
+        protected virtual void OnClientSideUpdate(string cmnd = null)
+        {
+            this.Trigger(this, Html.Events.EventDefaults.Update, new XPressControlUpdateEventArgs(cmnd));
+        }
+
+        #endregion
+    }
+
+    public class XPressControlUpdateEventArgs : EventArgs
+    {
+        public XPressControlUpdateEventArgs(string cmnd)
+        {
+            Command = cmnd;
+        }
+
+        /// <summary>
+        /// The command sent with the update.
+        /// </summary>
+        public string Command { get; private set; }
+    }
+
+    public static class XPressControl_Extentions
+    {
+        /// <summary>
+        /// Bind the on update event to the control, and add update events. 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="ctrl"></param>
+        /// <param name="a"></param>
+        public static void OnUpdate<T>(this T ctrl, Action<object, EventArgs> func)
+            where T : XPressControl
+        {
+            ctrl.Bind(Html.Events.EventDefaults.Update, func);
+        }
     }
 }

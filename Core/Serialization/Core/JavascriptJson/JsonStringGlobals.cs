@@ -126,13 +126,13 @@ namespace XPress.Serialization.Core.JavscriptJson
             //}, typeof(JsonNumber<string>)));
 
             // adding the simple string converter. (Should be always last).
-            def.AddConverter(typeof(string), "string", (s) => s.Length > 0 && s[0] == '"', (s) => "\"" + s.EscapeForJS() + "\"", (s) =>
+            def.AddConverter(typeof(string), "string", (s) => s.Length > 0 && s[0] == '"', (s) => "\"" + s.EscapeForJson() + "\"", (s) =>
             {
                 if (s.Length < 3)
                     return "";
 
                 //s = s.Substring(1, s.Length - 2).Replace("\\\"", "\""); // back to string representation.
-                return s.Substring(1, s.Length - 2).UnEscapeFromJs();
+                return s.Substring(1, s.Length - 2).UnEscapeFromJsonString();
             });
 
             return def;

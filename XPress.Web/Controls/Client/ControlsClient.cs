@@ -16,7 +16,7 @@ namespace XPress.Web.Controls.Client
         public ControlsClient()
             : base()
         {
-
+            this.ClientRegisterMessage = "Controls client registered OK!";
         }
 
         [XPressMember("TypeDependentDefitions")]

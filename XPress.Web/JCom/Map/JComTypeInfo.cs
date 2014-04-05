@@ -128,8 +128,9 @@ namespace XPress.Web.JCom.Map
             Name = MappedType.ToString().Replace(".", "_");
 
             // Check if any client side definition is required.
-            RequiresClientSideDefinition = DataMembers.Count > 0 || Methods.Count > 0;
             RequiresDataObject = DataMembers.Where(mi => mi.CanRead).Count() > 0;
+            RequiresClientSideDefinition = RequiresDataObject || Methods.Count > 0;
+            
         }
 
         #endregion
