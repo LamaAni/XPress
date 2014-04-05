@@ -23,7 +23,7 @@
         }
         $(this).css("zIndex", this.ZStack() * 1000 + 100);
         if (this.MoveWindowToTopInStackWhenShown())
-            $.XPress.Floating.MakeTopWindow(this);
+            $.XPress.Floating.MakeTopBox(this);
         $(this).css("display", "block");
 
         bindq = $(this.BoundQuery());
@@ -87,10 +87,9 @@
         if (!left && targetRect.left - (thisRect.width - targetRect.width) > 0)
             x = targetRect.left - (thisRect.width - targetRect.width);
 
-        // dont go out of the window bounds.
+        // window edge, we need to shift the floating box to show witing the window.
         if (x < 0)
             x = 0;
-
         if (x + thisRect.width > windowSize.width)
             x = windowSize.width - thisRect.width;
 
@@ -106,6 +105,6 @@
         }
         else if (q.jquery == null)
             q = $(q);
-        this.BoundQuery(q.length == 0 ? null : q[0].id);
+        this.BoundQuery(q.length == 0 ? null : "#" + q[0].id);
     },
 });

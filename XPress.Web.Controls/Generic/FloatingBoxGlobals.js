@@ -14,7 +14,7 @@ $.extend($.XPress, {
             }
             return this.Stacks[stackIndex + ""];
         },
-        // Validates that the box ids that exist are valid and require to be taken into account when running.
+        // Validates that the box ids that exist are valid. Cleanup procedure.
         ValidateBoxes: function () {
             if (new Date() - this.LastBoxValidationTime < 1000 * 10)
                 return;
@@ -28,7 +28,6 @@ $.extend($.XPress, {
                     if ($.FromId(bids[i]) == null) {
                         var stack = me.BoxInfos[bids[i]].Stack;
                         // remove from stack.
-
                         me.BoxInfos[bids[i]] = null;
                         delete me.BoxInfos[bids[i]];
                     }
@@ -50,8 +49,8 @@ $.extend($.XPress, {
             }
             this.BoxInfos[box.id] = boxInfo;
         },
-        // Makes the current window the top window in the stack
-        MakeTopWindow: function (box) {
+        // Makes the current box the top window in it's stack
+        MakeTopBox: function (box) {
             this.ValidateBoxes();
             var stack = this.GetStack(box.ZStack());
             stack.splice($.inArray(box.id, stack), 1);

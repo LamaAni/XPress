@@ -48,7 +48,7 @@
     <Compile Include="Controls\Client\ControlsClientCall.cs" />
     <Compile Include="Controls\Client\ControlsClientType.cs" />
     <Compile Include="Controls\IXPressControl.cs" />
-    <Compile Include="Controls\Linq\RemoteControlExtentions.cs" />
+    <Compile Include="Controls\Linq\ExpressExtentions.cs" />
     <Compile Include="Controls\XPressControl.cs" />
     <Compile Include="Controls\XPressControlTemplate.cs" />
     <Compile Include="Controls\XPressPage.cs" />
