@@ -1,0 +1,32 @@
+﻿@inherits XPress.Web.Controls.XPressPage
+@using XPress.Web.Controls.Linq;
+@using XPress.Web.Html.Linq;
+@using WebTester.Controls;
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Igors first xphtml</title>
+</head>
+<body>
+    <div id="abc">lkajsdf</div>
+    @{int a = 2 + 2;}
+    <div>server time right not is: @a.ToString()</div>
+    @for (int i = 0; i < 10; i++) { 
+        <div>@i.ToString()</div>
+    }
+    @(new IgorsButton())
+    This is the server time: 
+    @{
+        var box = new XPressControl("div");
+        box.Children.Append(new HtmlLiteral("abcd"));
+    }
+    @box
+    <br />
+    @((new XPress.Web.Controls.Generic.Button("do me")).Css("color", "gray").Click((s, e) =>
+{
+    this.RegisterJSCommand("$('#abc').html('lama');");
+    (box.Children[0] as HtmlLiteral).Html = DateTime.Now.ToString();
+    box.UpdateClient();
+}))
+</body>
+</html>

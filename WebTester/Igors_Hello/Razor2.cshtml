@@ -1,0 +1,35 @@
+﻿@inherits XPress.Web.Controls.XPressPage
+@using XPress.Web.Controls;
+@using XPress.Web.Html.Linq;
+@using XPress.Web.Controls.Linq;
+@using WebTester.Controls
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    @{
+        var container = new XPress.Web.Controls.XPressControl("div"); // Create new control
+        container.Write("Click me.");
+        container.OnUpdate((s, e) =>
+        {
+            int x = 1;
+        }).Attr("onclick", "$$(this)[0].Update((new Date()).getTime().toString());");
+
+        var MyPlaceHolder = new PlaceHolder("div");
+        MyPlaceHolder.Write("this is the placeholder");
+        MyPlaceHolder.Attr("onclick", "for (var i=0;i<10;i++)console.log($$(this)[0].sendvar( (new Date()).getTime().toString() ));");
+    }
+    @container
+    @MyPlaceHolder
+    @{int[] arr = new int[]{1,2,3,4,5,6,7,8,9};}
+    <ul>
+        @foreach (var arritem in arr) 
+        {
+        <li>@arritem</li>
+        }
+    </ul>
+</body>
+</html>

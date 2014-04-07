@@ -79,7 +79,7 @@ namespace XPress.Web.Controls
         /// </summary>
         /// <param name="cmnd"></param>
         [XPress.Web.JCom.Attributes.ClientSideMethod(Name = "Update")]
-        protected virtual void OnClientSideUpdate(string cmnd = null)
+        protected virtual void OnClientSideUpdate(string cmnd)
         {
             this.Trigger(this, Html.Events.EventDefaults.Update, new XPressControlUpdateEventArgs(cmnd));
         }
@@ -108,10 +108,11 @@ namespace XPress.Web.Controls
         /// <typeparam name="T"></typeparam>
         /// <param name="ctrl"></param>
         /// <param name="a"></param>
-        public static void OnUpdate<T>(this T ctrl, Action<object, EventArgs> func)
+        public static T OnUpdate<T>(this T ctrl, Action<object, EventArgs> func)
             where T : XPressControl
         {
             ctrl.Bind(Html.Events.EventDefaults.Update, func);
+            return ctrl;
         }
     }
 }

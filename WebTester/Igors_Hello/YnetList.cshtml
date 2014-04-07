@@ -1,0 +1,51 @@
+﻿@inherits XPress.Web.Controls.XPressPage
+@using XPress.Web.Controls;
+@using XPress.Web.Html;
+@using XPress.Web.Html.Linq;
+@using XPress.Web.Controls.Linq;
+@using WebTester.Controls
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+@{
+    // mark, name, content
+    List<Tuple<int, string, string>> tguvot = new List<Tuple<int, string, string>>();
+    tguvot.Add(new Tuple<int, string, string>(3, "yossi", "lama lama????"));
+    tguvot.Add(new Tuple<int, string, string>(4, "dana", "nu???"));
+    tguvot.Add(new Tuple<int, string, string>(5, "dan", "kansu kansu!!"));
+    tguvot.Add(new Tuple<int, string, string>(2, "guy", "hey ho!"));
+    tguvot.Add(new Tuple<int, string, string>(-5, "elad", "lamas ass"));
+    tguvot.Add(new Tuple<int, string, string>(5, "boris", "Bar Refaeli!"));
+}
+</head>
+<body>
+    @{
+        var ctrl = new PlaceHolder("span");
+        //Func<Tuple<int, string, string>,int> orderFunction = (i) => { return i.Item1; };
+        var orderedByGrade = tguvot.OrderBy((i) => { return i.Item1; });
+        ctrl.Attr("onclick","$$(this)[0].Update();").OnUpdate((s, e) =>
+        {
+            ctrl.Children.Clear();
+            ctrl.UpdateClient();
+        });
+        }
+    <div id="main">
+        <div id="controls">
+        </div>
+        <div id="comments">
+                @Open(ctrl)
+                @foreach (var itm in orderedByGrade)
+                {
+                    <div class="acomment">
+                        <span>@itm.Item2 </span><span>@itm.Item3</span><span>@itm.Item1</span>                        
+                    </div>
+                }
+                @Close()
+        </div>
+        
+    </div>
+
+</body>
+</html>

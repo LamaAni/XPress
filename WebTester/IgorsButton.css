@@ -1,0 +1,6 @@
+﻿.buttonclass {
+    width:100px;
+    display:inline-block;
+    background-color:yellow;
+    overflow:hidden;
+}

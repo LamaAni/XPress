@@ -138,7 +138,7 @@ namespace XPress.Web.JCom.Com.Request
             List<object> rt = new List<object>();
             foreach (IJsonValue<string> val in _args)
             {
-                if (prs.Length >= index)
+                if (index >= prs.Length)
                     break;
                 rt.Add(val.FromJSJson(prs[index].ParameterType));
                 index++;
