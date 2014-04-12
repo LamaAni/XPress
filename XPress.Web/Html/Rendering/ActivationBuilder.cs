@@ -104,18 +104,17 @@ namespace XPress.Web.Html.Rendering
                 {
                     // replacing the "_bc" attribute.
                     // creating the replacement object for active functions.
-                    StringBuilder builder = new StringBuilder();
-                    builder.Append("{");
-                    AddIfAny(ActivationEvent.MouseClick, false, element, builder, revertAttribs);
-                    AddIfAny(ActivationEvent.MouseDown, false, element, builder, revertAttribs);
-                    AddIfAny(ActivationEvent.MouseUp, false, element, builder, revertAttribs);
+                    Dictionary<string, string> acinfo = new Dictionary<string, string>();
+                    AddIfAny(ActivationEvent.MouseClick, false, element, acinfo, revertAttribs);
+                    AddIfAny(ActivationEvent.MouseDown, false, element, acinfo, revertAttribs);
+                    AddIfAny(ActivationEvent.MouseUp, false, element, acinfo, revertAttribs);
+                    AddIfAny(ActivationEvent.Focus, false, element, acinfo, revertAttribs);
 
                     bool atContext = Event.HasFlag(ActivationEvent.ActiveContext);
-                    AddIfAny(ActivationEvent.MouseMove, atContext, element, builder, revertAttribs);
-                    AddIfAny(ActivationEvent.MouseOver, atContext, element, builder, revertAttribs);
-                    builder.Append("}");
+                    AddIfAny(ActivationEvent.MouseMove, atContext, element, acinfo, revertAttribs);
+                    AddIfAny(ActivationEvent.MouseOver, atContext, element, acinfo, revertAttribs);
 
-                    element.Attributes["_ac"] = builder.ToString().EscapeForHtmlAttribute();
+                    element.Attributes["_ac"] = acinfo.ToJSJson().EscapeForHtmlAttribute();
                     revertAttribs.Add(new Tuple<string, string>("_ac", null));
                 }
             }
@@ -123,14 +122,15 @@ namespace XPress.Web.Html.Rendering
             return revertAttribs;
         }
 
-        void AddIfAny(ActivationEvent ev, bool force, HtmlElement element, StringBuilder builder, List<Tuple<string, string>> revertAttribs)
+        void AddIfAny(ActivationEvent ev, bool force, HtmlElement element, Dictionary<string,string> acinfo, List<Tuple<string, string>> revertAttribs)
         {
             if ((force || Event.HasFlag(ev)))
             {
                 string eventName = "on" + ev.ToString().ToLower();
                 string oldEvent = element.Attributes[eventName];
-                string replacementEvent = element.Attributes.Contains(eventName) ? replacementEvent = "\"" + oldEvent.EscapeForHtmlAttribute() + "\"" : "\"\"";
-                builder.Append("\"" + eventName + "\":" + replacementEvent + ",");
+                string replacementEvent = element.Attributes.Contains(eventName) ? replacementEvent = oldEvent : null;
+                acinfo[eventName] = replacementEvent;
+
                 element.Attributes[eventName] = "$A$(this,event);";
                 revertAttribs.Add(new Tuple<string, string>(eventName, oldEvent));
             }

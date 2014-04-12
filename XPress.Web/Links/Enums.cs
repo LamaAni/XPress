@@ -37,9 +37,13 @@ namespace XPress.Web.Links
         /// </summary>
         MouseDown = 32,
         /// <summary>
+        /// Object will be initialzied on javascript focus in event.
+        /// </summary>
+        Focus = 64,
+        /// <summary>
         /// Calls the object activation when the object loads into the client screen. Loads with page must be true.
         /// </summary>
-        OnUpdate = 64
+        OnUpdate = 128
     }
 
 

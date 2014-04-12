@@ -64,7 +64,6 @@ namespace XPress.Web.Html
             set;
         }
 
-
         /// <summary>
         /// A collection of html attributes.
         /// </summary>

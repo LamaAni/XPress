@@ -1,5 +1,9 @@
 ﻿@inherits XPress.Web.Controls.XPressPage
-@using WebTester.Controls
+@using XPress.Web.Controls.Linq;
+@using XPress.Web.Controls;
+@using XPress.Web.Html.Linq;
+@using XPress.Web.Html;
+@using WebTester.Controls;
 @attrib{
 // Add attributes for the template class here (Same as adding attributes before a class name).
 // Example: [LinkConstructor("example.js")]
@@ -26,6 +30,12 @@
     </style>
 </head>
 <body>
+    @{
+        var tester = new XPress.Web.Controls.XPressControl("div");
+        tester.Write("Clickok");
+        tester.Attr("onmousemove", "console.log('ok.'');");
+    }
+    @tester
     @Open(new HtmlElement("div")).Css("color", "red", "font-size", "18.5pt", "padding", "5px").Attr("me", "ok").Class("testc")
     This is internal text within the div.
     @Close()

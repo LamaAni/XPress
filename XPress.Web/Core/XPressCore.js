@@ -303,10 +303,10 @@ $.extend($.XPress, {
             if (acInfo != null) {
 
                 elm.setAttribute("_ac", "ok"); // mark for activated.
-                var acInfo = new Function("return " + acInfo + ";"); // get the actual info.
+                var acInfo = $.JSON.From(acInfo); // parse the json info.
 
                 // mark as activated and get the activation info.
-                var acInfo = acInfo();
+                //var acInfo = acInfo();
 
                 // deleting emties.
                 for (evname in acInfo) {
